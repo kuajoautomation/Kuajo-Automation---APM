@@ -1,0 +1,416 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1520" viewBox="0 0 2400 1520" font-family="'DejaVu Sans Condensed','DejaVu Sans',Arial,sans-serif" xmlns:c2pa="http://c2pa.org/manifest"><metadata><c2pa:manifest>AAAWgmp1bWIAAAAeanVtZGMycGEAEQAQgAAAqgA4m3EDYzJwYQAAABZcanVtYgAAAEdqdW1kYzJtYQARABCAAACqADibcQN1cm46YzJwYToxYmVhN2RiYy1jNzc0LTQ4MGYtYjA1My00YWMzNDlhNzJhNTgAAAADl2p1bWIAAAApanVtZGMyYXMAEQAQgAAAqgA4m3EDYzJwYS5hc3NlcnRpb25zAAAAALxqdW1iAAAARGp1bWRjYm9yABEAEIAAAKoAOJtxE2MycGEuaW5ncmVkaWVudC52MwAAAAAYYzJzaHN7h27Qkvl44+iACZ5oQ4UAAABwY2JvcqNpZGM6Zm9ybWF0bWltYWdlL3N2Zyt4bWxqaW5zdGFuY2VJRHgseG1wOmlpZDpmOTg0YTRjMi0wYzU1LTRhZWYtYWRhNC1jNDJiNjNlYTlhZWZscmVsYXRpb25zaGlwaHBhcmVudE9mAAAB4mp1bWIAAABBanVtZGNib3IAEQAQgAAAqgA4m3ETYzJwYS5hY3Rpb25zLnYyAAAAABhjMnNo2PXF439pHCWqYGDn+4xwFAAAAZljYm9yomdhY3Rpb25zgqJmYWN0aW9ua2MycGEub3BlbmVkanBhcmFtZXRlcnOha2luZ3JlZGllbnRzgaJjdXJseC1zZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmluZ3JlZGllbnQudjNkaGFzaFggq03i9pzNEsaWyjgfQ+UzmrvPn4MAIxDQEHzGjXiKwQCkZmFjdGlvbngdY29tLmFudGhyb3BpYy5jbGF1ZGUucHJvdmlkZWRqcGFyYW1ldGVyc6F4H2NvbS5hbnRocm9waWMub3JpZ2luLWNvbmZpZGVuY2VndW5rbm93bmtkZXNjcmlwdGlvbnhmQ2xhdWRlIHByb3ZpZGVkIHRoaXMgZmlsZSBhdCB0aGUgcmVxdWVzdCBvZiBhIHVzZXIgYW5kIG1heSBoYXZlIGNyZWF0ZWQgb3IgbW9kaWZpZWQgdGhlIGZpbGUgY29udGVudHMubXNvZnR3YXJlQWdlbnShZG5hbWVmQ2xhdWRlcmFsbEFjdGlvbnNJbmNsdWRlZPUAAADIanVtYgAAAEBqdW1kY2JvcgARABCAAACqADibcRNjMnBhLmhhc2guZGF0YQAAAAAYYzJzaDVtNECDDMTo1O7Rkqq3RSgAAACAY2JvcqVjYWxnZnNoYTI1NmNwYWRNAAAAAAAAAAAAAAAAAGRoYXNoWCAivOX42eXCjpcGiEsOMtV2ipKNdS8zzakogBYLNJAbVGRuYW1lbmp1bWJmIG1hbmlmZXN0amV4Y2x1c2lvbnOBomVzdGFydBjfZmxlbmd0aBkeBAAAAj5qdW1iAAAAJ2p1bWRjMmNsABEAEIAAAKoAOJtxA2MycGEuY2xhaW0udjIAAAACD2Nib3KlY2FsZ2ZzaGEyNTZpc2lnbmF0dXJleE1zZWxmI2p1bWJmPS9jMnBhL3VybjpjMnBhOjFiZWE3ZGJjLWM3NzQtNDgwZi1iMDUzLTRhYzM0OWE3MmE1OC9jMnBhLnNpZ25hdHVyZWppbnN0YW5jZUlEeCx4bXA6aWlkOjE0Y2U3YjM4LTM5MGYtNDNhMC04ZjRhLTgzYzliODE3YTliNnJjcmVhdGVkX2Fzc2VydGlvbnODomN1cmx4LXNlbGYjanVtYmY9YzJwYS5hc3NlcnRpb25zL2MycGEuaW5ncmVkaWVudC52M2RoYXNoWCCrTeL2nM0SxpbKOB9D5TOau8+fgwAjENAQfMaNeIrBAKJjdXJseCpzZWxmI2p1bWJmPWMycGEuYXNzZXJ0aW9ucy9jMnBhLmFjdGlvbnMudjJkaGFzaFggcoWLgU4MjTglQjR9c4hAoS5JM6DdIWOq6bYONr2mz2qiY3VybHgpc2VsZiNqdW1iZj1jMnBhLmFzc2VydGlvbnMvYzJwYS5oYXNoLmRhdGFkaGFzaFggp5aR9tfP9sLDhxz60enbCXnim63s6nIbXJSelEradGB0Y2xhaW1fZ2VuZXJhdG9yX2luZm+jZG5hbWVvQW50aHJvcGljIEZpbGVzZ3ZlcnNpb25lMS4wLjBrc3BlY1ZlcnNpb25lMi40LjAAABA4anVtYgAAAChqdW1kYzJjcwARABCAAACqADibcQNjMnBhLnNpZ25hdHVyZQAAABAIY2JvctKEWQISogEmGCFZAgowggIGMIIBjaADAgECAhRA5aAK7sI50L64g/oGQgU9Z1UTADAKBggqhkjOPQQDAzBJMRcwFQYDVQQKEw5BbnRocm9waWMsIFBCQzEuMCwGA1UEAxMlQW50aHJvcGljIENvbnRlbnQgQ3JlZGVudGlhbHMgUm9vdCBDQTAeFw0yNjA4MDcxODQzNTZaFw0yODA4MDYxOTQzNTZaMEQxFzAVBgNVBAoTDkFudGhyb3BpYywgUEJDMSkwJwYDVQQDEyBBbnRocm9waWMgQ2xhdWRlIENvbnRlbnQgU2lnbmluZzBZMBMGByqGSM49AgEGCCqGSM49AwEHA0IABJh6CmvLUBgFFNU0vUKlOVtE6djd17L5SuwX0LemFisBM3dkd/3cyjxFA3Qo5S46fX0/ihY0VZ7mfb9KF703t5OjWDBWMA4GA1UdDwEB/wQEAwIHgDAVBgNVHSUEDjAMBgorBgEEAYPoXgIBMAwGA1UdEwEB/wQCMAAwHwYDVR0jBBgwFoAUzlHiBIFOZFsj+OPEz5o+nMHXXMIwCgYIKoZIzj0EAwMDZwAwZAIwMXMdFJ4BetLLVY7ORuE9noqbbAZOZn/aArXyTwFAZfKrPzxF2vPoJNf1+UCdg1XGAjBwX1zd9WGqYkqmL5SFqw1QySjr1zJfpJM9+1rdDwSPLMOPOjKuiXjoU/pUUeG9RwmhY3BhZFkNngAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAPZYQPsQhLx1fYyn8C9qRHvBuGziVmfM4mxB9Pb2VqHoByKf6SSSJOfElx1blzZjZ2srgGT6cSXeWm+94w0FtAg5zYA=</c2pa:manifest></metadata>
+<defs><marker id="ak" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1b1b1b"/></marker><marker id="ab" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" fill="#1f5fae"/></marker><marker id="aK" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#1b1b1b"/></marker></defs>
+<rect x="0" y="0" width="2400" height="1520" rx="0" fill="#ffffff" stroke="none" stroke-width="0"/>
+<rect x="15" y="15" width="2370" height="1490" rx="0" fill="none" stroke="#999" stroke-width="1.2"/>
+<text x="40" y="62" font-size="28" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">MAPA DE FLUJO DE VALOR — ESTADO FUTURO</text>
+<text x="40" y="92" font-size="15" font-weight="normal" text-anchor="start" fill="#333" font-style="normal">Línea 1: yogures (familia Y1 fresa · Y2 griego · Y3 kéfir) — Lácteos Pomar, planta Cajicá</text>
+<rect x="1500" y="30" width="860" height="78" rx="0" fill="#f4f5f8" stroke="#999" stroke-width="1.3"/>
+<text x="1515" y="58" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Elaboró:</text>
+<text x="1580" y="58" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Kuajo Automation — R4 Juan Vargas</text>
+<text x="1910" y="58" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Fecha:</text>
+<text x="1975" y="58" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Octubre de 2026 · Rev. B</text>
+<text x="1515" y="88" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Base:</text>
+<text x="1580" y="88" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Día típico: 2 turnos × 8 h, 840 min disponibles, 6 días/sem</text>
+<text x="1910" y="88" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Estado:</text>
+<text x="1975" y="88" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">FUTURO con la propuesta (sección 7)</text>
+<polygon points="40.0,250.0 40.0,165.0 85.0,143.0 85.0,165.0 130.0,143.0 130.0,165.0 290.0,165.0 290.0,250.0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="165.0" y="193" font-size="13" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Productores de leche</text>
+<text x="165.0" y="211" font-size="10.5" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">Acopio de Pomar (Cundinamarca)</text>
+<rect x="40" y="262" width="250" height="84" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="47" y="281" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Leche para la línea</text>
+<text x="283" y="281" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">68.098 kg/d</text>
+<text x="47" y="300" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Entregas</text>
+<text x="283" y="300" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">2 por día</text>
+<text x="47" y="319" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Proveedores de envases</text>
+<text x="283" y="319" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">semanal</text>
+<text x="47" y="338" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Fruta, polvos y cultivos</text>
+<text x="283" y="338" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">semanal</text>
+<polygon points="2100.0,250.0 2100.0,165.0 2146.8,143.0 2146.8,165.0 2193.6,143.0 2193.6,165.0 2360.0,165.0 2360.0,250.0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="2230.0" y="193" font-size="13" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Cadenas y distribuidores</text>
+<text x="2230.0" y="211" font-size="10.5" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">Supermercados + canal tradicional</text>
+<rect x="2100" y="262" width="260" height="141" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="2107" y="281" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Demanda total</text>
+<text x="2353" y="281" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">52.400 kg/d</text>
+<text x="2107" y="300" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Y1 fresa 150 g</text>
+<text x="2353" y="300" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">200.000 vasos</text>
+<text x="2107" y="319" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Y2 griego 500 g</text>
+<text x="2353" y="319" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">20.000 vasos</text>
+<text x="2107" y="338" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Y3 kéfir 1 L</text>
+<text x="2353" y="338" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">12.039 bot.</text>
+<text x="2107" y="357" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Entrega actual</text>
+<text x="2353" y="357" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">52.400 kg (100 %)</text>
+<text x="2107" y="376" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Takt time</text>
+<text x="2353" y="376" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">0,96 s/kg</text>
+<text x="2107" y="395" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Ritmo real</text>
+<text x="2353" y="395" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">0,96 s/kg</text>
+<rect x="860" y="128" width="640" height="132" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="1180" y="152" font-size="14" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">CONTROL DE PRODUCCIÓN</text>
+<text x="878" y="178" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">• SAP (PP/SD): pedidos por EDI o portal y órdenes de producción diarias</text>
+<text x="878" y="199" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">• MES Sepasoft: heijunka, recetas ISA-88, OEE, genealogía, SPC</text>
+<text x="878" y="220" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">• SCADA Ignition + historian: estado de equipos y lotes en línea</text>
+<text x="878" y="241" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">• KPIs en línea por turno, receta y equipo</text>
+<rect x="1530" y="150" width="240" height="96" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.4"/>
+<text x="1650" y="170" font-size="11.5" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Nivelación del mix (heijunka)</text>
+<rect x="1545" y="182" width="46" height="28" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1568" y="201" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Y2</text>
+<rect x="1600" y="182" width="46" height="28" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1623" y="201" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Y1</text>
+<rect x="1655" y="182" width="46" height="28" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1678" y="201" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Y3</text>
+<rect x="1710" y="182" width="46" height="28" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1733" y="201" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Y1</text>
+<text x="1650" y="232" font-size="9.5" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">Secuencia diaria del MES (sección 7.10)</text>
+<polyline points="2100,140 1812.0,140.0 1800.0,130.0 1800.0,150.0 1788.0,140.0 1500,140" fill="none" stroke="#1f5fae" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#ab)"/>
+<text x="1800" y="128" font-size="10.5" font-weight="normal" text-anchor="middle" fill="#1f5fae" font-style="normal">Pedidos EDI o portal → SAP (diario)</text>
+<polyline points="860,175 588.0,175.0 576.0,165.0 576.0,185.0 564.0,175.0 292,175" fill="none" stroke="#1f5fae" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#ab)"/>
+<text x="575" y="163" font-size="10.5" font-weight="normal" text-anchor="middle" fill="#1f5fae" font-style="normal">Programa de acopio (diario)</text>
+<line x1="1500" y1="198" x2="1528" y2="198" stroke="#1f5fae" stroke-width="1.6" marker-end="url(#ab)"/>
+<rect x="140" y="425" width="205" height="26" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="242.5" y="443" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Preparación</text>
+<rect x="140" y="451" width="205" height="44" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="148" y="478" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">U-211 · 10.000 L</text>
+<circle cx="305" cy="468" r="5" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<path d="M296,484 Q305,472 314,484" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="318" y="482" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">1*</text>
+<rect x="405" y="425" width="205" height="26" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="507.5" y="443" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Tratamiento térmico</text>
+<rect x="405" y="451" width="205" height="44" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="413" y="478" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">U-212 · 10.000 L/h</text>
+<circle cx="570" cy="468" r="5" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<path d="M561,484 Q570,472 579,484" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="583" y="482" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">1*</text>
+<rect x="670" y="425" width="230" height="26" rx="0" fill="#dbe8fb" stroke="#1f5fae" stroke-width="1.6"/>
+<text x="785.0" y="443" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#1f5fae" font-style="normal">Fermentación ★</text>
+<rect x="670" y="451" width="230" height="44" rx="0" fill="#dbe8fb" stroke="#1f5fae" stroke-width="1.6"/>
+<text x="678" y="478" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">U-221 a U-224 · 4 × 10.000 L</text>
+<circle cx="860" cy="468" r="5" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<path d="M851,484 Q860,472 869,484" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="873" y="482" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">1</text>
+<rect x="1010" y="425" width="205" height="26" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1112.5" y="443" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Enfriamiento</text>
+<rect x="1010" y="451" width="205" height="44" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1018" y="478" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">U-225 (+ U-228 en Y2)</text>
+<circle cx="1175" cy="468" r="5" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<path d="M1166,484 Q1175,472 1184,484" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1188" y="482" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">1*</text>
+<rect x="1330" y="425" width="262" height="26" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1461.0" y="443" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Llenado de vasos + inspección</text>
+<rect x="1330" y="451" width="262" height="44" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1338" y="478" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">U-232 · U-234</text>
+<circle cx="1552" cy="468" r="5" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<path d="M1543,484 Q1552,472 1561,484" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1565" y="482" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">2</text>
+<rect x="1680" y="425" width="225" height="26" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1792.5" y="443" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Encajonado y paletizado</text>
+<rect x="1680" y="451" width="225" height="44" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1688" y="478" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Celda robotizada U-242/U-241</text>
+<circle cx="1865" cy="468" r="5" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<path d="M1856,484 Q1865,472 1874,484" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1878" y="482" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">1</text>
+<text x="785" y="411" font-size="11" font-weight="bold" text-anchor="middle" fill="#1f5fae" font-style="normal">★ Proceso marcapasos (restricción)</text>
+<polyline points="1650,246 1231.8238504507167,318.4514491660968 1218.2928743050807,310.6467912910694 1221.7071256949193,330.3532087089306 1208.1761495492833,322.5485508339032 790,395" fill="none" stroke="#1f5fae" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#ab)"/>
+<text x="1215" y="300" font-size="10.5" font-weight="normal" text-anchor="end" fill="#1f5fae" font-style="normal">Secuencia diaria y receta de control ISA-88: solo al marcapasos</text>
+<polyline points="1500,423 1456.331506205072,352.69372499016595 1458.4947708251384,337.22374482910664 1441.5052291748616,347.77625517089336 1443.668493794928,332.30627500983405 1400,262" fill="none" stroke="#1f5fae" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#ab)"/>
+<text x="1478" y="330" font-size="10.5" font-weight="normal" text-anchor="start" fill="#1f5fae" font-style="normal">Datos de lote, OEE y consumos</text>
+<text x="1478" y="344" font-size="10.5" font-weight="normal" text-anchor="start" fill="#1f5fae" font-style="normal">(en línea, hacia el MES)</text>
+<line x1="345" y1="473" x2="403" y2="473" stroke="#1b1b1b" stroke-width="2.2" marker-end="url(#ak)"/>
+<line x1="610" y1="473" x2="668" y2="473" stroke="#1b1b1b" stroke-width="2.2" marker-end="url(#ak)"/>
+<text x="507" y="663" font-size="1" font-weight="normal" text-anchor="start" fill="#111" font-style="normal"></text>
+<line x1="910" y1="461" x2="1000" y2="461" stroke="#1b1b1b" stroke-width="1.6"/>
+<line x1="910" y1="485" x2="1000" y2="485" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="949.0" y="478" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">FIFO</text>
+<polygon points="986.0,467.0 998.0,473.0 986.0,479.0" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="955.0" y="503" font-size="10" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">mismo lote, sin espera</text>
+<line x1="1225" y1="461" x2="1320" y2="461" stroke="#1b1b1b" stroke-width="1.6"/>
+<line x1="1225" y1="485" x2="1320" y2="485" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="1266.5" y="478" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">FIFO</text>
+<polygon points="1306.0,467.0 1318.0,473.0 1306.0,479.0" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1272.5" y="503" font-size="10" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">pulmón U-226 · máx. 1 lote</text>
+<line x1="1592" y1="473" x2="1678" y2="473" stroke="#1b1b1b" stroke-width="2.2" marker-end="url(#ak)"/>
+<text x="1636.0" y="465" font-size="9.5" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">transportador</text>
+<text x="475" y="423" font-size="9.5" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">flujo continuo del lote</text>
+<polygon points="80.0,470.0 60.0,505.0 100.0,505.0" fill="#fff3c4" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="80" y="499" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">I</text>
+<text x="80" y="523" font-size="11" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Silo: 34 t</text>
+<text x="80" y="538" font-size="10" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">12 h de leche</text>
+<line x1="80" y1="345" x2="80" y2="462" stroke="#1b1b1b" stroke-width="3" marker-end="url(#ak)"/>
+<rect x="120" y="360" width="70" height="26" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="133" cy="392" r="5" fill="#fff" stroke="#1b1b1b"/><circle cx="160" cy="392" r="5" fill="#fff" stroke="#1b1b1b"/><circle cx="180" cy="392" r="5" fill="#fff" stroke="#1b1b1b"/>
+<text x="155" y="410" font-size="10.5" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Carrotanque</text>
+<line x1="100" y1="473" x2="138" y2="473" stroke="#1b1b1b" stroke-width="2.2" marker-end="url(#ak)"/>
+<rect x="140" y="507" width="205" height="122" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="147" y="526" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">T. de ciclo Y1</text>
+<text x="338" y="526" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">70 min</text>
+<text x="147" y="545" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">T. de ciclo Y2 / Y3</text>
+<text x="338" y="545" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">30 min</text>
+<text x="147" y="564" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Cambio (CIP)</text>
+<text x="338" y="564" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">45 min auto</text>
+<text x="147" y="583" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Lotes por día</text>
+<text x="338" y="583" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">7,2</text>
+<text x="147" y="602" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Polvos (Y1)</text>
+<text x="338" y="602" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">1.400 kg/lote</text>
+<text x="147" y="621" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Ocupación U-211</text>
+<text x="338" y="621" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">64 %</text>
+<rect x="405" y="507" width="205" height="122" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="412" y="526" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">T. de ciclo Y1 / Y3</text>
+<text x="603" y="526" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">60 min</text>
+<text x="412" y="545" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">T. de ciclo Y2</text>
+<text x="603" y="545" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">72 min</text>
+<text x="412" y="564" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Pasteurización</text>
+<text x="603" y="564" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">90–92 °C</text>
+<text x="412" y="583" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Regeneración</text>
+<text x="603" y="583" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">90 %</text>
+<text x="412" y="602" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Cambio de receta</text>
+<text x="603" y="602" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">por receta</text>
+<text x="412" y="621" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Registro PCC</text>
+<text x="603" y="621" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">TR-212B</text>
+<rect x="670" y="507" width="230" height="141" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="677" y="526" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Incubación Y1/Y2/Y3</text>
+<text x="893" y="526" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">4,5 / 6 / 20 h</text>
+<text x="677" y="545" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Tiempo extra por lote</text>
+<text x="893" y="545" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">0,00 h</text>
+<text x="677" y="564" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Fin de fase</text>
+<text x="893" y="564" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">pH en línea</text>
+<text x="677" y="583" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Horas-tanque</text>
+<text x="893" y="583" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">85,2 de 96</text>
+<text x="677" y="602" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Ocupación</text>
+<text x="893" y="602" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">89 %</text>
+<text x="677" y="621" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Kéfir</text>
+<text x="893" y="621" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">U-224 + U-223 c/4 d</text>
+<text x="677" y="640" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Lotes fuera de pH</text>
+<text x="893" y="640" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">≤ 2 %</text>
+<rect x="1010" y="507" width="205" height="122" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1017" y="526" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">T. de ciclo</text>
+<text x="1208" y="526" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">70 min/lote</text>
+<text x="1017" y="545" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Salida Y1 / Y2 / Y3</text>
+<text x="1208" y="545" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">20 / 10 / 9 °C</text>
+<text x="1017" y="564" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Concentración Y2</text>
+<text x="1208" y="564" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">2 h en U-228</text>
+<text x="1017" y="583" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Suero ácido</text>
+<text x="1208" y="583" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">≈ 6.950 kg/lote</text>
+<text x="1017" y="602" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Destino Y1/Y2</text>
+<text x="1208" y="602" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">pulmón U-226</text>
+<text x="1017" y="621" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Destino Y3</text>
+<text x="1208" y="621" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">maduración U-227</text>
+<rect x="1330" y="507" width="262" height="160" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1337" y="526" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Nominal (150 / 500 g)</text>
+<text x="1585" y="526" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">28.800 / 7.200 v/h</text>
+<text x="1337" y="545" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Cambio de formato</text>
+<text x="1585" y="545" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">35 min × 2/día</text>
+<text x="1337" y="564" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">MTBF / MTTR</text>
+<text x="1585" y="564" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">8,1 h / 20 min</text>
+<text x="1337" y="583" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Disponibilidad</text>
+<text x="1585" y="583" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">86,3 %</text>
+<text x="1337" y="602" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Rendimiento</text>
+<text x="1585" y="602" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">91,3 %</text>
+<text x="1337" y="621" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Calidad (rechazo)</text>
+<text x="1585" y="621" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">99 % (1 %)</text>
+<text x="1337" y="640" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">OEE</text>
+<text x="1585" y="640" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">78,0 %</text>
+<text x="1337" y="659" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Ocupación</text>
+<text x="1585" y="659" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">89 % (12,5 de 14 h)</text>
+<rect x="1680" y="507" width="225" height="122" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1687" y="526" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Cajas por día</text>
+<text x="1898" y="526" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">11.003</text>
+<text x="1687" y="545" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Pallets por día</text>
+<text x="1898" y="545" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">119</text>
+<text x="1687" y="564" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Operarios por turno</text>
+<text x="1898" y="564" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">1</text>
+<text x="1687" y="583" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Cajas por operario-h</text>
+<text x="1898" y="583" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">786</text>
+<text x="1687" y="602" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Unidades por caja</text>
+<text x="1898" y="602" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">24 / 12 / 12</text>
+<text x="1687" y="621" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Etiqueta de pallet</text>
+<text x="1898" y="621" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">GS1-128</text>
+<line x1="1935" y1="440" x2="1980" y2="440" stroke="#1b1b1b" stroke-width="1.6"/>
+<line x1="1935" y1="456" x2="1980" y2="456" stroke="#1b1b1b" stroke-width="1.6"/>
+<line x1="1935" y1="472" x2="1980" y2="472" stroke="#1b1b1b" stroke-width="1.6"/>
+<line x1="1935" y1="488" x2="1980" y2="488" stroke="#1b1b1b" stroke-width="1.6"/>
+<line x1="1980" y1="440" x2="1980" y2="488" stroke="#1b1b1b" stroke-width="1.6"/>
+<line x1="1905" y1="473" x2="1931" y2="473" stroke="#1b1b1b" stroke-width="2.2" marker-end="url(#ak)"/>
+<text x="1957" y="513" font-size="11" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Producto liberado</text>
+<text x="1957" y="528" font-size="10" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">FIFO por fecha (24 h)</text>
+<rect x="2150" y="455" width="85" height="34" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<rect x="2235" y="465" width="30" height="24" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<circle cx="2165" cy="495" r="6" fill="#fff" stroke="#1b1b1b"/>
+<circle cx="2210" cy="495" r="6" fill="#fff" stroke="#1b1b1b"/>
+<circle cx="2250" cy="495" r="6" fill="#fff" stroke="#1b1b1b"/>
+<line x1="1985" y1="473" x2="2145" y2="473" stroke="#1b1b1b" stroke-width="3" marker-end="url(#ak)"/>
+<text x="2205" y="523" font-size="11" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Camión refrigerado</text>
+<text x="2205" y="538" font-size="10" font-weight="normal" text-anchor="middle" fill="#555" font-style="normal">despacho diario</text>
+<line x1="2205" y1="450" x2="2205" y2="405" stroke="#1b1b1b" stroke-width="3" marker-end="url(#ak)"/>
+<polyline points="1110,635 1110,800 1218,800" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#ak)"/>
+<rect x="1222" y="765" width="210" height="26" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1327.0" y="783" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Maduración (Y3)</text>
+<rect x="1222" y="791" width="210" height="44" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1230" y="818" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">U-227 · 10.000 L</text>
+<circle cx="1392" cy="808" r="5" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<path d="M1383,824 Q1392,812 1401,824" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1405" y="822" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">1*</text>
+<line x1="1440" y1="801" x2="1515" y2="801" stroke="#1b1b1b" stroke-width="1.6"/>
+<line x1="1440" y1="825" x2="1515" y2="825" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="1471.5" y="818" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">FIFO</text>
+<polygon points="1501.0,807.0 1513.0,813.0 1501.0,819.0" fill="#1b1b1b" stroke="#1b1b1b" stroke-width="1.3"/>
+<rect x="1522" y="765" width="210" height="26" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1627.0" y="783" font-size="12.5" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">Llenado de botellas</text>
+<rect x="1522" y="791" width="210" height="44" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1530" y="818" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">U-233 · 6.000 bot/h</text>
+<circle cx="1692" cy="808" r="5" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<path d="M1683,824 Q1692,812 1701,824" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1705" y="822" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">1</text>
+<rect x="1222" y="848" width="210" height="65" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1229" y="867" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Tiempo</text>
+<text x="1425" y="867" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">12 h a 9 °C</text>
+<text x="1229" y="886" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Lotes por día</text>
+<text x="1425" y="886" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">1,3</text>
+<text x="1229" y="905" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Después</text>
+<text x="1425" y="905" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">enfría a 5 °C</text>
+<rect x="1522" y="848" width="210" height="84" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1529" y="867" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">OEE</text>
+<text x="1725" y="867" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">80 %</text>
+<text x="1529" y="886" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Ocupación</text>
+<text x="1725" y="886" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">18 %</text>
+<text x="1529" y="905" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Botellas por día</text>
+<text x="1725" y="905" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">12.039</text>
+<text x="1529" y="924" font-size="10.5" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Inspección</text>
+<text x="1725" y="924" font-size="10.5" font-weight="bold" text-anchor="end" fill="#111" font-style="normal">automática</text>
+<polyline points="1627,765 1627,682" fill="none" stroke="#1b1b1b" stroke-width="2.2" stroke-linejoin="round" marker-end="url(#ak)"/>
+<text x="1640" y="740" font-size="10" font-weight="normal" text-anchor="start" fill="#555" font-style="normal">Cajas de Y3 (transportador)</text>
+<text x="140" y="800" font-size="10" font-weight="normal" text-anchor="start" fill="#555" font-style="italic">* Operario compartido entre preparación, tratamiento térmico, enfriamiento y maduración (1 por turno). Preparación y fermentación siguen de noche en automático,</text>
+<text x="140" y="815" font-size="10" font-weight="normal" text-anchor="start" fill="#555" font-style="italic">  supervisadas por el operador nocturno de servicios con alarmas del SCADA. Solo el marcapasos (fermentación) recibe la programación; aguas abajo el flujo es FIFO.</text>
+<polygon points="707.0,690.0 700.6,692.8 704.7,698.5 697.8,697.8 698.5,704.7 692.8,700.6 690.0,707.0 687.2,700.6 681.5,704.7 682.2,697.8 675.3,698.5 679.4,692.8 673.0,690.0 679.4,687.2 675.3,681.5 682.2,682.2 681.5,675.3 687.2,679.4 690.0,673.0 692.8,679.4 698.5,675.3 697.8,682.2 704.7,681.5 700.6,687.2" fill="#ffe066" stroke="#b8860b" stroke-width="1"/>
+<text x="690" y="694" font-size="10" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">K2</text>
+<text x="713" y="688" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">pH en línea</text>
+<text x="713" y="702" font-size="10" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">fin de fase automático</text>
+<polygon points="417.0,735.0 410.6,737.8 414.7,743.5 407.8,742.8 408.5,749.7 402.8,745.6 400.0,752.0 397.2,745.6 391.5,749.7 392.2,742.8 385.3,743.5 389.4,737.8 383.0,735.0 389.4,732.2 385.3,726.5 392.2,727.2 391.5,720.3 397.2,724.4 400.0,718.0 402.8,724.4 408.5,720.3 407.8,727.2 414.7,726.5 410.6,732.2" fill="#ffe066" stroke="#b8860b" stroke-width="1"/>
+<text x="400" y="739" font-size="10" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">K8</text>
+<text x="423" y="733" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Submedición</text>
+<text x="423" y="747" font-size="10" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">consumos por lote</text>
+<polygon points="947.0,690.0 940.6,692.8 944.7,698.5 937.8,697.8 938.5,704.7 932.8,700.6 930.0,707.0 927.2,700.6 921.5,704.7 922.2,697.8 915.3,698.5 919.4,692.8 913.0,690.0 919.4,687.2 915.3,681.5 922.2,682.2 921.5,675.3 927.2,679.4 930.0,673.0 932.8,679.4 938.5,675.3 937.8,682.2 944.7,681.5 940.6,687.2" fill="#ffe066" stroke="#b8860b" stroke-width="1"/>
+<text x="930" y="694" font-size="10" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">K4</text>
+<text x="953" y="688" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">MES: carril FIFO</text>
+<text x="953" y="702" font-size="10" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Y1 ≤ 1,5 h · Y2 ≈ 3 h</text>
+<polygon points="1362.0,692.0 1355.6,694.8 1359.7,700.5 1352.8,699.8 1353.5,706.7 1347.8,702.6 1345.0,709.0 1342.2,702.6 1336.5,706.7 1337.2,699.8 1330.3,700.5 1334.4,694.8 1328.0,692.0 1334.4,689.2 1330.3,683.5 1337.2,684.2 1336.5,677.3 1342.2,681.4 1345.0,675.0 1347.8,681.4 1353.5,677.3 1352.8,684.2 1359.7,683.5 1355.6,689.2" fill="#ffe066" stroke="#b8860b" stroke-width="1"/>
+<text x="1345" y="696" font-size="10" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">K1</text>
+<text x="1368" y="690" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Recetas ISA-88 + CIP auto</text>
+<text x="1368" y="704" font-size="10" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">cambio de 90 a 35 min</text>
+<polygon points="1362.0,730.0 1355.6,732.8 1359.7,738.5 1352.8,737.8 1353.5,744.7 1347.8,740.6 1345.0,747.0 1342.2,740.6 1336.5,744.7 1337.2,737.8 1330.3,738.5 1334.4,732.8 1328.0,730.0 1334.4,727.2 1330.3,721.5 1337.2,722.2 1336.5,715.3 1342.2,719.4 1345.0,713.0 1347.8,719.4 1353.5,715.3 1352.8,722.2 1359.7,721.5 1355.6,727.2" fill="#ffe066" stroke="#b8860b" stroke-width="1"/>
+<text x="1345" y="734" font-size="10" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">K3</text>
+<text x="1368" y="728" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Pesadora, metales, visión</text>
+<text x="1368" y="742" font-size="10" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">rechazo de 3 % a 1 %</text>
+<polygon points="1817.0,705.0 1810.6,707.8 1814.7,713.5 1807.8,712.8 1808.5,719.7 1802.8,715.6 1800.0,722.0 1797.2,715.6 1791.5,719.7 1792.2,712.8 1785.3,713.5 1789.4,707.8 1783.0,705.0 1789.4,702.2 1785.3,696.5 1792.2,697.2 1791.5,690.3 1797.2,694.4 1800.0,688.0 1802.8,694.4 1808.5,690.3 1807.8,697.2 1814.7,696.5 1810.6,702.2" fill="#ffe066" stroke="#b8860b" stroke-width="1"/>
+<text x="1800" y="709" font-size="10" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">K5</text>
+<text x="1823" y="703" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Celda robotizada</text>
+<text x="1823" y="717" font-size="10" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">de 4 a 1 operario/turno</text>
+<polygon points="1827.0,200.0 1820.6,202.8 1824.7,208.5 1817.8,207.8 1818.5,214.7 1812.8,210.6 1810.0,217.0 1807.2,210.6 1801.5,214.7 1802.2,207.8 1795.3,208.5 1799.4,202.8 1793.0,200.0 1799.4,197.2 1795.3,191.5 1802.2,192.2 1801.5,185.3 1807.2,189.4 1810.0,183.0 1812.8,189.4 1818.5,185.3 1817.8,192.2 1824.7,191.5 1820.6,197.2" fill="#ffe066" stroke="#b8860b" stroke-width="1"/>
+<text x="1810" y="204" font-size="10" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">K6</text>
+<text x="1833" y="198" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Plan diario SAP → MES</text>
+<text x="1833" y="212" font-size="10" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">stock de 48 a 24 h</text>
+<polygon points="1827.0,240.0 1820.6,242.8 1824.7,248.5 1817.8,247.8 1818.5,254.7 1812.8,250.6 1810.0,257.0 1807.2,250.6 1801.5,254.7 1802.2,247.8 1795.3,248.5 1799.4,242.8 1793.0,240.0 1799.4,237.2 1795.3,231.5 1802.2,232.2 1801.5,225.3 1807.2,229.4 1810.0,223.0 1812.8,229.4 1818.5,225.3 1817.8,232.2 1824.7,231.5 1820.6,237.2" fill="#ffe066" stroke="#b8860b" stroke-width="1"/>
+<text x="1810" y="244" font-size="10" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">K7</text>
+<text x="1833" y="238" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Genealogía en el MES</text>
+<text x="1833" y="252" font-size="10" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">trazabilidad &lt; 30 min</text>
+<text x="40" y="1030" font-size="14" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">LÍNEA DE TIEMPO DE UN LOTE DE Y1 (horas) — MLT = tiempo de manufactura</text>
+<text x="40" y="1048" font-size="10.5" font-weight="normal" text-anchor="start" fill="#555" font-style="normal">Arriba: esperas que no agregan valor · abajo (azul): tiempo que agrega valor</text>
+<line x1="40" y1="1085" x2="226" y2="1085" stroke="#1b1b1b" stroke-width="2.5"/>
+<line x1="226" y1="1085" x2="226" y2="1130" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="133.0" y="1077" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">12,0 h</text>
+<text x="133.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Silo</text>
+<line x1="226" y1="1130" x2="412" y2="1130" stroke="#1f5fae" stroke-width="2.5"/>
+<text x="319.0" y="1150" font-size="12" font-weight="bold" text-anchor="middle" fill="#1f5fae" font-style="normal">1,2 h</text>
+<text x="319.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Preparación</text>
+<line x1="412" y1="1130" x2="598" y2="1130" stroke="#1f5fae" stroke-width="2.5"/>
+<text x="505.0" y="1150" font-size="12" font-weight="bold" text-anchor="middle" fill="#1f5fae" font-style="normal">1,0 h</text>
+<text x="505.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Trat. térmico</text>
+<line x1="598" y1="1130" x2="784" y2="1130" stroke="#1f5fae" stroke-width="2.5"/>
+<line x1="784" y1="1085" x2="784" y2="1130" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="691.0" y="1150" font-size="12" font-weight="bold" text-anchor="middle" fill="#1f5fae" font-style="normal">4,5 h</text>
+<text x="691.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Fermentación</text>
+<line x1="784" y1="1085" x2="970" y2="1085" stroke="#1b1b1b" stroke-width="2.5"/>
+<line x1="970" y1="1085" x2="970" y2="1130" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="877.0" y="1077" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">0,00 h</text>
+<text x="877.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Sobretiempo pH</text>
+<line x1="970" y1="1130" x2="1156" y2="1130" stroke="#1f5fae" stroke-width="2.5"/>
+<line x1="1156" y1="1085" x2="1156" y2="1130" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="1063.0" y="1150" font-size="12" font-weight="bold" text-anchor="middle" fill="#1f5fae" font-style="normal">1,2 h</text>
+<text x="1063.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Enfriamiento</text>
+<line x1="1156" y1="1085" x2="1342" y2="1085" stroke="#1b1b1b" stroke-width="2.5"/>
+<line x1="1342" y1="1085" x2="1342" y2="1130" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="1249.0" y="1077" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">1,5 h</text>
+<text x="1249.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Pulmón</text>
+<line x1="1342" y1="1130" x2="1528" y2="1130" stroke="#1f5fae" stroke-width="2.5"/>
+<text x="1435.0" y="1150" font-size="12" font-weight="bold" text-anchor="middle" fill="#1f5fae" font-style="normal">2,8 h</text>
+<text x="1435.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Llenado</text>
+<line x1="1528" y1="1130" x2="1714" y2="1130" stroke="#1f5fae" stroke-width="2.5"/>
+<line x1="1714" y1="1085" x2="1714" y2="1130" stroke="#1b1b1b" stroke-width="1.6"/>
+<text x="1621.0" y="1150" font-size="12" font-weight="bold" text-anchor="middle" fill="#1f5fae" font-style="normal">0,30 h</text>
+<text x="1621.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Encajonado</text>
+<line x1="1714" y1="1085" x2="1900" y2="1085" stroke="#1b1b1b" stroke-width="2.5"/>
+<text x="1807.0" y="1077" font-size="12" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">48,0 h</text>
+<text x="1807.0" y="1175" font-size="11" font-weight="normal" text-anchor="middle" fill="#333" font-style="normal">Cámara</text>
+<rect x="1930" y="1010" width="430" height="200" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1945" y="1035" font-size="13" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Resumen por receta</text>
+<text x="1945" y="1060" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Receta</text>
+<text x="2040" y="1060" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">MLT</text>
+<text x="2160" y="1060" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">Valor agregado</text>
+<text x="2290" y="1060" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">% VA</text>
+<text x="1945" y="1085" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Y1 fresa</text>
+<text x="2040" y="1085" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">72,5 h (3,0 d)</text>
+<text x="2160" y="1085" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">11,0 h</text>
+<text x="2290" y="1085" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">15,1 %</text>
+<text x="1945" y="1109" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Y2 griego</text>
+<text x="2040" y="1109" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">73,9 h (3,1 d)</text>
+<text x="2160" y="1109" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">10,9 h</text>
+<text x="2290" y="1109" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">14,8 %</text>
+<text x="1945" y="1133" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Y3 kéfir</text>
+<text x="2040" y="1133" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">121,3 h (5,1 d)</text>
+<text x="2160" y="1133" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">36,8 h</text>
+<text x="2290" y="1133" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">30,3 %</text>
+<text x="1945" y="1170" font-size="10.5" font-weight="normal" text-anchor="start" fill="#333" font-style="normal">Throughput 3.743 kg/h · 26.200 kg/turno</text>
+<text x="1945" y="1188" font-size="10.5" font-weight="normal" text-anchor="start" fill="#333" font-style="normal">OEE vasos 78,0 % · fermentadores 89 % (restricción)</text>
+<rect x="40" y="1300" width="2320" height="180" rx="0" fill="#fafafa" stroke="#999" stroke-width="1.3"/>
+<text x="55" y="1324" font-size="11.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal">SIMBOLOGÍA</text>
+<polygon points="60.0,1369.0 60.0,1355.0 70.0,1349.0 70.0,1355.0 80.0,1349.0 80.0,1355.0 100.0,1355.0 100.0,1369.0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="115" y="1361" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Proveedor / cliente</text>
+<rect x="520" y="1347" width="40" height="22" rx="0" fill="#f4f5f8" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="575" y="1361" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Proceso</text>
+<rect x="980" y="1347" width="40" height="22" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<line x1="980" y1="1358" x2="1020" y2="1358" stroke="#1b1b1b" stroke-width="1"/>
+<text x="1035" y="1361" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Caja de datos</text>
+<polygon points="1458.0,1345.0 1446.0,1367.0 1470.0,1367.0" fill="#fff3c4" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1495" y="1361" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Inventario (espera)</text>
+<line x1="1900" y1="1357" x2="1940" y2="1357" stroke="#1b1b1b" stroke-width="2.2" marker-end="url(#ak)"/>
+<text x="1955" y="1361" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Flujo continuo del lote</text>
+<rect x="60" y="1391" width="28" height="14" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<rect x="88" y="1395" width="10" height="10" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="115" y="1403" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Envío por camión</text>
+<line x1="520" y1="1399" x2="560" y2="1399" stroke="#1b1b1b" stroke-width="3" marker-end="url(#ak)"/>
+<text x="575" y="1403" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Envío al cliente</text>
+<line x1="980" y1="1399" x2="1020" y2="1399" stroke="#1b1b1b" stroke-width="1.3" marker-end="url(#aK)"/>
+<text x="1035" y="1403" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Información manual</text>
+<polyline points="1440,1399 1455,1399 1460,1391 1464,1407 1468,1399 1482,1399" fill="none" stroke="#1f5fae" stroke-width="1.6" stroke-linejoin="round" marker-end="url(#ab)"/>
+<text x="1495" y="1403" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Información electrónica</text>
+<circle cx="1915" cy="1392" r="5" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<path d="M1906,1408 Q1915,1396 1924,1408" fill="none" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="1928" y="1406" font-size="11" font-weight="bold" text-anchor="start" fill="#111" font-style="normal"></text>
+<text x="1955" y="1403" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Operario por turno</text>
+<rect x="60" y="1431" width="40" height="22" rx="0" fill="#dbe8fb" stroke="#1f5fae" stroke-width="1.6"/>
+<text x="115" y="1445" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Proceso marcapasos (recibe la programación)</text>
+<rect x="520" y="1431" width="40" height="22" rx="0" fill="#fff" stroke="#1b1b1b" stroke-width="1.3"/>
+<text x="540" y="1446" font-size="8" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">XOXO</text>
+<text x="575" y="1445" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Nivelación (heijunka)</text>
+<polygon points="1015.0,1441.0 1008.6,1443.8 1012.7,1449.5 1005.8,1448.8 1006.5,1455.7 1000.8,1451.6 998.0,1458.0 995.2,1451.6 989.5,1455.7 990.2,1448.8 983.3,1449.5 987.4,1443.8 981.0,1441.0 987.4,1438.2 983.3,1432.5 990.2,1433.2 989.5,1426.3 995.2,1430.4 998.0,1424.0 1000.8,1430.4 1006.5,1426.3 1005.8,1433.2 1012.7,1432.5 1008.6,1438.2" fill="#ffe066" stroke="#b8860b" stroke-width="1"/>
+<text x="998" y="1445" font-size="10" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal"></text>
+<text x="1021" y="1439" font-size="10.5" font-weight="bold" text-anchor="start" fill="#111" font-style="normal"></text>
+<text x="1021" y="1453" font-size="10" font-weight="normal" text-anchor="start" fill="#111" font-style="normal"></text>
+<text x="1035" y="1445" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Mejora kaizen (K1–K8)</text>
+<line x1="1440" y1="1433" x2="1480" y2="1433" stroke="#1b1b1b" stroke-width="1.5"/>
+<line x1="1440" y1="1449" x2="1480" y2="1449" stroke="#1b1b1b" stroke-width="1.5"/>
+<text x="1460" y="1445" font-size="9" font-weight="bold" text-anchor="middle" fill="#111" font-style="normal">FIFO</text>
+<text x="1495" y="1445" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Carril FIFO</text>
+<line x1="1905" y1="1431" x2="1935" y2="1431" stroke="#1b1b1b" stroke-width="1.5"/>
+<line x1="1905" y1="1440" x2="1935" y2="1440" stroke="#1b1b1b" stroke-width="1.5"/>
+<line x1="1905" y1="1449" x2="1935" y2="1449" stroke="#1b1b1b" stroke-width="1.5"/>
+<line x1="1935" y1="1431" x2="1935" y2="1449" stroke="#1b1b1b" stroke-width="1.5"/>
+<text x="1955" y="1445" font-size="11" font-weight="normal" text-anchor="start" fill="#111" font-style="normal">Supermercado</text>
+</svg>
