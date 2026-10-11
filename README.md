@@ -7,7 +7,8 @@ Curso Automatización de Procesos de Manufactura · Universidad Nacional de Colo
 
 > Caso académico. Lácteos Pomar es una empresa real usada como referencia de escala y portafolio; los problemas, indicadores y datos operativos son supuestos del curso.
 
-- **Página web:** `https://<usuario>.github.io/<repositorio>/` (se publica sola, ver abajo)
+- **Página web:** https://kuajoautomation.github.io/Kuajo-Automation---APM/ (se publica sola, ver abajo)
+- **Repositorio:** https://github.com/kuajoautomation/Kuajo-Automation---APM
 - **Video:** pendiente
 - **Informe:** [informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf)
 
@@ -31,17 +32,15 @@ Una carpeta por módulo, como indica el informe (sección 15.1). Cada integrante
 
 La página vive en [`web/`](web) y **no tiene copias propias** del informe, el Excel ni las figuras: al compilar las toma de las carpetas de módulos. Así, actualizar un archivo en su carpeta basta para que la página lo publique.
 
-### Publicar por primera vez
+### Publicación
 
-1. En GitHub, crea un repositorio **público** vacío (por ejemplo `kuajo-automation`), sin README ni .gitignore. GitHub Pages es gratis solo en repositorios públicos.
-2. En esta carpeta, conecta el repositorio y súbelo:
-   ```bash
-   git remote add origin https://github.com/<usuario>/kuajo-automation.git
-   git push -u origin main
-   ```
-3. En el repositorio: **Settings → Pages → Build and deployment → Source: GitHub Actions**.
-4. En la pestaña **Actions**, el flujo «Publicar la página en GitHub Pages» compila y publica. Si la primera ejecución falló porque Pages aún no estaba activado, ábrela y pulsa **Re-run all jobs**.
-5. La página queda en `https://<usuario>.github.io/kuajo-automation/`. Pega esa URL, la del repositorio y la del video en `web/src/data/site.ts` (`site.repo` y `site.video`) y haz `push`.
+- Repositorio: `git@github.com:kuajoautomation/Kuajo-Automation---APM.git` (rama `main`).
+- En GitHub, **Settings → Pages → Build and deployment → Source: GitHub Actions** debe estar activado (una sola vez).
+- El flujo «Publicar la página en GitHub Pages» (pestaña **Actions**) compila y publica en https://kuajoautomation.github.io/Kuajo-Automation---APM/.
+- Para clonar con SSH, cada integrante registra su llave pública en GitHub (**Settings → SSH and GPG keys**) y luego:
+  ```bash
+  git clone git@github.com:kuajoautomation/Kuajo-Automation---APM.git
+  ```
 
 ### Actualizar
 

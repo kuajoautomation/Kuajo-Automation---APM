@@ -12,7 +12,7 @@ export const site = {
   slogan: 'Conectamos cada lote con cada decisión',
   description:
     'Kuajo Automation integra proceso, PLC, SCADA, MES y ERP bajo ISA-95 e ISA-88. Propuesta de transformación digital industrial para la línea de yogures de Lácteos Pomar, Cajicá (caso académico).',
-  repo: PENDING, // URL del repositorio en GitHub cuando exista
+  repo: 'https://github.com/kuajoautomation/Kuajo-Automation---APM',
   video: PENDING, // URL del video en YouTube cuando exista
   course: 'Automatización de Procesos de Manufactura · 2026-2',
   university: 'Universidad Nacional de Colombia',
