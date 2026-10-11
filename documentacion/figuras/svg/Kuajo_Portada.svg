@@ -1,0 +1,40 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="440" viewBox="0 0 1440 440" role="img" aria-labelledby="title desc">
+  <title id="title">Kuajo Automation — Transformación digital industrial</title>
+  <desc id="desc">Portada del proyecto integrador APM 2026-2. Automatización de la línea de yogures: proceso, control, operaciones y negocio.</desc>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#101f32"/><stop offset="1" stop-color="#18334b"/></linearGradient>
+    <pattern id="grid" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M40 0H0V40" fill="none" stroke="#a4c4d7" stroke-opacity=".07"/></pattern>
+  </defs>
+  <rect width="1440" height="440" rx="18" fill="url(#bg)"/>
+  <rect width="1440" height="440" rx="18" fill="url(#grid)"/>
+  <rect x="64" y="54" width="5" height="30" rx="2" fill="#f48143"/>
+  <g font-family="DejaVu Sans, Arial, sans-serif">
+    <text x="85" y="76" font-size="17" font-weight="600" letter-spacing="3" fill="#bed2df">PROYECTO INTEGRADOR · APM 2026-2</text>
+    <text x="62" y="165" font-size="64" font-weight="700" letter-spacing="-2" fill="#ffffff">KUAJO</text>
+    <text x="67" y="203" font-size="25" letter-spacing="7" fill="#f48143">AUTOMATION</text>
+    <text x="64" y="254" font-size="25" fill="#eef5fa">Transformación digital industrial</text>
+    <text x="64" y="290" font-size="18" fill="#bed2df">Línea de yogures · Lácteos Pomar · Cajicá, Colombia</text>
+    <text x="64" y="392" font-size="15" fill="#bed2df">UNIVERSIDAD NACIONAL DE COLOMBIA</text>
+    <text x="1376" y="392" text-anchor="end" font-size="14" fill="#bed2df">Ingeniería mecatrónica · Caso académico</text>
+    <path d="M64 342H1376" stroke="#66859c" stroke-opacity=".45"/>
+    <g transform="translate(800 85)">
+      <path d="M75 134H450" stroke="#71b9c3" stroke-width="3"/>
+      <g fill="#152b41" stroke="#71b9c3" stroke-width="2">
+        <rect x="0" y="79" width="110" height="110" rx="16"/><rect x="147" y="79" width="110" height="110" rx="16"/>
+        <rect x="294" y="79" width="110" height="110" rx="16"/><rect x="441" y="79" width="110" height="110" rx="16"/>
+      </g>
+      <g fill="none" stroke="#eef5fa" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <path d="M40 105Q55 97 70 105V151Q55 159 40 151ZM55 100V91M55 155V167M40 118H70"/>
+        <rect x="183" y="112" width="38" height="37" rx="5"/>
+        <path d="M190 102V108M202 102V108M214 102V108M190 153V159M202 153V159M214 153V159M174 120H179M174 132H179M225 120H230M225 132H230M194 122H210V139H194Z"/>
+        <path d="M326 112H372V149H326ZM333 122H348M333 132H348M356 122H365M356 132H365M338 155H360"/>
+        <path d="M474 147V132H484V147M491 147V119H501V147M508 147V106H518V147M471 153H522"/>
+      </g>
+      <g fill="#eef5fa" text-anchor="middle" font-size="16" font-weight="600">
+        <text x="55" y="222">PROCESO</text><text x="202" y="222">CONTROL</text><text x="349" y="222">MES / SCADA</text><text x="496" y="222">NEGOCIO</text>
+      </g>
+      <g fill="#f48143"><circle cx="128" cy="134" r="5"/><circle cx="275" cy="134" r="5"/><circle cx="422" cy="134" r="5"/></g>
+      <text x="275" y="38" text-anchor="middle" font-size="16" letter-spacing="2" fill="#bed2df">DEL LOTE A LA INFORMACIÓN</text>
+    </g>
+  </g>
+</svg>
