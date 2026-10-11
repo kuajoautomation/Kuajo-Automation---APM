@@ -1,0 +1,13 @@
+Fotos del equipo (se publican con la pagina)
+============================================
+
+Una foto por integrante, con el "slug" de src/data/site.ts como nombre:
+
+  duvan.jpg  paula.jpg  david.jpg  juan.jpg  jose-luis.jpg  ian.jpg
+
+Formato: JPG vertical 4:5 (960 x 1200 px), fondo claro, de pecho hacia arriba.
+Astro las convierte solas a AVIF y WebP en 3 tamanos, con carga diferida.
+Si falta una foto, la pagina muestra las iniciales y "Foto pendiente".
+
+Origen: gestion/equipo/fotos/ del repositorio (recortadas a 4:5 y reducidas).
+Falta: jose-luis.jpg

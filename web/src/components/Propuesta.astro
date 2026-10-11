@@ -1,0 +1,132 @@
+---
+import SectionHead from './SectionHead.astro';
+import Figura from './Figura.astro';
+import { stations, recipes, changeovers } from '../data/site';
+
+const R = ['Y1', 'Y2', 'Y3'] as const;
+const names: Record<string, string> = { Y1: 'Fresa', Y2: 'Griego', Y3: 'Kéfir' };
+// Donde la receta no usa la estación, la línea "salta" en arco (convención de planos eléctricos).
+const HOP = 9;
+const used = (r: string) => stations.map((s) => s.use.includes(r));
+const span = (u: boolean[]) => [u.indexOf(true), u.lastIndexOf(true)];
+// Horizontal
+const cx = (j: number) => 150 + j * 103;
+const ly = (i: number) => 112 + i * 58;
+const HW = cx(stations.length - 1) + 50;
+const HH = ly(2) + 40;
+const hPath = (r: string, i: number) => {
+  const u = used(r); const [a, b] = span(u);
+  let d = `M ${cx(a)} ${ly(i)}`;
+  for (let j = a + 1; j <= b; j++) d += u[j] ? ` H ${cx(j)}` : ` H ${cx(j) - HOP} a ${HOP} ${HOP} 0 0 1 ${HOP * 2} 0`;
+  return d;
+};
+// Vertical
+const ry = (j: number) => 76 + j * 54;
+const lx = (i: number) => 236 + i * 46;
+const VH = ry(stations.length - 1) + 30;
+const vPath = (r: string, i: number) => {
+  const u = used(r); const [a, b] = span(u);
+  let d = `M ${lx(i)} ${ry(a)}`;
+  for (let j = a + 1; j <= b; j++) d += u[j] ? ` V ${ry(j)}` : ` V ${ry(j) - HOP} a ${HOP} ${HOP} 0 0 1 0 ${HOP * 2}`;
+  return d;
+};
+---
+<section class="sec" id="propuesta" aria-labelledby="propuesta-t">
+  <div class="wrap">
+    <SectionHead id="propuesta" title="Un equipo compartido, tres rutas que decide la receta." note="Fig. 5.2b y 7.1 · Tabla 7.1">
+      <p class="sec__intro lead">Cuatro cosas cambian de receta a receta: la ruta, los parámetros, las fases activas y el formato mecánico. Todo lo decide el software; agregar una cuarta receta es cargar datos, no reprogramar.</p>
+    </SectionHead>
+
+    <div class="block block--first"><Figura id="f52b" /></div>
+
+    <figure class="fig routes block" data-routes aria-labelledby="routes-cap">
+      <div class="seg js-only" role="group" aria-label="Resaltar la ruta de una receta">
+        <button type="button" data-route="all" aria-pressed="true">Todas</button>
+        {R.map((r) => <button type="button" data-route={r} aria-pressed="false">{r} {names[r]}</button>)}
+      </div>
+      <svg class="routes__svg routes__svg--h" viewBox={`0 0 ${HW} ${HH}`} role="img" aria-labelledby="routes-t routes-d">
+        <title id="routes-t">Ruta de cada receta por las estaciones de la línea de yogures</title>
+        <desc id="routes-d">{R.map((r) => `${r} ${names[r]}: ${stations.filter((s) => s.use.includes(r)).map((s) => `${s.name} ${s.tag}`).join(', ')}.`).join(' ')}</desc>
+        {stations.map((s, j) => (
+          <g>
+            <text class="svg-mono" x={cx(j)} y="22" font-size="11" text-anchor="middle">{s.tag}</text>
+            <text class="svg-text st__name" x={cx(j)} y="44" font-size="13" text-anchor="middle">{s.name}</text>
+            <path d={`M ${cx(j)} 62 V ${HH - 8}`} class="st__guide" />
+          </g>
+        ))}
+        {R.map((r, i) => (
+          <g class={`lane c-${r.toLowerCase()}`} data-lane={r}>
+            <text class="svg-mono lane__label" x="0" y={ly(i) + 4} font-size="13">{r} {names[r].toUpperCase()}</text>
+            <path d={hPath(r, i)} class="lane__line" data-draw />
+            {stations.map((s, j) => s.use.includes(r) && <rect class="lane__stop" x={cx(j) - 6} y={ly(i) - 6} width="12" height="12" />)}
+          </g>
+        ))}
+      </svg>
+      <svg class="routes__svg routes__svg--v" viewBox={`0 0 360 ${VH}`} role="img" aria-labelledby="routes-tv">
+        <title id="routes-tv">Ruta de cada receta: Y2 pasa por el separador; Y3 por maduración y su llenadora; Y1 por la dosificación de fruta.</title>
+        {R.map((r, i) => <text class={`svg-mono lane__label c-${r.toLowerCase()}`} x={lx(i)} y="40" font-size="13" text-anchor="middle">{r}</text>)}
+        {stations.map((s, j) => (
+          <g>
+            <path d={`M 0 ${ry(j) + 27} H 360`} class="st__guide" />
+            <text class="svg-text st__name" x="0" y={ry(j) - 2} font-size="14">{s.name}</text>
+            <text class="svg-mono" x="0" y={ry(j) + 15} font-size="11">{s.tag}</text>
+          </g>
+        ))}
+        {R.map((r, i) => (
+          <g class={`lane c-${r.toLowerCase()}`} data-lane={r}>
+            <path d={vPath(r, i)} class="lane__line" data-draw />
+            {stations.map((s, j) => s.use.includes(r) && <rect class="lane__stop" x={lx(i) - 6} y={ry(j) - 6} width="12" height="12" />)}
+          </g>
+        ))}
+      </svg>
+      <figcaption class="fig__cap" id="routes-cap">
+        <b>Rutas por receta (Figura 7.1 redibujada)</b>
+        <span>Cada arco es una estación que la receta salta. Y1 y Y3 pasan directo del fermentador al enfriador; solo Y2 pasa por el separador. Y3 se desvía a maduración (U-227) y a su llenadora. Colores del PFD: Y1 rojo, Y2 morado, Y3 verde azulado.</span>
+      </figcaption>
+    </figure>
+
+    <dl class="occ">
+      {recipes.map((r) => (
+        <div class={`c-${r.id.toLowerCase()}`}>
+          <dt class="micro"><span class="dot" aria-hidden="true" />{r.id} {r.name} · {r.lots} lotes/día · fermentador por lote</dt>
+          <dd class="mono">{r.tank}</dd>
+        </div>
+      ))}
+    </dl>
+    <p class="note">El kéfir necesita 1,27 × 23,5 = 29,7 horas-tanque al día, más que las 24 h de un tanque: U-224 queda dedicado al kéfir y U-223 hace un lote adicional ≈ 1 de cada 4 días, con sanitización e hisopado ATP antes de volver a yogur.</p>
+
+    <div class="block cols cols--75">
+      <div>
+        <header class="block__head"><h3 class="block__t">Matriz de cambios de producto.</h3>
+          <p class="block__lead">El orden del día minimiza los cambios: Y2 va antes que Y1 en la llenadora, Y2 fermenta de noche y el kéfir corre en paralelo con su propio tanque y llenadora.</p></header>
+        <div class="tbl-wrap" style="--tbl-min: 540px" tabindex="0" role="region" aria-label="Matriz de cambios de producto">
+          <table class="table">
+            <caption class="micro">Tabla 7.13</caption>
+            <thead><tr><th scope="col">Transición</th><th scope="col">Dónde</th><th scope="col">Qué se hace</th><th scope="col" class="num">Tiempo</th></tr></thead>
+            <tbody>{changeovers.map((c) => <tr><th scope="row" class="mono">{c.t}</th><td>{c.donde}</td><td>{c.que}</td><td class="num">{c.tiempo}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </div>
+      <Figura id="f71" sizes="(min-width: 1080px) 520px, 100vw" />
+    </div>
+  </div>
+</section>
+
+<style>
+  .routes__svg--h { display: none; }
+  .routes__svg--v { max-width: 420px; }
+  @media (min-width: 900px) { .routes__svg--h { display: block; width: 100%; } .routes__svg--v { display: none; } }
+  .st__name { font-weight: 500; }
+  .st__guide { stroke: var(--rule); stroke-width: 1; fill: none; }
+  .lane { transition: opacity var(--d-3) var(--ease); }
+  .lane__line { fill: none; stroke: var(--c); stroke-width: 3; }
+  .lane__stop { fill: var(--paper); stroke: var(--c); stroke-width: 2; }
+  .lane__label { fill: var(--c); font-weight: 500; }
+  .routes[data-show='Y1'] .lane:not([data-lane='Y1']),
+  .routes[data-show='Y2'] .lane:not([data-lane='Y2']),
+  .routes[data-show='Y3'] .lane:not([data-lane='Y3']) { opacity: 0.12; }
+  .occ { display: grid; margin-top: var(--s-6); }
+  @media (min-width: 720px) { .occ { grid-template-columns: repeat(3, 1fr); column-gap: var(--gap); } }
+  .occ > div { display: flex; justify-content: space-between; align-items: baseline; gap: var(--s-3); padding-block: var(--s-3); border-top: 1px solid var(--rule); }
+  .occ dd { font-size: var(--t-3); font-weight: 500; letter-spacing: -0.03em; margin: 0; white-space: nowrap; }
+</style>

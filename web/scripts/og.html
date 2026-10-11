@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<title>OG Kuajo</title>
+<style>
+  @font-face { font-family: 'Bricolage'; src: url(../node_modules/@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2) format('woff2'); font-weight: 200 800; }
+  @font-face { font-family: 'Plex Mono'; src: url(../node_modules/@fontsource/ibm-plex-mono/files/ibm-plex-mono-latin-500-normal.woff2) format('woff2'); font-weight: 500; }
+  html, body { margin: 0; }
+  body {
+    width: 1200px; height: 630px; box-sizing: border-box; padding: 56px 64px;
+    background: oklch(98.4% 0.005 95); color: oklch(21% 0.012 180);
+    display: grid; grid-template-rows: auto 1fr auto; overflow: hidden;
+  }
+  .mono { font: 500 15px/1 'Plex Mono', monospace; letter-spacing: 0.06em; text-transform: uppercase; color: oklch(45% 0.01 180); }
+  .top { display: flex; justify-content: space-between; align-items: center; padding-bottom: 18px; border-bottom: 1px solid oklch(87.5% 0.008 95); }
+  .brand { display: flex; align-items: center; gap: 14px; font: 700 30px/1 'Bricolage'; letter-spacing: -0.03em; }
+  h1 { margin: 0; align-self: center; font: 700 92px/0.93 'Bricolage'; letter-spacing: -0.045em; max-width: 15ch; }
+  h1 span { color: oklch(43% 0.078 182); }
+  .flow { display: grid; grid-template-columns: repeat(5, 1fr); gap: 14px; padding-top: 18px; border-top: 1px solid oklch(21% 0.012 180); }
+  .flow div { display: grid; gap: 8px; }
+  .flow b { font: 650 30px/1 'Bricolage'; letter-spacing: -0.03em; }
+  .flow .on b { color: oklch(43% 0.078 182); }
+</style>
+</head>
+<body>
+  <div class="top">
+    <div class="brand">
+      <svg viewBox="0 0 64 64" width="40" height="40"><rect x="2" y="2" width="60" height="60" rx="15" fill="#0E5A52"/><path d="M21 16v32M21 32l19-14M21 32l19 14" fill="none" stroke="#FBF8F2" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44" cy="15" r="5.5" fill="#C8D94A"/><circle cx="44" cy="49" r="5.5" fill="#FBF8F2"/></svg>
+      Kuajo <span class="mono" style="padding-left:14px;border-left:1px solid oklch(76% 0.008 120)">Automation</span>
+    </div>
+    <span class="mono">ISA-95 · ISA-88 · Gemelo digital</span>
+  </div>
+  <h1>Conectamos cada lote con cada decisión<span>.</span></h1>
+  <div class="flow">
+    <div><span class="mono">N0</span><b>Proceso</b></div>
+    <div><span class="mono">N1</span><b>PLC</b></div>
+    <div><span class="mono">N2</span><b>SCADA</b></div>
+    <div class="on"><span class="mono">N3</span><b>MES</b></div>
+    <div><span class="mono">N4</span><b>ERP</b></div>
+  </div>
+</body>
+</html>

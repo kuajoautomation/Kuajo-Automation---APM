@@ -1,0 +1,92 @@
+---
+import PlantDiagram from './PlantDiagram.astro';
+import { site, kpis } from '../data/site';
+import { num } from '../lib/fmt';
+const fmt = (k: (typeof kpis)[number]) => `${k.prefix}${num(k.to, k.decimals)}`;
+---
+<section class="hero" id="inicio" aria-labelledby="hero-t">
+  <div class="wrap">
+    <div class="hero__meta micro">
+      <span>00 — {site.legalName}</span>
+      <span>Integradora TDI · alimentos y bebidas por lotes</span>
+      <span>Caso: Lácteos Pomar, Cajicá · {site.coords}</span>
+    </div>
+
+    <!-- Sin revelado: es el elemento LCP y debe pintarse sin esperar al JS -->
+    <h1 class="display hero__title" id="hero-t">Conectamos cada lote con cada decisión<span class="hero__stop">.</span></h1>
+
+    <div class="grid hero__sub">
+      <ul class="hero__std micro" aria-label="Estándares y métodos">
+        <li>ISA-95</li><li>ISA-88</li><li>ISA-101</li><li>Gemelo digital</li>
+      </ul>
+      <div class="hero__copy">
+        <p class="lead">Integramos proceso, PLC, SCADA, MES y SAP en la línea de yogures de Cajicá para llevarla de 43.700 a 52.400 kg/día sin comprar equipos de proceso. Antes de la parada, las tres recetas corren en el gemelo digital.</p>
+        <p class="hero__links">
+          <a class="link" href="#arquitectura">Ver la arquitectura <span class="arrow" aria-hidden="true">→</span></a>
+          <a class="link" href="#descargas">Informe y descargas <span class="arrow" aria-hidden="true">↓</span></a>
+        </p>
+      </div>
+    </div>
+
+    <div class="hero__fig"><PlantDiagram /></div>
+
+    <dl class="grid hero__kpis" aria-label="Metas del proyecto">
+      {kpis.map((k) => (
+        <div class="hk">
+          <dt class="micro">{k.label}</dt>
+          <dd class="hk__val mono">{fmt(k)}<span class="hk__unit">{k.unit === '%' ? ' %' : ` ${k.unit}`}</span></dd>
+          <dd class="hk__was micro">Hoy <s>{k.before}</s></dd>
+        </div>
+      ))}
+    </dl>
+  </div>
+</section>
+
+<style>
+  .hero { padding-top: calc(var(--nav-h) + var(--s-7)); padding-bottom: var(--s-8); }
+  .hero__meta {
+    display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-5);
+    padding-bottom: var(--s-3); border-bottom: 1px solid var(--rule);
+    @media (min-width: 1080px) { justify-content: space-between; }
+  }
+  .hero__title {
+    font-size: var(--t-display);
+    margin-top: var(--s-7);
+    max-width: 13ch;
+    @media (min-width: 1080px) { margin-top: var(--s-8); }
+  }
+  .hero__stop { color: var(--accent); }
+  .hero__sub { margin-top: var(--s-7); row-gap: var(--s-5); align-items: start; }
+  .hero__std {
+    grid-column: 1 / -1; display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4);
+    & li::before { content: '■'; color: var(--accent); margin-right: 6px; font-size: 0.7em; }
+    @media (min-width: 720px) { grid-column: 1 / span 3; flex-direction: column; gap: var(--s-2); }
+  }
+  .hero__copy {
+    grid-column: 1 / -1;
+    @media (min-width: 720px) { grid-column: 4 / -1; }
+    @media (min-width: 1080px) { grid-column: 7 / span 5; }
+  }
+  .hero__links { display: flex; flex-wrap: wrap; gap: var(--s-5); margin-top: var(--s-5); }
+  .hero__fig { margin-top: var(--s-8); @media (min-width: 1080px) { margin-top: var(--s-9); } }
+
+  .hero__kpis { margin-top: var(--s-8); row-gap: var(--s-5); }
+  .hk {
+    grid-column: 1 / -1;
+    container-type: inline-size;
+    display: grid; gap: var(--s-2);
+    padding-top: var(--s-3); border-top: 1px solid var(--ink);
+    @media (min-width: 720px) { grid-column: span 8; }
+    @media (min-width: 1080px) { grid-column: span 4; }
+  }
+  @media (min-width: 720px) and (max-width: 1079px) {
+    .hk { grid-column: span 4; }
+    .hk:last-child { grid-column: 1 / -1; }
+  }
+  .hk__val {
+    font-size: clamp(3rem, 22cqi, 6.5rem); font-weight: 500; line-height: 0.95;
+    letter-spacing: -0.06em; font-variant-numeric: tabular-nums;
+  }
+  .hk__unit { font-size: 0.4em; letter-spacing: 0; color: var(--ink-2); }
+  .hk__was s { text-decoration-thickness: 1px; }
+</style>

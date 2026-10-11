@@ -1,0 +1,74 @@
+---
+import '@fontsource-variable/bricolage-grotesque';
+import '@fontsource-variable/ibm-plex-sans';
+import '@fontsource/ibm-plex-mono/400.css';
+import '@fontsource/ibm-plex-mono/500.css';
+import '../styles/global.css';
+import displayFont from '@fontsource-variable/bricolage-grotesque/files/bricolage-grotesque-latin-wght-normal.woff2?url';
+import textFont from '@fontsource-variable/ibm-plex-sans/files/ibm-plex-sans-latin-wght-normal.woff2?url';
+import Nav from '../components/Nav.astro';
+import Footer from '../components/Footer.astro';
+import { site } from '../data/site';
+
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const canonical = new URL(base, Astro.site).href;
+const title = `${site.name} — ${site.slogan}`;
+---
+<!doctype html>
+<html lang="es-CO">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    <meta name="description" content={site.description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="theme-color" content="#f9f8f3" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0f1514" media="(prefers-color-scheme: dark)" />
+    <meta property="og:type" content="website" />
+    <meta property="og:locale" content="es_CO" />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={site.description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={new URL(`${base}og-image.png`, Astro.site).href} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <link rel="icon" href={`${base}favicon.svg`} type="image/svg+xml" />
+    <link rel="preload" href={displayFont} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={textFont} as="font" type="font/woff2" crossorigin />
+    <script is:inline>
+      // Tema antes del primer pintado (evita parpadeo). Tolerante a almacenamiento bloqueado.
+      try {
+        const t = localStorage.getItem('kuajo-theme');
+        if (t === 'light' || t === 'dark') document.documentElement.dataset.theme = t;
+      } catch (e) {}
+      document.documentElement.classList.add('js');
+    </script>
+  </head>
+  <body>
+    <a class="skip" href="#contenido">Saltar al contenido</a>
+    <Nav />
+    <main id="contenido">
+      <slot />
+    </main>
+    <Footer />
+    <dialog class="visor" id="visor" aria-labelledby="visor-t">
+      <div class="visor__bar">
+        <p class="visor__title" id="visor-t" data-visor-title>Figura</p>
+        <div class="visor__tools">
+          <button type="button" data-visor-zoom="out" aria-label="Alejar">−</button>
+          <button type="button" data-visor-zoom="in" aria-label="Acercar">+</button>
+          <button type="button" data-visor-zoom="fit" aria-label="Ajustar a la pantalla">Ajustar</button>
+          <form method="dialog"><button type="submit" aria-label="Cerrar el visor">Cerrar ×</button></form>
+        </div>
+      </div>
+      <div class="visor__stage" data-visor-stage>
+        <img data-visor-img alt="" decoding="async" />
+        <p class="visor__hint" aria-hidden="true">Rueda o +/− para acercar · arrastra para mover · Esc para cerrar</p>
+      </div>
+    </dialog>
+    <script>
+      import '../scripts/motion';
+    </script>
+  </body>
+</html>

@@ -1,0 +1,103 @@
+---
+import SectionHead from './SectionHead.astro';
+import { simScenarios, simKpis, simModel, fermenters } from '../data/site';
+import { num, pct } from '../lib/fmt';
+const demanda = 52400;
+const stLabel: Record<string, string> = { run: 'En marcha', stop: 'Detenido', warn: 'Advertencia' };
+---
+<section class="sec" id="simulacion" aria-labelledby="simulacion-t">
+  <div class="wrap">
+    <SectionHead id="simulacion" title="+24 % vendible, si las pausas de la llenadora se escalonan." note="sim.py · 10 réplicas de 13 semanas">
+      <p class="sec__intro lead">La simulación de eventos discretos confirma el aumento de capacidad y marca la siguiente restricción: con 4 fermentadores no queda margen para crecer más allá de 52.400 kg/día.</p>
+    </SectionHead>
+
+    <ul class="counters" style="--n:3" aria-label="Producción vendible por escenario">
+      {simScenarios.map((s) => (
+        <li class="counter">
+          <p class="counter__l">{s.k}</p>
+          <p class="counter__v">
+            <span class="sr-only">{num(s.vendible)} kg/día vendibles</span>
+            <span aria-hidden="true" data-count-from="0" data-count-to={s.vendible}>{num(s.vendible)}</span><span class="counter__u" aria-hidden="true"> kg/día</span>
+          </p>
+          <p class="counter__was">OEE simulado {pct(s.oee)} · {pct(s.vendible / demanda, 0)} de la demanda</p>
+          <p class="note" style="margin-top:0">{s.nota}</p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="block cols cols--57">
+      <div>
+        <header class="block__head"><h3 class="block__t">Vendible frente a los 52.400 kg/día de la demanda.</h3></header>
+        <ul class="hbars" data-bars>
+          {simScenarios.map((s, i) => (
+            <li class="hbar">
+              <p class="hbar__head"><b>{s.k}</b><span class="mono">{num(s.vendible)}</span></p>
+              <span class:list={['hbar__track', { 'is-new': i === 1, 'is-alert': i === 2 }]} aria-hidden="true"><i style={`--w:${(s.vendible / demanda) * 100}%`} data-bar /></span>
+            </li>
+          ))}
+        </ul>
+        <p class="note">Producto vendible después de 2 % de merma y del rechazo de inspección (3 % hoy, 1 % con la propuesta). Para llegar al 100 % se evaluará un segundo tanque pulmón o un llenado parcial los domingos.</p>
+        <dl class="kv" style="margin-top: var(--s-6)">{simModel.map((x) => <div><dt>{x.k}</dt><dd>{x.v}</dd></div>)}</dl>
+      </div>
+      <figure class="fig">
+        <div class="scada" role="img" aria-label="Maqueta de pantalla SCADA de fermentación según ISA-101: cuatro fermentadores en gris; solo U-224 muestra una advertencia de temperatura sobre banda.">
+          <div class="scada__bar mono"><span>IGNITION · L1 YOGUR · FERMENTACIÓN</span><span>12-10-2027 14:32:08</span></div>
+          <div class="scada__grid">
+            {fermenters.map((t) => (
+              <div class:list={['tank', `is-${t.st}`]}>
+                <div class="tank__head mono"><span>{t.tag}</span><span>{t.r}</span></div>
+                <div class="tank__vessel" aria-hidden="true"><i style={`--lvl:${t.st === 'stop' ? 8 : 78}%`} /></div>
+                <dl class="tank__data mono">
+                  <div><dt>Fase</dt><dd>{t.phase}</dd></div>
+                  <div><dt>PV</dt><dd class="tank__pv">{t.st === 'warn' && <span class="tank__tri" aria-hidden="true">▲</span>}{t.pv}</dd></div>
+                  <div><dt>t</dt><dd>{t.t}</dd></div>
+                </dl>
+                <p class="sr-only">Estado: {stLabel[t.st]}</p>
+              </div>
+            ))}
+          </div>
+          <div class="scada__alarm mono"><span class="tank__tri" aria-hidden="true">▲</span><span>ALM-224-TT · U-224 temperatura sobre banda (24,0 ± 0,5 °C) · reconocer</span></div>
+        </div>
+        <figcaption class="fig__cap"><b>Pantalla de operación ISA-101 (maqueta)</b><span>Los fermentadores son la restricción: la pantalla es gris y el color solo aparece en lo anormal, aquí el kéfir en U-224.</span></figcaption>
+      </figure>
+    </div>
+
+    <div class="block">
+      <header class="block__head"><h3 class="block__t">Calculado frente a simulado.</h3>
+        <p class="block__lead">El OEE simulado de la llenadora es menor que la meta porque la máquina espera producto ≈ 24 % del tiempo: esa pérdida no es de la llenadora, sino de los fermentadores. El modelo en Tecnomatix Plant Simulation está en curso con los mismos datos y debe dar lo mismo.</p></header>
+      <div class="tbl-wrap" style="--tbl-min: 760px" tabindex="0" role="region" aria-label="KPIs calculados frente a simulados">
+        <table class="table">
+          <caption class="micro">Tabla 6.13 · promedio de 10 réplicas ± desviación estándar</caption>
+          <thead><tr><th scope="col">KPI</th><th scope="col" class="num">Hoy calc.</th><th scope="col" class="num">Hoy sim.</th><th scope="col" class="num">Prop. calc.</th><th scope="col" class="num">Escalonadas</th><th scope="col" class="num">Fijas</th></tr></thead>
+          <tbody>{simKpis.map(([k, ...v]) => <tr><th scope="row">{k}</th>{v.map((x) => <td class="num">{x}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  /* Maqueta SCADA: paleta propia de pantalla (gris), independiente del tema */
+  .scada {
+    --hmi-bg: oklch(86% 0.004 240); --hmi-panel: oklch(91% 0.003 240); --hmi-ink: oklch(25% 0.01 240);
+    --hmi-line: oklch(70% 0.006 240); --hmi-fill: oklch(66% 0.012 240);
+    container-type: inline-size;
+    background: var(--hmi-bg); color: var(--hmi-ink);
+    border: 1px solid var(--hmi-line); border-radius: var(--radius); font-size: 12px;
+  }
+  .scada__bar { display: flex; justify-content: space-between; flex-wrap: wrap; gap: 4px 12px; padding: 8px 12px; border-bottom: 1px solid var(--hmi-line); background: var(--hmi-panel); letter-spacing: 0.04em; }
+  .scada__grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1px; background: var(--hmi-line); }
+  @container (min-width: 520px) { .scada__grid { grid-template-columns: repeat(4, 1fr); } }
+  .tank { background: var(--hmi-bg); padding: 12px; display: grid; gap: 10px; }
+  .tank__head { display: flex; justify-content: space-between; font-weight: 500; }
+  .tank__vessel { height: 92px; width: 56%; margin-inline: auto; border: 1.5px solid var(--hmi-ink); border-radius: 18px 18px 6px 6px; position: relative; overflow: hidden; }
+  .tank__vessel i { position: absolute; inset: auto 0 0 0; height: var(--lvl); background: var(--hmi-fill); }
+  .tank__data { display: grid; gap: 3px; }
+  .tank__data div { display: flex; justify-content: space-between; gap: 6px; }
+  .tank__data dt { opacity: 0.75; }
+  .tank__data dd { margin: 0; }
+  .tank__tri { margin-right: 4px; }
+  .tank.is-warn { box-shadow: inset 0 0 0 2px oklch(80% 0.16 80); }
+  .tank.is-warn .tank__pv { background: oklch(80% 0.16 80); color: oklch(20% 0.02 80); padding: 0 4px; font-weight: 600; }
+  .scada__alarm { display: flex; gap: 6px; align-items: baseline; padding: 8px 12px; border-top: 1px solid var(--hmi-line); background: oklch(93% 0.06 85); color: oklch(30% 0.05 70); }
+</style>

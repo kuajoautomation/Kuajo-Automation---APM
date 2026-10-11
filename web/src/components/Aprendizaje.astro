@@ -1,0 +1,68 @@
+---
+import SectionHead from './SectionHead.astro';
+import { team, teamRules, logbook, commitments, PENDING } from '../data/site';
+// Reflexiones del proceso de aprendizaje: el informe no las incluye todavía.
+// Cada integrante escribe la suya; mientras tanto se muestran como pendientes.
+const group: string | null = null;
+const individual: Record<string, string> = {};
+---
+<section class="sec" id="aprendizaje" aria-labelledby="aprendizaje-t">
+  <div class="wrap">
+    <SectionHead id="aprendizaje" title="61 hallazgos en la revisión interna, corregidos en un día." note="Sección 15 · proceso de aprendizaje">
+      <p class="sec__intro lead">Cómo se organiza el equipo de Kuajo para el proyecto del curso: reglas, decisiones y compromisos. Lo del proyecto con Pomar está en las matrices de comunicaciones y RACI (sección 12).</p>
+    </SectionHead>
+
+    <div class="block block--first cols cols--57">
+      <div>
+        <header class="block__head"><h3 class="block__t">Reglas de trabajo.</h3></header>
+        <dl class="kv">{teamRules.map((r) => <div><dt>{r.k}</dt><dd>{r.v}</dd></div>)}</dl>
+      </div>
+      <div>
+        <header class="block__head"><h3 class="block__t">Bitácora de decisiones.</h3></header>
+        <ol class="log">
+          {logbook.map((l) => <li><span class="mono log__f">{l.f}</span><div><p class="log__r">{l.r}</p><p class="note" style="margin-top:2px">{l.d}</p></div></li>)}
+        </ol>
+      </div>
+    </div>
+
+    <div class="block">
+      <header class="block__head"><h3 class="block__t">Compromisos para la entrega final.</h3>
+        <p class="block__lead">Propuesta por confirmar en la próxima reunión, tal como la presenta el informe (Tabla 15.2).</p></header>
+      <div class="tbl-wrap" style="--tbl-min: 560px" tabindex="0" role="region" aria-label="Compromisos propuestos">
+        <table class="table">
+          <thead><tr><th scope="col">Compromiso</th><th scope="col">Responsable</th><th scope="col">Fecha</th></tr></thead>
+          <tbody>{commitments.map((c) => <tr><th scope="row">{c.c}</th><td>{c.r}</td><td class="mono">{c.f}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block cols cols--57">
+      <article>
+        <header class="block__head"><h3 class="block__t">Reflexión grupal.</h3></header>
+        {group ? <p class="apr__text">{group}</p> : <p class="apr__text apr__text--pending"><span class="pending">{PENDING}</span> La escribe el equipo para la entrega final.</p>}
+      </article>
+      <div>
+        <h3 class="micro">Reflexiones individuales</h3>
+        <ol style="margin-top: var(--s-3)">
+          {team.map((m) => (
+            <li>
+              <details class="fold">
+                <summary><span><span class="mono" style="color: var(--ink-3); margin-right: var(--s-3)">{m.r}</span>{m.name}</span></summary>
+                <div class="fold__body">{individual[m.r] ? <p>{individual[m.r]}</p> : <p><span class="pending">{PENDING}</span></p>}</div>
+              </details>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .log { border-top: 1px solid var(--ink); }
+  .log li { display: grid; grid-template-columns: 6.5rem 1fr; gap: var(--s-3); padding-block: var(--s-4); border-bottom: 1px solid var(--rule); }
+  .log__f { color: var(--accent); font-size: var(--t-small); }
+  .log__r { font-weight: 600; }
+  .apr__text { font: 500 var(--t-3)/1.35 var(--f-display); letter-spacing: -0.02em; max-width: 30ch; }
+  .apr__text--pending { color: var(--ink-2); display: grid; gap: var(--s-3); justify-items: start; }
+</style>

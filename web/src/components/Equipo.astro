@@ -1,0 +1,81 @@
+---
+import { Picture } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+import SectionHead from './SectionHead.astro';
+import { team } from '../data/site';
+
+// Fotos en src/assets/equipo/<slug>.(jpg|jpeg|png|webp). Si no existe, se muestra un marcador.
+const photos = import.meta.glob<{ default: ImageMetadata }>('../assets/equipo/*.{jpg,jpeg,png,webp}', { eager: true });
+const photoFor = (slug: string) =>
+  Object.entries(photos).find(([p]) => p.split('/').pop()!.replace(/\.\w+$/, '') === slug)?.[1].default;
+const initials = (name: string) => { const w = name.split(' '); return (w[0][0] + (w[2] ?? w[1])[0]).toUpperCase(); };
+---
+<section class="sec" id="equipo" aria-labelledby="equipo-t">
+  <div class="wrap">
+    <SectionHead id="equipo" title="Seis ingenieros, un responsable por módulo." note="Equipo 2 · Ingeniería Mecatrónica · UNAL" />
+
+    <ul class="team">
+      {team.map((m) => {
+        const img = photoFor(m.slug);
+        return (
+          <li class="mem">
+            <figure class="mem__photo">
+              {img ? (
+                <Picture src={img} formats={['avif', 'webp']} widths={[240, 480, 720]} sizes="(min-width: 1080px) 30vw, (min-width: 720px) 45vw, 112px" alt={`Retrato de ${m.name}`} loading="lazy" decoding="async" />
+              ) : (
+                <div class="mem__ph" role="img" aria-label={`Foto de ${m.name} pendiente`}>
+                  <span class="mono mem__ini" aria-hidden="true">{initials(m.name)}</span>
+                  <span class="micro mem__phnote" aria-hidden="true">Foto pendiente</span>
+                </div>
+              )}
+            </figure>
+            <div class="mem__body">
+              <p class="micro mem__r"><span class="mem__rid">{m.r}</span> {m.role}</p>
+              <h3 class="mem__name">{m.name}</h3>
+              <p class="mem__scope">{m.scope}</p>
+              <ul class="mem__links">
+                <li><a class="link mem__mail" href={`mailto:${m.email}`}><span class="mono">{m.email}</span></a></li>
+                {m.linkedin && <li><a class="link" href={m.linkedin} rel="noopener">LinkedIn <span class="arrow arrow--ne" aria-hidden="true">↗</span></a></li>}
+              </ul>
+            </div>
+          </li>
+        );
+      })}
+    </ul>
+  </div>
+</section>
+
+<style>
+  .team {
+    display: grid;
+    border-top: 1px solid var(--ink);
+    @media (min-width: 720px) { grid-template-columns: repeat(2, minmax(0, 1fr)); column-gap: var(--gap); }
+    @media (min-width: 1080px) { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  }
+  .mem {
+    display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: var(--s-4);
+    padding-block: var(--s-5);
+    border-bottom: 1px solid var(--rule);
+    @media (min-width: 720px) { grid-template-columns: 1fr; gap: var(--s-4); padding-block: var(--s-5) var(--s-7); }
+  }
+  .mem__photo {
+    aspect-ratio: 4 / 5; overflow: hidden;
+    border: 1px solid var(--rule); border-radius: var(--radius);
+    background: var(--paper-2);
+    transition: border-color var(--d-2) var(--ease);
+    & :global(img) { width: 100%; height: 100%; object-fit: cover; transition: transform 600ms var(--ease); }
+  }
+  /* Hover sutil: la foto se acerca un poco; el marco toma el color de acento */
+  .mem:hover .mem__photo :global(img), .mem:focus-within .mem__photo :global(img) { transform: scale(1.04); }
+  .mem:hover .mem__photo, .mem:focus-within .mem__photo { border-color: var(--accent); }
+  .mem__ph { height: 100%; display: grid; place-items: center; align-content: center; gap: var(--s-2); }
+  .mem__ini { font-size: clamp(1.75rem, 1rem + 4vw, 4.5rem); font-weight: 500; letter-spacing: -0.04em; color: var(--ink-3); }
+  .mem__phnote { display: none; @media (min-width: 720px) { display: block; } }
+  .mem__body { display: grid; gap: var(--s-2); align-content: start; min-width: 0; }
+  .mem__r { text-transform: none; letter-spacing: 0.01em; }
+  .mem__rid { color: var(--accent); font-weight: 500; margin-right: 4px; }
+  .mem__name { font: 650 var(--t-3)/1.1 var(--f-display); letter-spacing: -0.03em; }
+  .mem__scope { color: var(--ink-2); font-size: var(--t-small); }
+  .mem__links { display: flex; flex-wrap: wrap; gap: var(--s-2) var(--s-4); margin-top: var(--s-2); font-size: var(--t-small); }
+  .mem__mail { max-width: 100%; & .mono { font-size: 0.8125rem; overflow-wrap: anywhere; } }
+</style>

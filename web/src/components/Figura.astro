@@ -1,0 +1,26 @@
+---
+// Figura del informe con miniatura optimizada y visor ampliable.
+// Sin JS, el enlace abre la imagen grande directamente.
+import { Picture, getImage } from 'astro:assets';
+import { figuras, type FiguraKey } from '../data/figuras';
+interface Props { id: FiguraKey; sizes?: string }
+const { id, sizes = '(min-width: 1440px) 1340px, 100vw' } = Astro.props;
+const f = figuras[id];
+const big = await getImage({ src: f.src, width: 2400, format: 'webp' });
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const title = `Fig. ${f.n} — ${f.title}`;
+---
+<figure class="fig fv">
+  <a class="fv__thumb" href={big.src} data-viewer data-viewer-title={title} data-w={big.attributes.width ?? 2400} data-h={big.attributes.height}>
+    <span class="fv__zoom micro">Ampliar</span>
+    <Picture src={f.src} formats={['avif', 'webp']} widths={[480, 960, 1440]} sizes={sizes} alt={f.alt} loading="lazy" decoding="async" />
+  </a>
+  <figcaption class="fig__cap">
+    <b>{title}</b>
+    <span>{f.caption}</span>
+    <span class="fv__links">
+      {f.svg && <a href={`${base}descargas/figuras/${f.file}.svg`}>Vectorial (SVG)</a>}
+      <a href={`${base}descargas/figuras/${f.file}.pdf`}>PDF</a>
+    </span>
+  </figcaption>
+</figure>

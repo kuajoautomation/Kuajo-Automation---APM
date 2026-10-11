@@ -1,0 +1,75 @@
+---
+import SectionHead from './SectionHead.astro';
+import { site, downloads, sources, PENDING } from '../data/site';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
+const links = [
+  { k: 'Repositorio', d: 'Código, modelos, documentos y este sitio', url: site.repo },
+  { k: 'Video', d: 'Sustentación del proyecto', url: site.video },
+];
+---
+<section class="sec" id="descargas" aria-labelledby="descargas-t">
+  <div class="wrap">
+    <SectionHead id="descargas" title="El informe, el Excel y los anexos, listos para revisar." note="Anexos A a D · 44 fuentes" />
+
+    <ul class="dl block--first">
+      {downloads.map((d) => (
+        <li>
+          <a class="dl__a" href={`${base}${d.f}`} download>
+            <span class="dl__k">{d.k}</span>
+            <span class="micro dl__n">{d.n} · {d.f.split('.').pop()?.toUpperCase()}</span>
+            <span class="dl__arrow mono" aria-hidden="true">↓</span>
+          </a>
+        </li>
+      ))}
+    </ul>
+
+    <ul class="out block">
+      {links.map((it) => (
+        <li>
+          {it.url === PENDING ? (
+            <div class="out__a is-pending">
+              <span class="out__k">{it.k}</span>
+              <span class="out__d"><span>{it.d}</span><span class="pending">{PENDING}</span></span>
+            </div>
+          ) : (
+            <a class="out__a" href={it.url} rel="noopener">
+              <span class="out__k">{it.k}</span>
+              <span class="out__d"><span>{it.d}</span><span class="micro out__url">{it.url.replace('https://', '')}</span></span>
+              <span class="out__arrow mono" aria-hidden="true">↗</span>
+            </a>
+          )}
+        </li>
+      ))}
+    </ul>
+
+    <details class="fold block">
+      <summary><span>Fuentes del informe <span class="micro">({sources.length})</span></span></summary>
+      <ol class="fold__body src">{sources.map((s) => <li>{s}</li>)}</ol>
+    </details>
+  </div>
+</section>
+
+<style>
+  .dl { border-top: 1px solid var(--ink); display: grid; }
+  @media (min-width: 720px) { .dl { grid-template-columns: repeat(2, 1fr); column-gap: var(--gap); } }
+  .dl__a { display: grid; grid-template-columns: 1fr auto; gap: 2px var(--s-3); padding-block: var(--s-4); border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+  .dl__a:hover .dl__k { color: var(--accent); }
+  .dl__a:hover .dl__arrow { transform: translateY(3px); color: var(--accent); }
+  .dl__k { font: 650 var(--t-3)/1.15 var(--f-display); letter-spacing: -0.02em; transition: color var(--d-2) var(--ease); }
+  .dl__n { grid-column: 1; text-transform: none; letter-spacing: 0.01em; }
+  .dl__arrow { grid-column: 2; grid-row: 1 / span 2; align-self: center; font-size: 1.5rem; transition: transform var(--d-2) var(--ease), color var(--d-2) var(--ease); }
+  .out { border-top: 1px solid var(--ink); }
+  .out__a { display: grid; grid-template-columns: 1fr auto; gap: var(--s-2) var(--gap); align-items: center; padding-block: var(--s-6); border-bottom: 1px solid var(--rule); color: var(--ink); text-decoration: none; }
+  @media (min-width: 1080px) { .out__a { grid-template-columns: 7fr 4fr 1fr; } }
+  a.out__a:hover .out__k { color: var(--accent); transform: translateX(8px); }
+  a.out__a:hover .out__arrow { transform: translate(4px, -4px); color: var(--accent); }
+  .out__k { font: 700 clamp(2.5rem, 1rem + 6vw, 7rem)/0.9 var(--f-display); letter-spacing: -0.05em; transition: transform var(--d-3) var(--ease), color var(--d-2) var(--ease); }
+  .out__a.is-pending .out__k { color: var(--ink-3); }
+  .out__d { display: grid; gap: 6px; justify-items: start; grid-column: 1 / -1; grid-row: 2; color: var(--ink-2); }
+  @media (min-width: 1080px) { .out__d { grid-column: auto; grid-row: auto; } }
+  .out__url { text-transform: none; letter-spacing: 0.01em; word-break: break-all; }
+  .out__arrow { font-size: clamp(2rem, 1rem + 3vw, 4rem); justify-self: end; grid-row: 1; grid-column: 2; transition: transform var(--d-3) var(--ease), color var(--d-2) var(--ease); }
+  @media (min-width: 1080px) { .out__arrow { grid-column: 3; } }
+  .src { list-style: decimal; padding-left: 1.5rem; display: grid; gap: 6px; font-size: var(--t-small); color: var(--ink-2); }
+  @media (min-width: 1080px) { .src { columns: 2; display: block; } .src li { break-inside: avoid; margin-bottom: 6px; } }
+</style>

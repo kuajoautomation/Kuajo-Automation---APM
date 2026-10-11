@@ -1,0 +1,130 @@
+---
+// Planta conectada: Proceso → PLC → SCADA → MES → ERP, con el hilo del lote.
+// Se generan dos orientaciones desde los mismos datos: horizontal (≥ 720 px) y vertical (móvil).
+const nodes = [
+  { lvl: 'N0', kind: 'Proceso', name: 'Proceso', sub: ['TT-221 · AT-221', 'FT-211 · WT-211'] },
+  { lvl: 'N1', kind: 'Control', name: 'PLC', sub: ['Fases ISA-88', 'PID · secuencias'] },
+  { lvl: 'N2', kind: 'Supervisión', name: 'SCADA', sub: ['Ignition', 'Historian 5 s'] },
+  { lvl: 'N3', kind: 'Ejecución', name: 'MES', sub: ['Genealogía', 'Receta de control'] },
+  { lvl: 'N4', kind: 'Negocio', name: 'ERP', sub: ['SAP', 'Órdenes · stock'] },
+];
+const links = ['E/S 4–20 mA', 'EtherNet/IP', 'OPC UA', 'API · B2MML'];
+const lot = 'Y1-261005-T1-03';
+
+// Horizontal
+const H = { w: 1200, h: 330, nw: 172, nh: 150, y: 40 };
+const hx = (i: number) => i * ((H.w - H.nw) / 4);
+const threadY = 262;
+const hThread = `M ${hx(0) + H.nw / 2} ${threadY} H ${hx(4) + H.nw / 2}`;
+
+// Vertical
+const V = { w: 360, nw: 270, nh: 92, x: 78, step: 136 };
+const vy = (i: number) => 8 + i * V.step;
+const V_H = vy(4) + V.nh + 8;
+const vThreadX = 28;
+const vThread = `M ${vThreadX} ${vy(0) + V.nh / 2} V ${vy(4) + V.nh / 2}`;
+---
+<figure class="fig plant" aria-labelledby="plant-cap">
+  <div class="plant__canvas" data-plant>
+    <!-- Horizontal -->
+    <svg class="plant__svg plant__svg--h" viewBox={`0 0 ${H.w} ${H.h}`} role="img" aria-labelledby="plant-t plant-d">
+      <title id="plant-t">Planta conectada según ISA-95</title>
+      <desc id="plant-d">Cinco niveles enlazados de izquierda a derecha: proceso, PLC, SCADA, MES y ERP. Los datos suben hacia el ERP y las órdenes bajan hacia el proceso. Un hilo inferior representa el lote {lot} que cruza todos los niveles.</desc>
+      <defs>
+        <marker id="ah" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 8 4 0 8z" fill="var(--ink-3)" /></marker>
+      </defs>
+      {nodes.map((n, i) => (
+        <g class="node" data-node={i} tabindex="0" aria-label={`${n.lvl} ${n.name}: ${n.sub.join(', ')}`}>
+          <rect class="node__box" x={hx(i) + 0.5} y={H.y + 0.5} width={H.nw - 1} height={H.nh - 1} rx="2" data-draw />
+          <text class="svg-mono" x={hx(i) + 16} y={H.y + 28} font-size="12">{n.lvl} · {n.kind.toUpperCase()}</text>
+          <text class="svg-text node__name" x={hx(i) + 16} y={H.y + 76} font-size="34">{n.name}</text>
+          {n.sub.map((s, k) => <text class="svg-mono" x={hx(i) + 16} y={H.y + 108 + k * 18} font-size="12">{s}</text>)}
+        </g>
+      ))}
+      {links.map((l, i) => {
+        const x1 = hx(i) + H.nw + 8, x2 = hx(i + 1) - 8, mid = (x1 + x2) / 2;
+        return (
+          <g class="link" data-link={i}>
+            <path d={`M ${x1} ${H.y + 58} H ${x2}`} class="link__line" marker-end="url(#ah)" data-draw />
+            <path d={`M ${x2} ${H.y + 92} H ${x1}`} class="link__line link__line--down" marker-end="url(#ah)" data-draw />
+            <text class="svg-mono" x={mid} y={H.y + H.nh + 24} font-size="11" text-anchor="middle">{l}</text>
+          </g>
+        );
+      })}
+      <g class="thread">
+        {nodes.map((_, i) => <path d={`M ${hx(i) + H.nw / 2} ${H.y + H.nh} V ${threadY}`} class="thread__tick" data-draw />)}
+        <path id="thread-h" d={hThread} class="thread__line" data-draw />
+        <text class="svg-mono" x={hx(0) + H.nw / 2} y={threadY + 26} font-size="12">HILO DEL LOTE</text>
+        <text class="svg-mono thread__id" x={hx(4) + H.nw / 2} y={threadY + 26} font-size="12" text-anchor="end">{lot}</text>
+        <rect class="token token--static" x={hx(4) + H.nw / 2 - 6} y={threadY - 6} width="12" height="12" />
+        <rect class="token token--moving" x="-6" y="-6" width="12" height="12">
+          <animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.8;1" calcMode="linear"><mpath href="#thread-h" /></animateMotion>
+        </rect>
+      </g>
+    </svg>
+
+    <!-- Vertical -->
+    <svg class="plant__svg plant__svg--v" viewBox={`0 0 ${V.w} ${V_H}`} role="img" aria-labelledby="plant-tv">
+      <title id="plant-tv">Planta conectada según ISA-95: proceso, PLC, SCADA, MES y ERP, con el hilo del lote {lot}.</title>
+      <defs>
+        <marker id="ahv" viewBox="0 0 8 8" refX="7" refY="4" markerWidth="8" markerHeight="8" orient="auto-start-reverse"><path d="M0 0 8 4 0 8z" fill="var(--ink-3)" /></marker>
+      </defs>
+      {nodes.map((n, i) => (
+        <g class="node" data-node={i}>
+          <rect class="node__box" x={V.x + 0.5} y={vy(i) + 0.5} width={V.nw - 1} height={V.nh - 1} rx="2" data-draw />
+          <text class="svg-mono" x={V.x + 14} y={vy(i) + 24} font-size="11">{n.lvl} · {n.kind.toUpperCase()}</text>
+          <text class="svg-text node__name" x={V.x + 14} y={vy(i) + 58} font-size="26">{n.name}</text>
+          <text class="svg-mono" x={V.x + 14} y={vy(i) + 79} font-size="11">{n.sub.join(' · ')}</text>
+          <path d={`M ${vThreadX} ${vy(i) + V.nh / 2} H ${V.x}`} class="thread__tick" data-draw />
+        </g>
+      ))}
+      {links.map((l, i) => {
+        const y1 = vy(i) + V.nh + 6, y2 = vy(i + 1) - 6;
+        return (
+          <g class="link" data-link={i}>
+            <path d={`M ${V.x + 40} ${y1} V ${y2}`} class="link__line" marker-end="url(#ahv)" data-draw />
+            <path d={`M ${V.x + 64} ${y2} V ${y1}`} class="link__line link__line--down" marker-end="url(#ahv)" data-draw />
+            <text class="svg-mono" x={V.x + 84} y={(y1 + y2) / 2 + 4} font-size="11">{l}</text>
+          </g>
+        );
+      })}
+      <path id="thread-v" d={vThread} class="thread__line" data-draw />
+      <rect class="token token--static" x={vThreadX - 6} y={vy(4) + V.nh / 2 - 6} width="12" height="12" />
+      <rect class="token token--moving" x="-6" y="-6" width="12" height="12">
+        <animateMotion dur="7s" repeatCount="indefinite" keyPoints="0;1;1" keyTimes="0;0.8;1" calcMode="linear"><mpath href="#thread-v" /></animateMotion>
+      </rect>
+    </svg>
+  </div>
+  <figcaption class="fig__cap" id="plant-cap">
+    <b>Fig. 00 — Planta conectada</b>
+    <span>Los datos suben del sensor al ERP; las órdenes y las recetas bajan. El cuadro verde es el lote <span class="mono">{lot}</span>: su ID cruza los cinco niveles.</span>
+  </figcaption>
+</figure>
+
+<style>
+  .plant__svg--v { display: block; max-width: 420px; }
+  .plant__svg--h { display: none; }
+  @media (min-width: 720px) {
+    .plant__svg--v { display: none; }
+    .plant__svg--h { display: block; width: 100%; }
+  }
+  .node__box { fill: var(--paper); stroke: var(--rule-2); stroke-width: 1; transition: stroke var(--d-2) var(--ease), fill var(--d-2) var(--ease); }
+  .node__name { font-family: var(--f-display); font-weight: 650; letter-spacing: -0.03em; }
+  .node { transition: opacity var(--d-2) var(--ease); outline: none; cursor: default; }
+  .node:hover .node__box, .node:focus-visible .node__box { stroke: var(--accent); stroke-width: 2; }
+  /* :has() — al señalar un nivel, los demás se atenúan */
+  .plant__svg:has(.node:hover, .node:focus-visible) .node:not(:hover, :focus-visible) { opacity: 0.38; }
+  .plant__svg:has(.node:hover, .node:focus-visible) .link { opacity: 0.38; }
+  .link { transition: opacity var(--d-2) var(--ease); }
+  .link__line { fill: none; stroke: var(--ink-3); stroke-width: 1; }
+  .link__line--down { stroke-dasharray: 3 3; }
+  .thread__line { fill: none; stroke: var(--accent); stroke-width: 2; }
+  .thread__tick { fill: none; stroke: var(--accent); stroke-width: 1; opacity: 0.6; }
+  .thread__id { fill: var(--accent); }
+  .token { fill: var(--accent); }
+  .token--static { display: none; }
+  @media (prefers-reduced-motion: reduce) {
+    .token--moving { display: none; }
+    .token--static { display: inline; }
+  }
+</style>

@@ -1,0 +1,57 @@
+---
+import Logo from './Logo.astro';
+import { site, sections, PENDING } from '../data/site';
+---
+<footer class="foot">
+  <div class="wrap">
+    <div class="grid foot__grid">
+      <div class="foot__brand">
+        <Logo size={40} />
+        <p class="foot__name">Kuajo Automation S.A.S.</p>
+        <p class="foot__slogan">{site.slogan}.</p>
+      </div>
+      <nav class="foot__nav" aria-label="Todas las secciones">
+        <p class="micro">Secciones</p>
+        <ol>{sections.slice(1).map((s) => <li><a href={`#${s.id}`}><span class="micro">{s.n}</span> {s.label}</a></li>)}</ol>
+      </nav>
+      <div class="foot__links">
+        <p class="micro">Proyecto</p>
+        <ul>
+          <li>{site.repo === PENDING ? <span>GitHub <span class="pending">{PENDING}</span></span> : <a href={site.repo} rel="noopener">GitHub <span aria-hidden="true">↗</span></a>}</li>
+          <li>{site.video === PENDING ? <span>YouTube <span class="pending">{PENDING}</span></span> : <a href={site.video} rel="noopener">YouTube <span aria-hidden="true">↗</span></a>}</li>
+          <li><a href="#descargas">Informe y anexos</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="foot__legal">{site.disclaimer}</p>
+    <div class="foot__plate micro">
+      <span>{site.university} · {site.course}</span>
+      <span>KA-WEB · {site.rev} · 2026-10</span>
+      <span>Cajicá {site.coords}</span>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .foot { border-top: 1px solid var(--ink); padding-block: var(--s-8) var(--s-5); }
+  .foot__grid { row-gap: var(--s-7); }
+  .foot__brand { grid-column: 1 / -1; display: grid; gap: var(--s-2); align-content: start; justify-items: start; }
+  .foot__name { font: 650 var(--t-3)/1.1 var(--f-display); letter-spacing: -0.03em; margin-top: var(--s-3); }
+  .foot__slogan { color: var(--ink-2); }
+  .foot__nav, .foot__links { grid-column: span 2; display: grid; gap: var(--s-3); align-content: start; }
+  .foot__nav ol, .foot__links ul { display: grid; gap: 6px; font-size: var(--t-small); }
+  .foot a { color: var(--ink); text-decoration: none; transition: color var(--d-1) var(--ease); }
+  .foot a:hover { color: var(--accent); }
+  @media (min-width: 720px) {
+    .foot__brand { grid-column: 1 / span 4; }
+    .foot__nav { grid-column: 5 / span 2; }
+    .foot__links { grid-column: 7 / span 2; }
+  }
+  @media (min-width: 1080px) {
+    .foot__brand { grid-column: 1 / span 5; }
+    .foot__nav { grid-column: 7 / span 3; }
+    .foot__links { grid-column: 10 / span 3; }
+  }
+  .foot__legal { margin-top: var(--s-8); padding-top: var(--s-4); border-top: 1px solid var(--rule); font-size: var(--t-small); color: var(--ink-2); max-width: 80ch; }
+  .foot__plate { display: flex; flex-wrap: wrap; justify-content: space-between; gap: var(--s-2) var(--s-5); margin-top: var(--s-5); }
+</style>

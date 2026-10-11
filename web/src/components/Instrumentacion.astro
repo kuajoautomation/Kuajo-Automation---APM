@@ -1,0 +1,75 @@
+---
+import SectionHead from './SectionHead.astro';
+import Figura from './Figura.astro';
+import { loops } from '../data/site';
+import excel from '../data/excel.json';
+
+const tags = excel.instrumentos;
+const tipos = [...new Set(tags.map((t) => t.tipo))];
+const unidades = [...new Set(tags.map((t) => t.unidad))].sort((a, b) => a.localeCompare(b, 'es'));
+const count = (tipo: string) => tags.filter((t) => t.tipo === tipo).length;
+---
+<section class="sec" id="instrumentacion" aria-labelledby="instrumentacion-t">
+  <div class="wrap">
+    <SectionHead id="instrumentacion" title={`${tags.length} tags de una sola lista: el P&ID, las tablas y el modelo físico.`} note="ISA-5.1 · hoja Instrumentos">
+      <p class="sec__intro lead">Primera letra = variable medida; las siguientes = función. El número coincide con la unidad donde está el instrumento y los variadores toman el número del motor o la bomba que mueven.</p>
+    </SectionHead>
+
+    <ul class="counters" style="--n:4" aria-label="Resumen de la lista de instrumentos">
+      <li class="counter"><p class="counter__l">Tags en total</p><p class="counter__v">{tags.length}</p></li>
+      <li class="counter"><p class="counter__l">Sensores de campo</p><p class="counter__v">{excel.sensoresTotal}</p></li>
+      <li class="counter"><p class="counter__l">Funciones en el PLC</p><p class="counter__v">{excel.funcionesTotal}</p></li>
+      <li class="counter"><p class="counter__l">Actuadores (grupos)</p><p class="counter__v">{count('Actuador')}</p></li>
+    </ul>
+
+    <div class="block block--first" style="margin-top: var(--s-8)"><Figura id="f121" /></div>
+
+    <div class="block" data-filter>
+      <header class="block__head"><h3 class="block__t">Lista única de instrumentos y actuadores.</h3>
+        <p class="block__lead">Filtra por unidad, por tipo o por texto. Sin JavaScript se ve la lista completa.</p></header>
+      <div class="filters js-only">
+        <label>Unidad
+          <select data-filter-key="unidad"><option value="">Todas</option>{unidades.map((u) => <option value={u}>{u}</option>)}</select>
+        </label>
+        <label>Tipo
+          <select data-filter-key="tipo"><option value="">Todos</option>{tipos.map((t) => <option value={t}>{t}</option>)}</select>
+        </label>
+        <label>Buscar
+          <input type="search" data-filter-text placeholder="TT-221, pH, CIP…" />
+        </label>
+        <output data-filter-count aria-live="polite">{tags.length} de {tags.length}</output>
+      </div>
+      <div class="tbl-wrap ins__wrap" data-lenis-prevent style="--tbl-min: 820px" tabindex="0" role="region" aria-label="Tabla de instrumentos">
+        <table class="table ins">
+          <thead><tr><th scope="col">Tag</th><th scope="col">Tipo</th><th scope="col">Descripción</th><th scope="col">Unidad</th><th scope="col">Variable y rango</th><th scope="col">Señal</th><th scope="col">Estado</th></tr></thead>
+          <tbody>
+            {tags.map((t) => (
+              <tr data-unidad={t.unidad} data-tipo={t.tipo}>
+                <th scope="row" class="mono">{t.tag}</th><td>{t.tipo}</td><td>{t.desc}</td><td class="mono">{t.unidad}</td><td>{t.variable}</td><td>{t.senal}</td>
+                <td class:list={{ 'is-crit': t.estado.startsWith('Nuevo') }}>{t.estado}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <header class="block__head"><h3 class="block__t">Lazos y funciones de control.</h3>
+        <p class="block__lead">Tabla 12.4 (extracto). El PCC 1 lo vigila TSL-212B, cableado directo a FDV-212: actúa aunque falle el PLC.</p></header>
+      <div class="tbl-wrap" style="--tbl-min: 600px" tabindex="0" role="region" aria-label="Lazos de control">
+        <table class="table">
+          <thead><tr><th scope="col">Función</th><th scope="col">Mide con</th><th scope="col">Actúa sobre</th><th scope="col">Qué controla</th></tr></thead>
+          <tbody>{loops.map((l) => <tr><th scope="row" class="mono">{l.f}</th><td class="mono">{l.mide}</td><td>{l.actua}</td><td>{l.que}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .ins__wrap { max-height: 70vh; overflow-y: auto; }
+  .ins thead th { position: sticky; top: 0; background: var(--paper); z-index: 1; }
+  .ins td, .ins th { font-size: 0.8125rem; }
+  .ins th[scope='row'] { white-space: nowrap; }
+</style>

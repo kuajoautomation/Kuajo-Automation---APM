@@ -1,0 +1,144 @@
+---
+import SectionHead from './SectionHead.astro';
+import Figura from './Figura.astro';
+import { isa95, interfaces, network } from '../data/site';
+// Barras escalonadas: N4 (arriba, más estrecha) → N0 (abajo, más ancha)
+const bar = (n: number) => ({ y: 16 + (4 - n) * 96 });
+const widths: Record<number, number> = { 4: 250, 3: 300, 2: 350, 1: 400, 0: 440 };
+---
+<section class="sec arch" id="arquitectura" aria-labelledby="arquitectura-t">
+  <div class="wrap">
+    <SectionHead id="arquitectura" title="Cinco niveles y una DMZ. Un lote los cruza todos." note="ISA-95 · Tabla 11.1" />
+
+    <div class="grid arch__body">
+      <div class="arch__stick">
+        <figure class="fig">
+          <svg class="arch__svg" viewBox="0 0 540 500" role="img" aria-labelledby="arch-t arch-d" data-arch>
+            <title id="arch-t">Arquitectura ISA-95 de Kuajo</title>
+            <desc id="arch-d">Niveles de arriba abajo: 4 ERP SAP, 3 MES, 2 SCADA Ignition, 1 PLC, 0 proceso. Los niveles 4 y 3 son TI; 2, 1 y 0 son OT. Una línea vertical representa el lote que los atraviesa.</desc>
+            {isa95.map((l) => {
+              const b = bar(l.n);
+              return (
+                <g class="lvl" data-l={l.n}>
+                  <rect class="lvl__box" x="0.5" y={b.y + 0.5} width={widths[l.n]} height="72" rx="2" data-draw />
+                  <text class="svg-mono" x="56" y={b.y + 26} font-size="12">N{l.n} · {l.role.toUpperCase()}</text>
+                  <text class="svg-text lvl__name" x="56" y={b.y + 58} font-size="28">{l.name}</text>
+                  <text class="svg-mono" x={widths[l.n] - 14} y={b.y + 58} font-size="12" text-anchor="end">{l.sys}</text>
+                </g>
+              );
+            })}
+            <path class="arch__thread" d="M 28 24 V 488" data-draw />
+            <rect class="arch__token" x="22" y="0" width="12" height="12" />
+            <g class="arch__brk">
+              <path d="M 470 16 H 482 V 184 H 470" />
+              <path d="M 470 208 H 482 V 472 H 470" />
+              <text class="svg-mono" x="492" y="105" font-size="13">TI</text>
+              <text class="svg-mono" x="492" y="345" font-size="13">OT</text>
+            </g>
+          </svg>
+          <figcaption class="fig__cap">
+            <b>Fig. 03 — ISA-95 en la línea de yogures</b>
+            <span>El MES es la frontera: ahí se encuentran la orden del ERP y el dato del proceso.</span>
+          </figcaption>
+        </figure>
+      </div>
+
+      <ol class="arch__steps">
+        {isa95.map((l) => (
+          <li class="step" data-level={l.n}>
+            <div class="step__mini" aria-hidden="true">{[4, 3, 2, 1, 0].map((k) => <i class:list={{ on: k === l.n }} />)}</div>
+            <p class="step__n mono">N{l.n}</p>
+            <h3 class="step__name">{l.name} <span class="micro">{l.sys} · {l.role}</span></h3>
+            <p class="step__does">{l.does}</p>
+            <ul class="step__data">
+              {l.data.map((d) => <li class="tag">{d}</li>)}
+            </ul>
+          </li>
+        ))}
+      </ol>
+    </div>
+
+    <div class="block">
+      <header class="block__head"><h3 class="block__t">Las órdenes bajan, los datos suben.</h3>
+        <p class="block__lead">Tabla 11.2: qué viaja por cada interfaz y con qué protocolo. Los niveles 2, 3 y 3.5 quedan dimensionados para conectar después las líneas 2 y 3 sin rehacerlos.</p></header>
+      <div class="tbl-wrap" style="--tbl-min: 720px" tabindex="0" role="region" aria-label="Interfaces y protocolos">
+        <table class="table">
+          <thead><tr><th scope="col">Interfaz</th><th scope="col">Baja (decisiones)</th><th scope="col">Sube (información)</th><th scope="col">Protocolo</th></tr></thead>
+          <tbody>{interfaces.map((x) => <tr><th scope="row" class="mono">{x.i}</th><td>{x.baja}</td><td>{x.sube}</td><td>{x.p}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block cols cols--57">
+      <div>
+        <header class="block__head"><h3 class="block__t">Zonas y conductos ISA/IEC 62443.</h3>
+          <p class="block__lead">El único paso entre OT e IT es la DMZ. Ignition maneja usuarios y roles: operador, supervisor, calidad y mantenimiento.</p></header>
+        <dl class="kv">{network.map((x) => <div><dt>{x.z}</dt><dd>{x.v}</dd></div>)}</dl>
+      </div>
+      <Figura id="f112" sizes="(min-width: 1080px) 780px, 100vw" />
+    </div>
+    <div class="block"><Figura id="f111" /></div>
+  </div>
+</section>
+
+<style>
+  .arch__body { row-gap: var(--s-7); align-items: start; }
+  .arch__stick {
+    grid-column: 1 / -1;
+    @media (min-width: 1080px) {
+      grid-column: 1 / span 6;
+      position: sticky; top: calc(var(--nav-h) + var(--s-6));
+    }
+  }
+  .arch__svg { width: 100%; max-width: 560px; }
+  .lvl__box { fill: var(--paper); stroke: var(--rule-2); stroke-width: 1; transition: fill var(--d-3) var(--ease), stroke var(--d-3) var(--ease); }
+  .lvl__name { font-family: var(--f-display); font-weight: 650; letter-spacing: -0.03em; }
+  .lvl { transition: opacity var(--d-3) var(--ease); }
+  .arch__thread { stroke: var(--accent); stroke-width: 2; fill: none; }
+  .arch__token { fill: var(--accent); transition: transform var(--d-3) var(--ease); transform: translateY(var(--ty, 46px)); }
+  .arch__brk path { fill: none; stroke: var(--ink-3); stroke-width: 1; }
+
+  /* Nivel activo (lo fija JS al recorrer los pasos) */
+  .arch__svg[data-active] .lvl { opacity: 0.45; }
+  .arch__svg[data-active='4'] .lvl[data-l='4'],
+  .arch__svg[data-active='3'] .lvl[data-l='3'],
+  .arch__svg[data-active='2'] .lvl[data-l='2'],
+  .arch__svg[data-active='1'] .lvl[data-l='1'],
+  .arch__svg[data-active='0'] .lvl[data-l='0'] { opacity: 1; }
+  .arch__svg[data-active='4'] .lvl[data-l='4'] .lvl__box,
+  .arch__svg[data-active='3'] .lvl[data-l='3'] .lvl__box,
+  .arch__svg[data-active='2'] .lvl[data-l='2'] .lvl__box,
+  .arch__svg[data-active='1'] .lvl[data-l='1'] .lvl__box,
+  .arch__svg[data-active='0'] .lvl[data-l='0'] .lvl__box { fill: var(--accent-wash); stroke: var(--accent); stroke-width: 2; }
+  .arch__svg[data-active='4'] { --ty: 46px; }
+  .arch__svg[data-active='3'] { --ty: 142px; }
+  .arch__svg[data-active='2'] { --ty: 238px; }
+  .arch__svg[data-active='1'] { --ty: 334px; }
+  .arch__svg[data-active='0'] { --ty: 430px; }
+
+  .arch__steps {
+    grid-column: 1 / -1;
+    @media (min-width: 1080px) { grid-column: 8 / span 5; }
+  }
+  .step {
+    padding-block: var(--s-5) var(--s-7);
+    border-top: 1px solid var(--rule);
+    @media (min-width: 1080px) {
+      min-height: 62vh; padding-block: var(--s-6);
+      display: flex; flex-direction: column; justify-content: center;
+    }
+  }
+  .step__mini {
+    display: flex; flex-direction: column; gap: 3px; width: 56px; margin-bottom: var(--s-4);
+    & i { display: block; height: 4px; background: var(--rule); }
+    & i:nth-child(1) { width: 60%; } & i:nth-child(2) { width: 70%; } & i:nth-child(3) { width: 80%; } & i:nth-child(4) { width: 90%; }
+    & i.on { background: var(--accent); }
+    @media (min-width: 1080px) { display: none; }
+  }
+  .step__n { font-size: clamp(3rem, 2rem + 4vw, 5.5rem); font-weight: 500; line-height: 0.9; letter-spacing: -0.06em; color: var(--ink-3); transition: color var(--d-3) var(--ease); }
+  .step.is-active .step__n { color: var(--accent); }
+  .step__name { font: 650 var(--t-2)/1.05 var(--f-display); letter-spacing: -0.035em; margin-top: var(--s-3); display: flex; flex-wrap: wrap; align-items: baseline; gap: var(--s-2) var(--s-4); }
+  .step__does { margin-top: var(--s-4); max-width: 44ch; color: var(--ink-2); font-size: var(--t-lead); line-height: 1.5; }
+  .step__data { display: flex; flex-wrap: wrap; gap: var(--s-2); margin-top: var(--s-5); }
+  .step__data li { border: 1px solid var(--rule-2); border-radius: var(--radius); padding: 6px 8px; white-space: normal; }
+</style>

@@ -1,0 +1,12 @@
+# Texto normalizado a LF en el repositorio (Windows y el servidor de GitHub ven lo mismo)
+* text=auto eol=lf
+
+# Binarios: nunca convertir
+*.pdf binary
+*.docx binary
+*.xlsx binary
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.webp binary
+*.woff2 binary

@@ -1,0 +1,67 @@
+---
+import SectionHead from './SectionHead.astro';
+import Figura from './Figura.astro';
+import { vsmCounters, vsmRead, vsmFuture, kaizen, mltByRecipe } from '../data/site';
+import { num } from '../lib/fmt';
+---
+<section class="sec" id="vsm" aria-labelledby="vsm-t">
+  <div class="wrap">
+    <SectionHead id="vsm" title="El lote de fresa pasa de 4,2 a 3,0 días entre el silo y el despacho." note="Rother y Shook · Learning to See" />
+
+    <ul class="counters" style="--n:5" aria-label="Cambios del VSM actual al futuro">
+      {vsmCounters.map((c) => (
+        <li class="counter">
+          <p class="counter__l">{c.label}</p>
+          <p class="counter__v">
+            <span class="sr-only">{num(c.from, c.d)} → {num(c.to, c.d)} {c.unit}</span>
+            <span aria-hidden="true" data-count-from={c.from} data-count-to={c.to} data-count-decimals={c.d}>{num(c.to, c.d)}</span><span class="counter__u" aria-hidden="true"> {c.unit}</span>
+          </p>
+          <p class="counter__was" aria-hidden="true">Hoy <s>{num(c.from, c.d)} {c.unit}</s></p>
+        </li>
+      ))}
+    </ul>
+
+    <div class="block" data-tabs>
+      <div class="seg js-only" role="tablist" aria-label="Mapa de flujo de valor">
+        <button type="button" role="tab" id="vsm-tab-a" aria-controls="vsm-pan-a" aria-selected="true">VSM actual</button>
+        <button type="button" role="tab" id="vsm-tab-f" aria-controls="vsm-pan-f" aria-selected="false">VSM futuro</button>
+      </div>
+      <div class="tabs__panel cols cols--75" role="tabpanel" id="vsm-pan-a" aria-labelledby="vsm-tab-a">
+        <Figura id="vsmA" sizes="(min-width: 1080px) 780px, 100vw" />
+        <div>
+          <h3 class="micro">Lectura del VSM actual</h3>
+          <ul class="list-dash" style="margin-top: var(--s-3)">{vsmRead.map((r) => <li>{r}</li>)}</ul>
+        </div>
+      </div>
+      <div class="tabs__panel cols cols--75" role="tabpanel" id="vsm-pan-f" aria-labelledby="vsm-tab-f">
+        <Figura id="vsmF" sizes="(min-width: 1080px) 780px, 100vw" />
+        <div>
+          <h3 class="micro">Qué cambia en el VSM futuro</h3>
+          <p class="note">{vsmFuture}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="block cols cols--75">
+      <div>
+        <header class="block__head"><h3 class="block__t">Ocho mejoras kaizen, una por problema.</h3></header>
+        <div class="tbl-wrap" style="--tbl-min: 520px" tabindex="0" role="region" aria-label="Mejoras kaizen K1 a K8">
+          <table class="table">
+            <caption class="micro">Tabla 6.10 · mejoras del VSM futuro</caption>
+            <thead><tr><th scope="col">#</th><th scope="col">Mejora</th><th scope="col">Efecto</th><th scope="col">Resuelve</th></tr></thead>
+            <tbody>{kaizen.map((k) => <tr><td class="mono">{k.k}</td><th scope="row">{k.t}</th><td>{k.ef}</td><td class="mono">{k.p}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <header class="block__head"><h3 class="block__t">MLT por receta.</h3>
+          <p class="block__lead">El kéfir tiene el MLT más largo por su fermentación de 20 h, la maduración y la liberación de 48 h, pero también el mayor valor agregado.</p></header>
+        <table class="table">
+          <caption class="micro">Tabla 6.7 · hoy → con la propuesta</caption>
+          <thead><tr><th scope="col">Receta</th><th scope="col">Hoy</th><th scope="col">Propuesta</th></tr></thead>
+          <tbody>{mltByRecipe.map((m) => <tr><th scope="row" class={`c-${m.r.toLowerCase()}`}><span class="dot" aria-hidden="true" />{m.r}</th><td class="mono">{m.hoy}</td><td class="mono">{m.prop}<span class="micro" style="display:block">VA {m.va}</span></td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>

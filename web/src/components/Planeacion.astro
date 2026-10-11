@@ -1,0 +1,271 @@
+---
+import SectionHead from './SectionHead.astro';
+import excel from '../data/excel.json';
+import { schedule, phases, milestones, teamHours, budget, economics } from '../data/site';
+import { num, pct, m, fecha } from '../lib/fmt';
+
+const acts = excel.actividades;
+const edt2 = excel.edt.filter((e) => e.nivel === 2);
+const edt3 = (cod: string) => excel.edt.filter((e) => e.nivel === 3 && e.cod.startsWith(`${cod}.`));
+const W = 48;
+
+// Histograma de recursos (equipo) frente a la capacidad 6 × 42 h
+const equipo = excel.histograma.find((h) => h.quien === 'Equipo')!;
+const personas = excel.histograma.filter((h) => /^R\d/.test(h.quien));
+const H = { w: 960, h: 300, x0: 44, x1: 950, y0: 260, y1: 16, max: 300 };
+const hx = (i: number) => H.x0 + (i * (H.x1 - H.x0)) / W;
+const hy = (v: number) => H.y0 - (v / H.max) * (H.y0 - H.y1);
+const bw = ((H.x1 - H.x0) / W) * 0.72;
+
+// Curva S
+const cs = excel.curvaS;
+const S = { w: 540, h: 300, x0: 44, x1: 528, y0: 256, y1: 22, max: 9000e6 };
+const sx = (i: number) => S.x0 + ((i + 0.5) * (S.x1 - S.x0)) / 12;
+const sy = (v: number) => S.y0 - (v / S.max) * (S.y0 - S.y1);
+const sPath = cs.acumulado.map((v, i) => `${i ? 'L' : 'M'} ${sx(i).toFixed(1)} ${sy(v).toFixed(1)}`).join(' ');
+
+// Riesgos: mapa de calor P × I
+const heat = (p: number, i: number) => excel.riesgos.filter((r) => r.p === p && r.i === i);
+const zone = (v: number) => (v >= 15 ? 'alto' : v >= 8 ? 'medio' : 'bajo');
+const budgetTotal = budget.reduce((s, b) => s + b.v, 0);
+---
+<section class="sec" id="planeacion" aria-labelledby="planeacion-t">
+  <div class="wrap">
+    <SectionHead id="planeacion" title={`${schedule.semanas} semanas, ${num(economics.horas)} horas de ingeniería y una parada de 2 semanas.`} note="Guía PM4R del BID · anexo A">
+      <p class="sec__intro lead">El proyecto arranca con la firma el {schedule.inicio} y termina el {schedule.fin}. La ruta crítica pasa por los robots importados (20 semanas) y el montaje se hace en una parada del {schedule.parada}, posible porque el PLC, el SCADA y el MES llegan probados en el gemelo digital.</p>
+    </SectionHead>
+
+    <!-- EDT -->
+    <div class="block block--first">
+      <header class="block__head"><h3 class="block__t">EDT: 8 entregables y 38 paquetes.</h3>
+        <p class="block__lead">El 67 % del valor está en adquisiciones porque la solución es intensiva en equipos; la ingeniería de Kuajo es el 17,9 % del precio. Despliega cada entregable para ver sus paquetes de trabajo.</p></header>
+      <div class="edt">
+        {edt2.map((e) => (
+          <details class="fold">
+            <summary>
+              <span class="edt__row"><span class="mono edt__c">{e.cod}</span><span>{e.elemento}<span class="micro edt__r">{e.resp} · {num(e.horas)} h</span></span></span>
+              <span class="mono edt__v">${m(e.valor)} M · {pct(e.pct)}</span>
+            </summary>
+            <div class="fold__body">
+              <p class="note" style="margin:0 0 var(--s-3)">Criterio de aceptación: {e.criterio}</p>
+              <div class="tbl-wrap" style="--tbl-min: 300px"><table class="table">
+                <thead><tr><th scope="col">Paquete</th><th scope="col">Responsable</th><th scope="col" class="num">Horas</th><th scope="col" class="num">Valor (M)</th></tr></thead>
+                <tbody>{edt3(e.cod).map((p) => <tr><th scope="row"><span class="mono">{p.cod}</span> {p.elemento}</th><td>{p.resp}</td><td class="num">{num(p.horas)}</td><td class="num">{m(p.valor)}</td></tr>)}</tbody>
+              </table></div>
+            </div>
+          </details>
+        ))}
+      </div>
+    </div>
+
+    <!-- Gantt -->
+    <figure class="fig block gt" aria-labelledby="gt-cap">
+      <header class="block__head" id="gt-cap"><h3 class="block__t">Cronograma nivelado con ruta crítica.</h3>
+        <p class="block__lead">{schedule.ruta}</p></header>
+      <p class="legend"><span class="is-new"><i></i>Ruta crítica</span><span><i></i>Con holgura</span><span><i style="background: var(--st-warn); width: 8px; height: 8px; transform: rotate(45deg)"></i>Hito</span><span><i style="background: var(--paper-3)"></i>Parada (semanas 34–35)</span></p>
+      <div class="gt__scale micro" aria-hidden="true"><span></span><span class="gt__weeks">{Array.from({ length: 12 }, (_, i) => <span>S{i * 4 + 1}</span>)}</span></div>
+      <div class="gt__body" data-bars>
+        {Object.entries(phases).map(([k, name]) => (
+          <div class="gt__phase">
+            <p class="gt__ph micro">{k} · {name}</p>
+            <ol>
+              {acts.filter((a) => a.cod.startsWith(`${k}.`)).map((a) => (
+                <li class="gt__row">
+                  <span class="gt__name"><span class="mono">{a.cod}</span> {a.act}<span class="sr-only">: semanas {a.ini} a {a.fin}, {a.critica ? 'crítica' : `holgura ${a.holgura} semanas`}</span></span>
+                  <span class="gt__track" aria-hidden="true">
+                    <i class:list={[{ "is-crit": a.critica && !a.hito, "is-hito": a.hito }]} style={`--a:${a.ini};--b:${a.fin}`} data-bar={a.hito ? undefined : ""} />
+                  </span>
+                </li>
+              ))}
+            </ol>
+          </div>
+        ))}
+      </div>
+      <figcaption class="fig__cap"><b>Fig. 13.1 — Gantt nivelado (hoja Cronograma)</b><span>Barras en la posición nivelada de cada actividad. Conservan holgura 3.9 (11 semanas), 4.1 y 4.2 (6), 6.5 y 8.1 (5) y 3.5, 3.8 y 6.1 (2).</span></figcaption>
+    </figure>
+
+    <div class="block cols cols--57">
+      <div>
+        <header class="block__head"><h3 class="block__t">Hitos de control y de pago.</h3><p class="block__lead">Cada hito se cobra 30 días después de aprobado.</p></header>
+        <div class="tbl-wrap" style="--tbl-min: 420px" tabindex="0" role="region" aria-label="Hitos de pago">
+          <table class="table">
+            <thead><tr><th scope="col">Hito</th><th scope="col" class="num">Semana</th><th scope="col">Fecha</th><th scope="col">Pago</th></tr></thead>
+            <tbody>{milestones.map((h) => <tr><th scope="row">{h.h}</th><td class="num">{h.sem}</td><td class="mono">{h.fecha}</td><td class="mono">{h.pago}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <header class="block__head"><h3 class="block__t">Nadie pasa del 94 % de su capacidad.</h3>
+          <p class="block__lead">Horas de cada integrante sobre 1.920 h facturables. Quedan ≈ {num(excel.horasExtra)} h por encima de 42 h/semana en semanas pico, pagadas como horas extra con cargo a la contingencia.</p></header>
+        <ul class="hbars" data-bars>
+          {personas.map((p) => (
+            <li class="hbar">
+              <p class="hbar__head"><b>{p.quien}</b><span class="mono">{num(p.total)} h · máx. {num(p.max, 1)} h/sem</span></p>
+              <span class="hbar__track is-new" aria-hidden="true"><i style={`--w:${((p.total ?? 0) / 1920) * 100}%`} data-bar /></span>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <figure class="fig block">
+      <header class="block__head"><h3 class="block__t">Pico de {teamHours.pico} h por semana para un equipo de 6.</h3>
+        <p class="block__lead">Histograma de recursos del cronograma nivelado: horas del equipo por semana frente a la capacidad de 6 × 42 h = 252 h. Ningún integrante pasa de {num(teamHours.maxPersona, 1)} h en una semana.</p></header>
+      <svg class="chart" viewBox={`0 0 ${H.w} ${H.h}`} role="img" aria-label={`Horas del equipo por semana, de ${Math.min(...equipo.semanas)} a ${Math.max(...equipo.semanas)} h, frente a una capacidad de 252 h; total ${num(equipo.total)} h.`} data-bars>
+        {[0, 100, 200, 300].map((v) => <g><path class="gridl" d={`M ${H.x0} ${hy(v)} H ${H.x1}`} /><text x={H.x0 - 8} y={hy(v) + 4} font-size="11" text-anchor="end">{v}</text></g>)}
+        {equipo.semanas.map((v, i) => <rect class="bar bar-pos" x={hx(i) + 2} y={hy(v)} width={bw} height={H.y0 - hy(v)} data-bar="y" />)}
+        <path class="cap" d={`M ${H.x0} ${hy(252)} H ${H.x1}`} />
+        <text x={H.x1} y={hy(252) - 6} font-size="11" text-anchor="end" class="lbl">Capacidad 252 h</text>
+        {[1, 12, 24, 36, 48].map((w) => <text x={hx(w - 1) + bw / 2 + 2} y={H.y0 + 20} font-size="11" text-anchor="middle">S{w}</text>)}
+      </svg>
+      <details class="fold">
+        <summary>Ver la tabla de horas por semana</summary>
+        <div class="fold__body tbl-wrap" style="--tbl-min: 900px" tabindex="0" role="region" aria-label="Horas por semana">
+          <table class="table"><thead><tr><th scope="col">Semana</th>{equipo.semanas.map((_, i) => <th scope="col" class="num">{i + 1}</th>)}</tr></thead>
+            <tbody>{excel.histograma.filter((h) => h.quien !== 'Capacidad (6 × 42 h)').map((p) => <tr><th scope="row">{p.quien}</th>{p.semanas.map((v) => <td class="num">{num(v)}</td>)}</tr>)}</tbody></table>
+        </div>
+      </details>
+    </figure>
+
+    <div class="block cols cols--75">
+      <figure class="fig">
+        <header class="block__head"><h3 class="block__t">Curva S: 60 % del valor entre los meses 4 y 6.</h3>
+          <p class="block__lead">Meses 1 a 3 de ingeniería (8 %), meses 4 a 6 de órdenes de equipos (60 %), 7 y 8 de entregas y montaje (26 %) y 9 a 12 de pruebas y cierre (6 %).</p></header>
+        <svg class="chart" viewBox={`0 0 ${S.w} ${S.h}`} role="img" aria-label="Valor planificado mensual y acumulado: llega a $8.526 M en el mes 12." data-bars>
+          {[0, 3e9, 6e9, 9e9].map((v) => <g><path class="gridl" d={`M ${S.x0} ${sy(v)} H ${S.x1}`} /><text x={S.x0 - 8} y={sy(v) + 4} font-size="11" text-anchor="end">{num(v / 1e9)}</text></g>)}
+          {cs.mensual.map((v, i) => <rect class="bar bar-pos" x={sx(i) - 11} y={sy(v)} width="22" height={S.y0 - sy(v)} data-bar="y" />)}
+          <path class="line" d={sPath} data-draw />
+          {cs.acumulado.map((v, i) => <circle class="dot" cx={sx(i)} cy={sy(v)} r="3" />)}
+          {cs.acumulado.map((_, i) => <text x={sx(i)} y={S.y0 + 20} font-size="11" text-anchor="middle">{i + 1}</text>)}
+          <text x={S.x0} y={S.y1 - 2} font-size="11">miles de millones COP</text>
+        </svg>
+        <figcaption class="fig__cap"><b>Fig. 13.3 — Curva S (hoja Curva_S)</b><span>Barras: valor del mes. Línea: acumulado. Es la línea base del valor ganado (SPI y CPI).</span></figcaption>
+      </figure>
+      <div class="tbl-wrap" style="--tbl-min: 340px" tabindex="0" role="region" aria-label="Tabla de la curva S">
+        <table class="table">
+          <caption class="micro">Tabla 13.5 · valor planificado (M COP)</caption>
+          <thead><tr><th scope="col">Mes</th><th scope="col" class="num">Mes</th><th scope="col" class="num">Acumulado</th><th scope="col" class="num">%</th></tr></thead>
+          <tbody>{cs.mensual.map((v, i) => <tr><th scope="row" class="mono">{i + 1}</th><td class="num">{m(v)}</td><td class="num">{m(cs.acumulado[i])}</td><td class="num">{pct(cs.pct[i])}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block cols cols--2">
+      <div>
+        <header class="block__head"><h3 class="block__t">Del costo al precio: $8.526 M.</h3>
+          <p class="block__lead">Suministros de $5.771 M con 10 % de margen, ingeniería por horas, contingencia de 7 % y póliza.</p></header>
+        <div class="stack" aria-hidden="true">{budget.map((b, i) => <i style={`--w:${(b.v / budgetTotal) * 100}%`} class={`s${i}`} />)}</div>
+        <div class="tbl-wrap" style="--tbl-min: 300px; margin-top: var(--s-4)"><table class="table">
+          <tbody>
+            {budget.map((b, i) => <tr><th scope="row"><span class={`sw s${i}`} aria-hidden="true" />{b.k}<span class="micro" style="display:block;text-transform:none;letter-spacing:0">{b.n}</span></th><td class="num">{m(b.v)}</td></tr>)}
+            <tr class="is-total"><th scope="row">Precio de la oferta (sin IVA)</th><td class="num">{m(excel.precio.precio)}</td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div>
+        <header class="block__head"><h3 class="block__t">12 riesgos, ninguno en zona alta.</h3>
+          <p class="block__lead">Nivel = probabilidad × impacto. La contingencia de ${m(excel.contingencia)} M cubre {num(economics.cobertura, 2)} veces los ${m(excel.riesgoRetenido)} M de riesgo que retiene Kuajo.</p></header>
+        <table class="heat" aria-label="Mapa de calor de riesgos: número de riesgos por probabilidad e impacto">
+          <thead><tr><th scope="col"><span class="sr-only">Probabilidad</span></th>{[1, 2, 3, 4, 5].map((i) => <th scope="col" class="micro">I={i}</th>)}</tr></thead>
+          <tbody>
+            {[5, 4, 3, 2, 1].map((p) => (
+              <tr><th scope="row" class="micro">P={p}</th>
+                {[1, 2, 3, 4, 5].map((i) => { const rs = heat(p, i); return <td class={`z-${zone(p * i)}`}>{rs.length ? <span class="mono">{rs.map((r) => r.id).join(' ')}</span> : <span class="sr-only">0</span>}</td>; })}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <div class="tbl-wrap" style="--tbl-min: 860px" tabindex="0" role="region" aria-label="Matriz de riesgos">
+        <table class="table">
+          <caption class="micro">Tabla 13.20 · matriz de riesgos</caption>
+          <thead><tr><th scope="col">ID</th><th scope="col">Riesgo</th><th scope="col" class="num">P × I</th><th scope="col" class="num">Esperado (M)</th><th scope="col">Estrategia</th><th scope="col">Respuesta</th><th scope="col">Resp.</th></tr></thead>
+          <tbody>{excel.riesgos.map((r) => <tr><td class="mono">{r.id}</td><th scope="row">{r.riesgo}</th><td class="num">{r.p}×{r.i} = {r.nivel}</td><td class="num">{m(r.esperado)}</td><td>{r.estrategia}</td><td>{r.respuesta}</td><td>{r.resp}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block">
+      <header class="block__head"><h3 class="block__t">RACI: una sola A por fila.</h3>
+        <p class="block__lead">R ejecuta · A aprueba · C consultado · I informado. Pat = patrocinador; GP = gerente de planta; TI, Cal y Mto = jefes de Pomar; Prov = proveedores.</p></header>
+      <div class="tbl-wrap" style="--tbl-min: 820px" tabindex="0" role="region" aria-label="Matriz RACI">
+        <table class="table raci">
+          <thead><tr><th scope="col">Entregable o decisión</th>{excel.raci.roles.map((r) => <th scope="col" class="num">{r}</th>)}</tr></thead>
+          <tbody>{excel.raci.filas.map((f) => <tr><th scope="row">{f.entregable}</th>{f.v.map((x) => <td class:list={['num mono', { 'is-crit': x === 'A' }]}>{x}</td>)}</tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="block cols cols--2">
+      <div>
+        <header class="block__head"><h3 class="block__t">Comunicaciones.</h3></header>
+        {excel.comunicaciones.map((c) => (
+          <details class="fold">
+            <summary><span>{c.interesado}</span><span class="micro">{c.frecuencia}</span></summary>
+            <div class="fold__body"><dl class="kv">
+              <div><dt>Recibe</dt><dd>{c.info}</dd></div>
+              <div><dt>Medio</dt><dd>{c.medio}; {c.formato}</dd></div>
+              <div><dt>Emite</dt><dd>{c.emite}</dd></div>
+              <div><dt>Respuesta</dt><dd>{c.respuesta}</dd></div>
+            </dl></div>
+          </details>
+        ))}
+      </div>
+      <div>
+        <header class="block__head"><h3 class="block__t">Adquisiciones: 14 paquetes de compra.</h3>
+          <p class="block__lead">Regla general: 3 cotizaciones. Excepciones justificadas: el PLC (compatibilidad con Logix Emulate) y las licencias de Ignition y Sepasoft (fabricante único).</p></header>
+        <div class="tbl-wrap" style="--tbl-min: 520px" tabindex="0" role="region" aria-label="Matriz de adquisiciones">
+          <table class="table">
+            <thead><tr><th scope="col">Paquete</th><th scope="col" class="num">Valor (M)</th><th scope="col" class="num">Plazo</th><th scope="col">Pedido → requerido</th></tr></thead>
+            <tbody>{excel.adquisiciones.map((a) => <tr><th scope="row">{a.grupo}<span class="micro" style="display:block;text-transform:none;letter-spacing:0">{a.seleccion}</span></th><td class="num">{m(a.valor)}</td><td class="num">{a.plazo} sem</td><td class="mono">{fecha(a.pedido)} → {fecha(a.requerido)}</td></tr>)}</tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .edt__row { display: grid; grid-template-columns: 2rem 1fr; gap: var(--s-3); }
+  .edt__c { color: var(--ink-3); }
+  .edt__r { display: block; text-transform: none; letter-spacing: 0.01em; font-weight: 400; margin-top: 2px; }
+  .edt__v { font-size: var(--t-small); color: var(--ink-2); font-weight: 500; white-space: nowrap; }
+  .edt .fold > summary::after { margin-left: var(--s-3); }
+
+  .gt__scale, .gt__row { display: grid; grid-template-columns: 1fr; gap: 4px var(--s-4); }
+  .gt__scale { display: none; }
+  .gt__weeks { display: grid; grid-template-columns: repeat(12, 1fr); }
+  @media (min-width: 900px) {
+    .gt__scale, .gt__row { grid-template-columns: minmax(0, 2fr) minmax(0, 5fr); }
+    .gt__scale { display: grid; border-bottom: 1px solid var(--ink); padding-bottom: var(--s-2); }
+  }
+  .gt__ph { padding-top: var(--s-4); padding-bottom: var(--s-2); border-bottom: 1px solid var(--rule); color: var(--ink); }
+  .gt__row { padding-block: 6px; border-bottom: 1px solid var(--rule); align-items: center; }
+  .gt__name { font-size: 0.8125rem; line-height: 1.3; }
+  .gt__name .mono { color: var(--ink-3); }
+  .gt__track {
+    position: relative; height: 12px;
+    background:
+      linear-gradient(90deg, transparent calc(33 / 48 * 100%), var(--paper-3) calc(33 / 48 * 100%), var(--paper-3) calc(35 / 48 * 100%), transparent calc(35 / 48 * 100%)),
+      repeating-linear-gradient(90deg, transparent 0 calc(100% / 12 - 1px), var(--rule) calc(100% / 12 - 1px) calc(100% / 12));
+  }
+  .gt__track i { position: absolute; top: 1px; bottom: 1px; left: calc((var(--a) - 1) / 48 * 100%); width: calc((var(--b) - var(--a) + 1) / 48 * 100%); background: var(--ink-3); transform-origin: left; }
+  .gt__track i.is-crit { background: var(--accent); }
+  .gt__track i.is-hito { width: 10px; height: 10px; top: 1px; background: var(--st-warn); transform: rotate(45deg); margin-left: calc(100% / 96 - 5px); }
+
+  .stack { display: flex; height: 28px; border: 1px solid var(--ink); }
+  .stack i { width: var(--w); border-right: 1px solid var(--paper); }
+  .s0 { background: var(--ink-3); } .s1 { background: var(--rule-2); } .s2 { background: var(--accent); } .s3 { background: var(--st-warn); } .s4 { background: var(--ink); }
+  .sw { display: inline-block; width: 10px; height: 10px; margin-right: 8px; vertical-align: 0; }
+
+  .heat { border-collapse: separate; border-spacing: 3px; width: 100%; max-width: 460px; }
+  .heat th { font-weight: 500; text-align: center; padding: 4px; }
+  .heat td { height: 52px; text-align: center; vertical-align: middle; font-size: 0.75rem; padding: 4px; border: 1px solid var(--rule); }
+  .heat td.z-bajo { background: var(--paper-2); }
+  .heat td.z-medio { background: color-mix(in oklch, var(--st-warn) 22%, var(--paper)); }
+  .heat td.z-alto { background: color-mix(in oklch, var(--st-alarm) 22%, var(--paper)); }
+  .raci td, .raci th { font-size: 0.8125rem; }
+</style>

@@ -1,0 +1,103 @@
+---
+import SectionHead from './SectionHead.astro';
+import { problemStatement, problems, requirements, context } from '../data/site';
+---
+<section class="sec" id="cliente" aria-labelledby="cliente-t">
+  <div class="wrap">
+    <SectionHead id="cliente" title="Hoy, trazar un lote en Cajicá toma 6 horas." note="Lácteos Pomar · planta de Cajicá" />
+
+    <div class="grid cli">
+      <div class="cli__left">
+        <blockquote class="cli__quote">
+          <p data-lines>{problemStatement}</p>
+        </blockquote>
+        <dl class="cli__ctx">
+          {context.map((c) => (
+            <div>
+              <dt class="micro">{c.l}</dt>
+              <dd class="mono"><span class="cli__v">{c.v}</span>{c.u && <span class="cli__u"> {c.u}</span>}</dd>
+            </div>
+          ))}
+        </dl>
+        <p class="micro cli__note">Detonante: contrato con cadenas de supermercados y lanzamiento de yogur griego alto en proteína.</p>
+      </div>
+
+      <div class="cli__right">
+        <table class="table cli__problems">
+          <caption class="micro">Situación inicial · supuestos del caso</caption>
+          <thead><tr><th scope="col">#</th><th scope="col">Problema y evidencia</th><th scope="col">Lo ataca</th></tr></thead>
+          <tbody>
+            {problems.map((p) => (
+              <tr>
+                <td class="mono cli__id">{p.id}</td>
+                <th scope="row"><span class="cli__pt">{p.t}</span><span class="cli__pe">{p.e}</span></th>
+                <td class="tag">{p.m}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="grid req">
+      <h3 class="req__h micro">Requerimientos del cliente</h3>
+      <ol class="req__list">
+        {requirements.map((r) => (
+          <li><span class="mono req__id">{r.id}</span><span>{r.t}</span></li>
+        ))}
+      </ol>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cli { row-gap: var(--s-8); }
+  .cli__left {
+    grid-column: 1 / -1;
+    @media (min-width: 1080px) { grid-column: 1 / span 5; }
+  }
+  .cli__right {
+    grid-column: 1 / -1;
+    @media (min-width: 1080px) { grid-column: 7 / span 6; }
+  }
+  .cli__quote {
+    margin: 0;
+    font: 600 clamp(1.375rem, 1rem + 1.1vw, 2rem)/1.2 var(--f-display);
+    letter-spacing: -0.025em;
+    padding-left: var(--s-4);
+    border-left: 2px solid var(--accent);
+  }
+  .cli__ctx {
+    display: grid; grid-template-columns: 1fr 1fr;
+    margin-top: var(--s-7);
+    border-top: 1px solid var(--rule);
+    & > div { padding: var(--s-4) var(--s-3) var(--s-4) 0; border-bottom: 1px solid var(--rule); display: flex; flex-direction: column-reverse; gap: var(--s-1); }
+    & > div:nth-child(odd) { border-right: 1px solid var(--rule); }
+    & > div:nth-child(even) { padding-left: var(--s-4); }
+  }
+  .cli__v { font-size: clamp(1.75rem, 1.3rem + 1.6vw, 2.5rem); letter-spacing: -0.05em; font-weight: 500; }
+  .cli__u { color: var(--ink-2); font-size: var(--t-small); }
+  .cli__note { margin-top: var(--s-4); max-width: 42ch; text-transform: none; letter-spacing: 0.01em; }
+  .cli__id { color: var(--ink-3); width: 3rem; }
+  .cli__pt { display: block; font-weight: 600; }
+  .cli__pe { display: block; font-weight: 400; color: var(--ink-2); margin-top: 2px; }
+  .cli__problems td.tag { text-align: right; padding-right: 0; }
+  @media (max-width: 479px) {
+    .cli__problems thead th:last-child, .cli__problems td.tag { display: none; }
+  }
+
+  .req { margin-top: var(--s-9); row-gap: var(--s-4); }
+  .req__h {
+    grid-column: 1 / -1;
+    @media (min-width: 1080px) { grid-column: 1 / span 3; padding-top: var(--s-3); }
+  }
+  .req__list {
+    grid-column: 1 / -1;
+    display: grid; column-gap: var(--gap);
+    border-top: 1px solid var(--ink);
+    @media (min-width: 720px) { grid-template-columns: 1fr 1fr; }
+    @media (min-width: 1080px) { grid-column: 4 / -1; }
+    & li { display: grid; grid-template-columns: 3.5rem 1fr; gap: var(--s-3); padding-block: var(--s-4); border-bottom: 1px solid var(--rule); }
+  }
+  .req__id { color: var(--accent); font-weight: 500; }
+</style>

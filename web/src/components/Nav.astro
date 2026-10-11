@@ -1,0 +1,130 @@
+---
+import Logo from './Logo.astro';
+import { sections, navQuick } from '../data/site';
+const quick: string[] = navQuick;
+---
+<header class="nav" data-nav>
+  <div class="wrap nav__in">
+    <a class="nav__brand" href="#inicio" aria-label="Kuajo Automation, ir al inicio">
+      <Logo size={28} />
+      <span class="nav__word">Kuajo</span>
+      <span class="micro nav__sub">Automation</span>
+    </a>
+    <nav class="nav__links" aria-label="Secciones principales">
+      <ul>
+        {sections.filter((s) => quick.includes(s.id)).map((s) => (
+          <li><a href={`#${s.id}`} data-spy={s.id}><span class="micro">{s.n}</span>{s.short}</a></li>
+        ))}
+      </ul>
+    </nav>
+    <div class="nav__tools">
+      <button class="nav__btn nav__theme" type="button" data-theme-toggle aria-label="Cambiar entre tema claro y oscuro">
+        <svg viewBox="0 0 16 16" width="16" height="16" aria-hidden="true"><circle cx="8" cy="8" r="6.5" fill="none" stroke="currentColor" /><path d="M8 1.5a6.5 6.5 0 0 1 0 13z" fill="currentColor" /></svg>
+      </button>
+      <button class="nav__btn" type="button" popovertarget="indice">
+        <span>Índice</span><span class="micro" aria-hidden="true">{sections.length}</span>
+      </button>
+    </div>
+  </div>
+  <div class="progress" aria-hidden="true"><i data-progress></i></div>
+</header>
+
+<div id="indice" popover class="index" role="dialog" aria-label="Índice de secciones">
+  <div class="wrap">
+    <div class="index__top">
+      <p class="micro">Índice · {sections.length} secciones</p>
+      <button class="nav__btn" type="button" popovertarget="indice" popovertargetaction="hide">Cerrar <span class="mono" aria-hidden="true">×</span></button>
+    </div>
+    <ol class="index__list">
+      {sections.map((s) => (
+        <li><a href={`#${s.id}`} data-index-link data-spy={s.id}><span class="micro">{s.n}</span><span class="index__label">{s.label}</span><span class="micro index__code">{s.code}</span></a></li>
+      ))}
+    </ol>
+  </div>
+</div>
+
+<style>
+  .nav {
+    position: fixed; inset: 0 0 auto 0; z-index: 50;
+    background: var(--paper);
+    border-bottom: 1px solid transparent;
+    transition: border-color var(--d-2) var(--ease);
+  }
+  :global(.nav.is-compact) { border-bottom-color: var(--rule); }
+  :global(.nav.is-compact) .nav__in { height: 52px; }
+  .nav__in {
+    height: var(--nav-h);
+    display: flex; align-items: center; justify-content: space-between; gap: var(--s-5);
+    transition: height var(--d-3) var(--ease);
+  }
+  .nav__brand { display: inline-flex; align-items: center; gap: 10px; color: var(--ink); text-decoration: none; }
+  .nav__word { font: 700 1.25rem/1 var(--f-display); letter-spacing: -0.03em; }
+  .nav__sub { display: none; padding-left: 10px; border-left: 1px solid var(--rule-2); }
+  @media (min-width: 720px) { .nav__sub { display: inline; } }
+
+  .nav__links { display: none; }
+  @media (min-width: 1080px) {
+    .nav__links { display: block; }
+    .nav__links ul { display: flex; gap: var(--s-4); }
+    .nav__links li { white-space: nowrap; }
+    .nav__links a {
+      display: inline-flex; gap: 6px; align-items: baseline;
+      color: var(--ink-2); text-decoration: none; font-size: var(--t-small); font-weight: 500;
+      padding-block: 6px; border-bottom: 1px solid transparent;
+      transition: color var(--d-1) var(--ease), border-color var(--d-1) var(--ease);
+      &:hover { color: var(--ink); }
+      &[aria-current='true'] { color: var(--ink); border-bottom-color: var(--accent); }
+    }
+  }
+  /* Entre 1080 y 1279 px caben 5 enlaces; el resto queda en el índice */
+  @media (min-width: 1080px) and (max-width: 1279px) {
+    .nav__links li:nth-child(n + 6) { display: none; }
+    .nav__sub { display: none; }
+  }
+  .nav__tools { display: flex; gap: var(--s-2); }
+  .nav__btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+    min-height: 40px; min-width: 40px; padding: 0 12px;
+    background: none; border: 1px solid var(--rule-2); border-radius: var(--radius);
+    font-size: var(--t-small); font-weight: 500; cursor: pointer;
+    transition: border-color var(--d-1) var(--ease);
+    &:hover { border-color: var(--ink); }
+  }
+  .nav__theme { padding: 0; }
+
+  .progress {
+    position: absolute; left: 0; right: 0; bottom: -1px; height: 2px; overflow: hidden; pointer-events: none;
+    & i { display: block; height: 100%; background: var(--accent); transform-origin: left; transform: scaleX(var(--p, 0)); }
+  }
+  @supports (animation-timeline: scroll()) {
+    .progress i { animation: grow linear both; animation-timeline: scroll(root); }
+  }
+  @keyframes grow { from { transform: scaleX(0); } to { transform: scaleX(1); } }
+
+  .index {
+    position: fixed; inset: 0; width: 100%; height: 100dvh; max-width: none; max-height: none;
+    margin: 0; padding: 0; border: 0;
+    background: var(--paper); color: var(--ink);
+    overflow-y: auto; overscroll-behavior: contain;
+    opacity: 0; translate: 0 -8px;
+    transition: opacity var(--d-2) var(--ease), translate var(--d-2) var(--ease), display var(--d-2) allow-discrete, overlay var(--d-2) allow-discrete;
+    &:popover-open { opacity: 1; translate: 0 0; }
+  }
+  @starting-style { .index:popover-open { opacity: 0; translate: 0 -8px; } }
+  .index::backdrop { background: transparent; }
+  .index__top { display: flex; justify-content: space-between; align-items: center; height: var(--nav-h); border-bottom: 1px solid var(--ink); }
+  .index__list { padding-bottom: var(--s-8); }
+  .index__list a {
+    display: grid; grid-template-columns: 2.5rem 1fr auto; align-items: baseline; gap: var(--s-4);
+    padding-block: var(--s-4); border-bottom: 1px solid var(--rule);
+    color: var(--ink); text-decoration: none;
+    transition: padding var(--d-2) var(--ease);
+    &:hover { padding-left: var(--s-3); }
+    &:hover .index__label { color: var(--accent); }
+    &[aria-current='true'] .index__label { color: var(--accent); }
+    &[aria-current='true'] .micro { color: var(--accent); }
+  }
+  .index__label { font: 650 clamp(1.5rem, 1rem + 2.5vw, 2.75rem)/1.05 var(--f-display); letter-spacing: -0.035em; transition: color var(--d-1) var(--ease); }
+  .index__code { display: none; }
+  @media (min-width: 720px) { .index__code { display: inline; } }
+</style>

@@ -1,0 +1,87 @@
+---
+import SectionHead from './SectionHead.astro';
+import excel from '../data/excel.json';
+import { offer, futurePhases } from '../data/site';
+import { num, pct } from '../lib/fmt';
+const p = excel.precio;
+const cop = (v: number) => `$${num(v)}`;
+---
+<section class="sec" id="oferta" aria-labelledby="oferta-t">
+  <div class="wrap">
+    <SectionHead id="oferta" title="$8.526 millones por la Fase 1, el 10 % contra el acta de cierre." note={`Oferta ${offer.code} · caso académico`}>
+      <p class="sec__intro lead">{offer.objeto}</p>
+    </SectionHead>
+
+    <div class="block block--first cols cols--2">
+      <div>
+        <h3 class="micro">Alcance incluido</h3>
+        <ul class="list-dash" style="margin-top: var(--s-3)">{offer.incluye.map((x) => <li>{x}</li>)}</ul>
+      </div>
+      <div>
+        <h3 class="micro">Exclusiones</h3>
+        <ul class="list-dash" style="margin-top: var(--s-3)">{offer.excluye.map((x) => <li>{x}</li>)}</ul>
+        <dl class="kv" style="margin-top: var(--s-6)">
+          <div><dt>Plazo</dt><dd>48 semanas desde la firma y el anticipo; entrega estimada el 12/12/2027. Parada máxima de 2 semanas.</dd></div>
+          <div><dt>Garantía</dt><dd>{offer.garantia}</dd></div>
+          <div><dt>Soporte</dt><dd>{offer.soporte}</dd></div>
+          <div><dt>Validez</dt><dd>{offer.validez}</dd></div>
+          <div><dt>Tasa de cambio</dt><dd>{offer.trm}</dd></div>
+        </dl>
+      </div>
+    </div>
+
+    <div class="block cols cols--2">
+      <div>
+        <header class="block__head"><h3 class="block__t">Precio de la Fase 1.</h3></header>
+        <div class="tbl-wrap" style="--tbl-min: 300px"><table class="table">
+          <caption class="micro">Tabla 14.2 · COP</caption>
+          <tbody>
+            <tr><th scope="row">Suministros: equipos, software, obras y montaje</th><td class="num">{cop(p.suministrosPrecio)}</td><td class="num">{pct(p.suministrosPrecio / p.precio)}</td></tr>
+            <tr><th scope="row">Ingeniería, gestión, comisionamiento y capacitación (10.160 h × $150.000)</th><td class="num">{cop(p.ingenieriaPrecio)}</td><td class="num">{pct(p.ingenieriaPrecio / p.precio)}</td></tr>
+            <tr><th scope="row">Contingencia y póliza</th><td class="num">{cop(p.contingenciaPrecio + p.poliza)}</td><td class="num">{pct((p.contingenciaPrecio + p.poliza) / p.precio)}</td></tr>
+            <tr class="is-total"><th scope="row">Precio total sin IVA</th><td class="num">{cop(p.precio)}</td><td class="num">≈ US${num(excel.resumen.precioUSD)}</td></tr>
+            <tr><th scope="row">IVA 19 % (descontable para Pomar)</th><td class="num">{cop(p.iva)}</td><td></td></tr>
+            <tr><th scope="row">Total con IVA</th><td class="num">{cop(p.conIva)}</td><td></td></tr>
+          </tbody>
+        </table></div>
+      </div>
+      <div>
+        <header class="block__head"><h3 class="block__t">Pago contra hito aprobado, a 30 días.</h3>
+          <p class="block__lead">El anticipo se paga contra la póliza de buen manejo.</p></header>
+        <ol class="pay" data-bars>
+          {excel.pagos.map((h) => (
+            <li class="pay__row">
+              <span class="mono pay__m">Mes {h.mes}</span>
+              <span class="pay__h">{h.hito}<span class="micro">Cobro en el mes {h.cobro} · {cop(h.valor)}</span></span>
+              <span class="pay__bar" aria-hidden="true"><i style={`--w:${h.pct * 100 / 0.3}%`} data-bar /></span>
+              <span class="mono pay__p">{pct(h.pct, 0)}</span>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </div>
+
+    <div class="block">
+      <header class="block__head"><h3 class="block__t">Fases siguientes: UHT primero, después quesos.</h3>
+        <p class="block__lead">La plataforma de planta se paga una sola vez. Las Fases 2 y 3 son referencias de ±30 % que se cotizan aparte.</p></header>
+      <div class="tbl-wrap" style="--tbl-min: 560px" tabindex="0" role="region" aria-label="Costo por línea y fases futuras">
+        <table class="table">
+          <caption class="micro">Tabla 14.4</caption>
+          <thead><tr><th scope="col">Alcance</th><th scope="col" class="num">Precio</th><th scope="col" class="num">Semanas</th><th scope="col">Nota</th></tr></thead>
+          <tbody>{futurePhases.map((f, i) => <tr class:list={{ 'is-total': i === futurePhases.length - 1 }}><th scope="row">{f.k}</th><td class="num">{f.precio}</td><td class="num">{f.sem}</td><td>{f.n}</td></tr>)}</tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .pay { border-top: 1px solid var(--ink); }
+  .pay__row { display: grid; grid-template-columns: 4rem 1fr 3rem; gap: var(--s-2) var(--s-3); align-items: center; padding-block: var(--s-3); border-bottom: 1px solid var(--rule); }
+  .pay__m { color: var(--ink-3); font-size: var(--t-small); }
+  .pay__h { font-size: var(--t-small); font-weight: 500; }
+  .pay__h .micro { display: block; text-transform: none; letter-spacing: 0.01em; font-weight: 400; }
+  .pay__bar { grid-column: 2; height: 8px; background: var(--paper-3); position: relative; }
+  .pay__bar i { position: absolute; inset: 0 auto 0 0; width: var(--w); background: var(--accent); transform-origin: left; }
+  .pay__p { grid-column: 3; grid-row: 1; text-align: right; font-weight: 500; }
+</style>

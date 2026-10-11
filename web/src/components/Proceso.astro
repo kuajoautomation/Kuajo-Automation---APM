@@ -1,0 +1,92 @@
+---
+import SectionHead from './SectionHead.astro';
+import Figura from './Figura.astro';
+import { lines, milk, shared } from '../data/site';
+---
+<section class="sec" id="proceso" aria-labelledby="proceso-t">
+  <div class="wrap">
+    <SectionHead id="proceso" title="3 líneas, 9 referencias y 2 % de holgura de leche." note="Lote = 1 tanque de 10.000 L">
+      <p class="sec__intro lead">Un tramo común de recepción, silos y tratamiento alimenta tres líneas por lotes. La de yogures se desarrolla a detalle; quesos y UHT se dimensionan para ver cuánta leche usan y cómo encajan en la planta.</p>
+    </SectionHead>
+
+    <div class="refs">
+      {lines.map((l) => (
+        <article class:list={['refs__line', { 'is-detail': l.detail }]} aria-labelledby={`line-${l.id}`}>
+          <header class="refs__head">
+            <p class="micro">{l.id} · {l.volume}</p>
+            <h3 class="refs__name" id={`line-${l.id}`}>{l.name}</h3>
+            <p class="micro refs__batch">{l.batch}</p>
+            {l.detail && <p class="refs__flag micro">Desarrollo a detalle</p>}
+          </header>
+          <ol class="refs__list">
+            {l.refs.map((r) => (
+              <li>
+                <span class:list={['mono refs__id', { [`c-${r.id.toLowerCase()}`]: l.detail }]}>{l.detail && <span class="dot" aria-hidden="true" />}{r.id}</span>
+                <span class="refs__ref">{r.name}<span class="micro refs__pack">{r.pack}</span></span>
+              </li>
+            ))}
+          </ol>
+        </article>
+      ))}
+    </div>
+
+    <div class="block cols cols--2">
+      <div>
+        <header class="block__head">
+          <h3 class="block__t">La leche alcanza, pero con poco margen.</h3>
+          <p class="block__lead">Con la línea 1 automatizada sobra leche en yogures (66.115 de 70.000 L/día). Con la planta completa el acopio llega al 98 % y pasa a ser la siguiente restricción (riesgo R12).</p>
+        </header>
+        <div class="tbl-wrap" style="--tbl-min: 400px" tabindex="0" role="region" aria-label="Tabla de leche por línea">
+          <table class="table">
+            <caption class="micro">Tabla 5.2 · leche (L/día) y producción (kg/día) por línea</caption>
+            <thead><tr><th scope="col">Línea</th><th scope="col" class="num">Hoy</th><th scope="col" class="num">Propuesta</th><th scope="col">Producción</th></tr></thead>
+            <tbody>
+              {milk.map((r, i) => (
+                <tr class:list={{ 'is-total': i === milk.length - 1 }}><th scope="row">{r.linea}</th><td class="num">{r.hoy}</td><td class="num">{r.prop}</td><td>{r.prod}</td></tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <header class="block__head">
+          <h3 class="block__t">Ningún recurso compartido se satura.</h3>
+          <p class="block__lead">Utilización hoy y con la línea 1 automatizada; entre paréntesis, con la planta completa.</p>
+        </header>
+        <p class="legend"><span><i></i>Hoy</span><span class="is-new"><i></i>Con la línea 1</span></p>
+        <ul class="hbars" data-bars>
+          {shared.map((s) => (
+            <li class="hbar">
+              <p class="hbar__head"><b>{s.r}</b><span class="micro">{s.cap}</span></p>
+              <span class="hbar__track" aria-hidden="true"><i style={`--w:${s.v[0]}%`} data-bar /></span>
+              <span class="hbar__track is-new" aria-hidden="true"><i style={`--w:${s.v[1]}%`} data-bar /></span>
+              <p class="hbar__vals"><span>Hoy {s.v[0]} %</span><span>Línea 1 {s.v[1]} %</span><span>(planta {s.v[2]} %)</span></p>
+            </li>
+          ))}
+        </ul>
+      </div>
+    </div>
+
+    <div class="block"><Figura id="f51" /></div>
+  </div>
+</section>
+
+<style>
+  .refs { display: grid; border-top: 1px solid var(--ink); }
+  @media (min-width: 1080px) { .refs { grid-template-columns: repeat(3, 1fr); } }
+  .refs__line { padding: var(--s-5) 0 var(--s-6); border-bottom: 1px solid var(--rule); }
+  @media (min-width: 720px) { .refs__line { display: grid; grid-template-columns: 1fr 1.4fr; gap: var(--gap); } }
+  @media (min-width: 1080px) {
+    .refs__line { display: block; border-bottom: 0; padding-inline: var(--s-5); }
+    .refs__line + .refs__line { border-left: 1px solid var(--rule); }
+    .refs__line:first-child { padding-left: 0; }
+  }
+  .refs__head { margin-bottom: var(--s-5); }
+  .refs__name { font: 650 var(--t-2)/1 var(--f-display); letter-spacing: -0.035em; margin-top: var(--s-2); }
+  .refs__batch { margin-top: var(--s-2); text-transform: none; letter-spacing: 0.01em; }
+  .refs__flag { display: inline-block; margin-top: var(--s-3); color: var(--accent); border: 1px solid currentColor; padding: 3px 6px; border-radius: var(--radius); }
+  .refs__list li { display: grid; grid-template-columns: 3.25rem 1fr; gap: var(--s-3); padding-block: var(--s-3); border-top: 1px solid var(--rule); }
+  .refs__id { font-size: 1.125rem; font-weight: 500; }
+  .refs__ref { font-weight: 500; }
+  .refs__pack { display: block; text-transform: none; letter-spacing: 0.01em; margin-top: 2px; }
+</style>

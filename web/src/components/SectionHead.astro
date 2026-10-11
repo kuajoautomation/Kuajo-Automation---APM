@@ -1,0 +1,19 @@
+---
+// Encabezado de sección: filete, código de plano y título que se revela por líneas.
+import { sections, site } from '../data/site';
+interface Props { id: (typeof sections)[number]['id']; title: string; note?: string }
+const { id, note } = Astro.props;
+// Espacio no separable entre cifra y unidad ("20 h", "24 °C") para que no se partan.
+const title = Astro.props.title.replace(/(\d) (?=\S)/g, '$1\u00A0');
+const s = sections.find((x) => x.id === id)!;
+---
+<hr class="sec__rule" />
+<header class="grid sec__head">
+  <p class="sec__meta micro">
+    <span class="sec__n">{s.n} — {s.label}</span>
+    <span>{s.code} / {site.rev}</span>
+    {note && <span>{note}</span>}
+  </p>
+  <h2 class="sec__title" id={`${id}-t`} data-lines>{title}</h2>
+  <slot />
+</header>

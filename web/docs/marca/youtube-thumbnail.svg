@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1280 720" role="img" aria-label="Miniatura de YouTube">
+  <rect width="1280" height="720" fill="#0E5A52"/>
+  <g opacity=".22" fill="none" stroke="#FBF8F2" stroke-width="2"><path d="M760 60c60 18 120-18 180 0s120 18 180 0"/><path d="M760 120c60 18 120-18 180 0s120 18 180 0"/></g>
+  <rect x="940" y="400" width="240" height="240" rx="40" fill="#C8D94A"/>
+  <text x="80" y="170" font-family="IBM Plex Mono, Consolas, monospace" font-size="28" font-weight="600" letter-spacing="4" fill="#C8D94A">KUAJO AUTOMATION</text>
+  <text x="80" y="330" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="104" font-weight="700" letter-spacing="-3" fill="#FFFFFF">Tu planta,</text>
+  <text x="80" y="440" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="104" font-weight="700" letter-spacing="-3" fill="#FFFFFF">antes de</text>
+  <text x="80" y="550" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="104" font-weight="700" letter-spacing="-3" fill="#C8D94A">invertir</text>
+  <text x="80" y="650" font-family="IBM Plex Sans, Arial, sans-serif" font-size="30" fill="#DCEBE8">Comisionamiento virtual · ISA-95 · ISA-88</text>
+</svg>

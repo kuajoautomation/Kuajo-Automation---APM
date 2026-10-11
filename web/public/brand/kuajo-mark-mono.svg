@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Kuajo Automation">
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="currentColor"/>
+  <path d="M21 16v32M21 32l19-14M21 32l19 14" fill="none" stroke="var(--k-cut,#fff)" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="44" cy="15" r="5.5" fill="var(--k-cut,#fff)"/>
+  <circle cx="44" cy="49" r="5.5" fill="var(--k-cut,#fff)"/>
+</svg>

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 64" role="img" aria-label="Kuajo Automation">
+  <title>Kuajo Automation</title>
+  <rect x="2" y="2" width="60" height="60" rx="15" fill="#151A19"/>
+  <path d="M21 16v32M21 32l19-14M21 32l19 14" fill="none" stroke="#FFFFFF" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="44" cy="15" r="5.5" fill="#FFFFFF"/>
+  <circle cx="44" cy="49" r="5.5" fill="#FFFFFF"/>
+  <text x="78" y="40" font-family="Bricolage Grotesque, Sora, Arial, sans-serif" font-size="36" font-weight="700" letter-spacing="-0.5" fill="#151A19">Kuajo</text>
+  <text x="79" y="57" font-family="Bricolage Grotesque, Sora, Arial, sans-serif" font-size="11.5" font-weight="600" letter-spacing="4.2" fill="#151A19">AUTOMATION</text>
+</svg>

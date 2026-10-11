@@ -1,0 +1,80 @@
+---
+import SectionHead from './SectionHead.astro';
+import Figura from './Figura.astro';
+import { mix, today, oee, bottleneck } from '../data/site';
+import { pct } from '../lib/fmt';
+const occ = [
+  { k: 'Llenadora de vasos U-232', hoy: bottleneck.llenadoraHoy, prop: bottleneck.llenadoraProp },
+  { k: 'Fermentadores U-221 a U-224', hoy: bottleneck.fermHoy, prop: bottleneck.fermProp },
+];
+---
+<section class="sec" id="actual" aria-labelledby="actual-t">
+  <div class="wrap">
+    <SectionHead id="actual" title="Hoy la llenadora de vasos limita la línea al 83 % de la demanda." note="Supuestos del caso · hoja VSM_Actual">
+      <p class="sec__intro lead">La línea produce 43.700 kg/día frente a 52.400 que piden los clientes. Todos los equipos de proceso ya existen: la propuesta no compra tanques ni llenadoras, solo automatiza, integra y robotiza.</p>
+    </SectionHead>
+
+    <div class="block block--first cols cols--2">
+      <div>
+        <header class="block__head"><h3 class="block__t">El griego crece 69 %.</h3>
+          <p class="block__lead">Pomar lanzó el yogur griego en 2026 a baja escala con el separador que ya tiene. El contrato con las cadenas lo lleva de 5.900 a 10.000 kg/día.</p></header>
+        <div class="tbl-wrap" style="--tbl-min: 400px" tabindex="0" role="region" aria-label="Mix de producción">
+          <table class="table">
+            <caption class="micro">Tabla 6.2 · mix de producción (kg/día)</caption>
+            <thead><tr><th scope="col">Receta</th><th scope="col" class="num">Hoy</th><th scope="col" class="num">Propuesta</th><th scope="col" class="num">Crece</th><th scope="col" class="num">Lotes/día hoy</th></tr></thead>
+            <tbody>
+              {mix.map((r) => (
+                <tr><th scope="row" class={`c-${r.r.toLowerCase()}`}><span class="dot" aria-hidden="true" />{r.r} {r.name}</th><td class="num">{r.hoy}</td><td class="num">{r.prop}</td><td class="num">{r.crec}</td><td class="num">{r.lotes}</td></tr>
+              ))}
+              <tr class="is-total"><th scope="row">Total</th><td class="num">43.700</td><td class="num">52.400</td><td class="num">20 %</td><td class="num">5,4</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div>
+        <header class="block__head"><h3 class="block__t">Lo que tiene Pomar hoy.</h3></header>
+        <dl class="kv">
+          {today.map((t) => <div><dt>{t.area} · {t.p}</dt><dd>{t.hoy}</dd></div>)}
+        </dl>
+      </div>
+    </div>
+
+    <div class="block cols cols--2">
+      <div>
+        <header class="block__head"><h3 class="block__t">De 55,4 % a 78,0 % de OEE.</h3>
+          <p class="block__lead">Tabla 6.5: descomposición del OEE de la llenadora de vasos, hoy y con la propuesta.</p></header>
+        <p class="legend"><span><i></i>Hoy</span><span class="is-new"><i></i>Con la propuesta</span></p>
+        <ul class="hbars" data-bars>
+          {oee.map((o) => (
+            <li class="hbar">
+              <p class="hbar__head"><b>{o.k}</b><span class="mono">{pct(o.hoy)} → {pct(o.prop)}</span></p>
+              <span class="hbar__track" aria-hidden="true"><i style={`--w:${o.hoy * 100}%`} data-bar /></span>
+              <span class="hbar__track is-new" aria-hidden="true"><i style={`--w:${o.prop * 100}%`} data-bar /></span>
+              <p class="note" style="margin-top:2px">{o.por}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
+      <div>
+        <header class="block__head"><h3 class="block__t">El cuello de botella se desplaza.</h3>
+          <p class="block__lead">{bottleneck.texto}</p></header>
+        <p class="legend"><span><i></i>Hoy</span><span class="is-new"><i></i>Con la propuesta</span></p>
+        <ul class="hbars" data-bars>
+          {occ.map((o) => (
+            <li class="hbar">
+              <p class="hbar__head"><b>{o.k}</b><span class="mono">{pct(o.hoy, 0)} → {pct(o.prop, o.prop === 0.888 ? 1 : 0)}</span></p>
+              <span class="hbar__track" aria-hidden="true"><i style={`--w:${o.hoy * 100}%`} data-bar /></span>
+              <span class="hbar__track is-new" aria-hidden="true"><i style={`--w:${o.prop * 100}%`} data-bar /></span>
+            </li>
+          ))}
+        </ul>
+        <p class="note">Contando el tiempo que los tanques esperan llenos a que se libere el pulmón, la simulación lleva la ocupación real de los fermentadores a ≈ 98 % (sección 10).</p>
+      </div>
+    </div>
+
+    <div class="block cols cols--2">
+      <Figura id="f52a" sizes="(min-width: 1080px) 660px, 100vw" />
+      <Figura id="f55" sizes="(min-width: 1080px) 660px, 100vw" />
+    </div>
+  </div>
+</section>

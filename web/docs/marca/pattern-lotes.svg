@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 480" aria-hidden="true">
+  <title>Patrón Lotes: de líquido a cuajada</title>
+  <defs>
+    <pattern id="lote" width="48" height="48" patternUnits="userSpaceOnUse">
+      <rect x="6" y="6" width="36" height="36" rx="9" fill="none" stroke="#0E5A52" stroke-width="1.5"/>
+      <circle cx="24" cy="24" r="2.5" fill="#0E5A52"/>
+    </pattern>
+    <linearGradient id="fade" x1="0" x2="1"><stop offset="0" stop-color="#fff" stop-opacity="0"/><stop offset="1" stop-color="#fff"/></linearGradient>
+    <mask id="m"><rect width="480" height="480" fill="url(#fade)"/></mask>
+  </defs>
+  <!-- izquierda: líquido (ondas) → derecha: sólido (retícula de lotes) -->
+  <g fill="none" stroke="#0E5A52" stroke-width="1.5" stroke-linecap="round" opacity=".55">
+    <path d="M0 60c40 12 80-12 120 0s80 12 120 0"/><path d="M0 108c40 12 80-12 120 0s80 12 120 0"/>
+    <path d="M0 156c40 12 80-12 120 0s80 12 120 0"/><path d="M0 204c40 12 80-12 120 0s80 12 120 0"/>
+    <path d="M0 252c40 12 80-12 120 0s80 12 120 0"/><path d="M0 300c40 12 80-12 120 0s80 12 120 0"/>
+    <path d="M0 348c40 12 80-12 120 0s80 12 120 0"/><path d="M0 396c40 12 80-12 120 0s80 12 120 0"/>
+  </g>
+  <rect x="200" width="280" height="480" fill="url(#lote)" mask="url(#m)"/>
+  <rect x="192" y="168" width="48" height="48" rx="9" fill="#C8D94A" opacity=".9"/>
+</svg>

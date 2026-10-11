@@ -1,0 +1,26 @@
+---
+import SectionHead from './SectionHead.astro';
+import { linesFinance, plant } from '../data/site';
+---
+<section class="sec" id="lineas" aria-labelledby="lineas-t">
+  <div class="wrap">
+    <SectionHead id="lineas" title="UHT rinde tanto como yogures; quesos apenas se paga." note="Sección 8 y anexo C · referencia ±30 %">
+      <p class="sec__intro lead">Quesos y UHT se automatizarían sobre la misma plataforma. Cada línea cuesta entre 45 % y 55 % de la automatización de yogures porque el núcleo no se vuelve a comprar. Recomendación: línea 3 (Fase 2) antes que la línea 2 (Fase 3), con una prueba de rendimiento quesero en una tina.</p>
+    </SectionHead>
+
+    <div class="tbl-wrap block block--first" style="--tbl-min: 720px" tabindex="0" role="region" aria-label="Resultados esperados por línea">
+      <table class="table">
+        <caption class="micro">Tablas 8.2 y 8.3 · mismos supuestos de la línea 1 (TIO 13,7 %, 7 años, impuesto de 35 %)</caption>
+        <thead><tr><th scope="col">Indicador</th><th scope="col">Línea 1: yogures</th><th scope="col">Línea 2: quesos (Fase 3)</th><th scope="col">Línea 3: UHT (Fase 2)</th></tr></thead>
+        <tbody>{linesFinance.map((r) => <tr><th scope="row">{r.k}</th><td>{r.l1}</td><td>{r.l2}</td><td>{r.l3}</td></tr>)}</tbody>
+      </table>
+    </div>
+    <p class="note">En quesos no se supone crecimiento de volumen: el beneficio principal es ≈ 1,5 % más queso con la misma leche, y su punto de equilibrio es 1,36 %. En UHT se supone +11 %, limitado por la demanda.</p>
+
+    <div class="block cols cols--57">
+      <header class="block__head"><h3 class="block__t">Planta completa: 9 productos, una plataforma.</h3>
+        <p class="block__lead">Fases escalonadas: UHT empieza 1 año después de la Fase 1 y quesos 2 años después. Con las 3 líneas al máximo, la leche pasa a ser la restricción de la planta.</p></header>
+      <dl class="kv">{plant.map((x) => <div><dt>{x.k}</dt><dd class="mono">{x.v}</dd></div>)}</dl>
+    </div>
+  </div>
+</section>

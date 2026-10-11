@@ -1,0 +1,45 @@
+---
+import { conclusions, nextSteps, sections, site } from '../data/site';
+const s = sections.find((x) => x.id === 'conclusiones')!;
+---
+<section class="sec conc" id="conclusiones" aria-labelledby="conclusiones-t">
+  <div class="wrap">
+    <p class="conc__meta micro"><span>{s.n} — {s.label}</span><span>{s.code} / {site.rev}</span><span>Propuesta de valor</span></p>
+    <h2 class="conc__t" id="conclusiones-t" data-lines>Ver la planta funcionando antes de comprar un solo equipo.</h2>
+    <ol class="conc__list">
+      {conclusions.map((c, i) => (
+        <li><span class="mono conc__n">C{i + 1}</span><p>{c}</p></li>
+      ))}
+    </ol>
+    <p class="conc__next"><strong class="micro">Próximos pasos</strong>{nextSteps}</p>
+  </div>
+</section>
+
+<style>
+  /* Banda de tinta sólida: inversión local de tokens, sin degradados */
+  .conc {
+    --paper: var(--band);
+    --ink: oklch(96% 0.006 95);
+    --ink-2: oklch(80% 0.008 120);
+    --ink-3: oklch(70% 0.008 140);
+    --rule: oklch(32% 0.01 180);
+    --accent: var(--lime);
+    background: var(--paper); color: var(--ink);
+  }
+
+  .conc__meta { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-5); padding-bottom: var(--s-3); border-bottom: 1px solid var(--rule); }
+  .conc__t {
+    font: 700 clamp(2.5rem, 1rem + 6vw, 7.5rem)/0.95 var(--f-display);
+    letter-spacing: -0.045em; max-width: 14ch;
+    margin-top: var(--s-8);
+  }
+  .conc__list {
+    display: grid; gap: 0 var(--gap); margin-top: var(--s-9);
+    @media (min-width: 1080px) { grid-template-columns: repeat(3, 1fr); }
+    & li { display: grid; grid-template-columns: 2.5rem 1fr; gap: var(--s-3); padding-block: var(--s-4) var(--s-5); border-top: 1px solid var(--rule); }
+    & p { color: var(--ink-2); }
+  }
+  .conc__n { color: var(--accent); }
+  .conc__next { margin-top: var(--s-7); max-width: 72ch; color: var(--ink-2); }
+  .conc__next strong { display: block; margin-bottom: var(--s-2); color: var(--accent); }
+</style>
