@@ -144,6 +144,10 @@ button { font: inherit; color: inherit; }
   line-height: 0.98;
   @media (min-width: 1080px) { grid-column: 4 / span 9; }
 }
+.sec__pre {
+  grid-column: 1 / -1; margin-top: calc(-1 * var(--s-2));
+  @media (min-width: 1080px) { grid-column: 4 / span 9; }
+}
 .sec__intro {
   grid-column: 1 / -1;
   @media (min-width: 720px) { grid-column: 3 / -1; }

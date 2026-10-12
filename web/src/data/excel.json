@@ -242,15 +242,6 @@
  },
  "sensibilidad": [
   {
-   "escenario": "Escenario",
-   "fb": null,
-   "fi": null,
-   "fo": null,
-   "vpn": null,
-   "tir": null,
-   "conclusion": "Conclusión"
-  },
-  {
    "escenario": "Caso base",
    "fb": 1,
    "fi": 1,
@@ -321,6 +312,15 @@
    "vpn": 19079971590.8118,
    "tir": 0.583603154878991,
    "conclusion": "Conviene: VPN positivo"
+  },
+  {
+   "escenario": "Solo beneficios de eficiencia (sin el margen del volumen adicional)",
+   "fb": 0.227642004727864,
+   "fi": 1,
+   "fo": 1,
+   "vpn": -3938301605.28592,
+   "tir": -0.00916750450509609,
+   "conclusion": "No conviene"
   }
  ],
  "sensTio": [

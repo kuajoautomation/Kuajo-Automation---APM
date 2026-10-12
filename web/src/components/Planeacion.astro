@@ -2,7 +2,7 @@
 import SectionHead from './SectionHead.astro';
 import excel from '../data/excel.json';
 import { schedule, phases, milestones, teamHours, budget, economics } from '../data/site';
-import { num, pct, m, fecha } from '../lib/fmt';
+import { num, pct, m, fecha, aprox } from '../lib/fmt';
 
 const acts = excel.actividades;
 const edt2 = excel.edt.filter((e) => e.nivel === 2);
@@ -31,7 +31,7 @@ const budgetTotal = budget.reduce((s, b) => s + b.v, 0);
 ---
 <section class="sec" id="planeacion" aria-labelledby="planeacion-t">
   <div class="wrap">
-    <SectionHead id="planeacion" title={`${schedule.semanas} semanas, ${num(economics.horas)} horas de ingeniería y una parada de 2 semanas.`} note="Guía PM4R del BID · anexo A">
+    <SectionHead id="planeacion" title={`${schedule.semanas} semanas, ${num(economics.horas)} horas de ingeniería y una parada de 2 semanas.`} note="Guía PM4R del BID · anexo A" pre="Cifras preliminares">
       <p class="sec__intro lead">El proyecto arranca con la firma el {schedule.inicio} y termina el {schedule.fin}. La ruta crítica pasa por los robots importados (20 semanas) y el montaje se hace en una parada del {schedule.parada}, posible porque el PLC, el SCADA y el MES llegan probados en el gemelo digital.</p>
     </SectionHead>
 
@@ -131,7 +131,7 @@ const budgetTotal = budget.reduce((s, b) => s + b.v, 0);
       <figure class="fig">
         <header class="block__head"><h3 class="block__t">Curva S: 60 % del valor entre los meses 4 y 6.</h3>
           <p class="block__lead">Meses 1 a 3 de ingeniería (8 %), meses 4 a 6 de órdenes de equipos (60 %), 7 y 8 de entregas y montaje (26 %) y 9 a 12 de pruebas y cierre (6 %).</p></header>
-        <svg class="chart" viewBox={`0 0 ${S.w} ${S.h}`} role="img" aria-label="Valor planificado mensual y acumulado: llega a $8.526 M en el mes 12." data-bars>
+        <svg class="chart" viewBox={`0 0 ${S.w} ${S.h}`} role="img" aria-label="Valor planificado mensual y acumulado: llega al precio de la oferta, ≈ $8.500 M, en el mes 12." data-bars>
           {[0, 3e9, 6e9, 9e9].map((v) => <g><path class="gridl" d={`M ${S.x0} ${sy(v)} H ${S.x1}`} /><text x={S.x0 - 8} y={sy(v) + 4} font-size="11" text-anchor="end">{num(v / 1e9)}</text></g>)}
           {cs.mensual.map((v, i) => <rect class="bar bar-pos" x={sx(i) - 11} y={sy(v)} width="22" height={S.y0 - sy(v)} data-bar="y" />)}
           <path class="line" d={sPath} data-draw />
@@ -141,30 +141,33 @@ const budgetTotal = budget.reduce((s, b) => s + b.v, 0);
         </svg>
         <figcaption class="fig__cap"><b>Fig. 13.3 — Curva S (hoja Curva_S)</b><span>Barras: valor del mes. Línea: acumulado. Es la línea base del valor ganado (SPI y CPI).</span></figcaption>
       </figure>
-      <div class="tbl-wrap" style="--tbl-min: 340px" tabindex="0" role="region" aria-label="Tabla de la curva S">
+      <details class="fold">
+        <summary>Ver la tabla de la curva S</summary>
+      <div class="fold__body tbl-wrap" style="--tbl-min: 340px" tabindex="0" role="region" aria-label="Tabla de la curva S">
         <table class="table">
           <caption class="micro">Tabla 13.5 · valor planificado (M COP)</caption>
           <thead><tr><th scope="col">Mes</th><th scope="col" class="num">Mes</th><th scope="col" class="num">Acumulado</th><th scope="col" class="num">%</th></tr></thead>
           <tbody>{cs.mensual.map((v, i) => <tr><th scope="row" class="mono">{i + 1}</th><td class="num">{m(v)}</td><td class="num">{m(cs.acumulado[i])}</td><td class="num">{pct(cs.pct[i])}</td></tr>)}</tbody>
         </table>
       </div>
+      </details>
     </div>
 
     <div class="block cols cols--2">
       <div>
-        <header class="block__head"><h3 class="block__t">Del costo al precio: $8.526 M.</h3>
-          <p class="block__lead">Suministros de $5.771 M con 10 % de margen, ingeniería por horas, contingencia de 7 % y póliza.</p></header>
+        <header class="block__head"><h3 class="block__t">Del costo al precio: ≈ $8.500 M.</h3>
+          <p class="block__lead">Suministros de ≈ $5.800 M con 10 % de margen, ingeniería por horas, contingencia de 7 % y póliza. El 73 % de los suministros todavía son estimaciones de integrador que se reemplazarán por cotizaciones.</p></header>
         <div class="stack" aria-hidden="true">{budget.map((b, i) => <i style={`--w:${(b.v / budgetTotal) * 100}%`} class={`s${i}`} />)}</div>
         <div class="tbl-wrap" style="--tbl-min: 300px; margin-top: var(--s-4)"><table class="table">
           <tbody>
-            {budget.map((b, i) => <tr><th scope="row"><span class={`sw s${i}`} aria-hidden="true" />{b.k}<span class="micro" style="display:block;text-transform:none;letter-spacing:0">{b.n}</span></th><td class="num">{m(b.v)}</td></tr>)}
-            <tr class="is-total"><th scope="row">Precio de la oferta (sin IVA)</th><td class="num">{m(excel.precio.precio)}</td></tr>
+            {budget.map((b, i) => <tr><th scope="row"><span class={`sw s${i}`} aria-hidden="true" />{b.k}<span class="micro" style="display:block;text-transform:none;letter-spacing:0">{b.n}</span></th><td class="num">{aprox(b.v, { tipo: 'cop' })}</td></tr>)}
+            <tr class="is-total"><th scope="row">Precio estimado de la oferta (sin IVA)</th><td class="num">{aprox(excel.precio.precio, { tipo: 'cop' })}</td></tr>
           </tbody>
         </table></div>
       </div>
       <div>
         <header class="block__head"><h3 class="block__t">12 riesgos, ninguno en zona alta.</h3>
-          <p class="block__lead">Nivel = probabilidad × impacto. La contingencia de ${m(excel.contingencia)} M cubre {num(economics.cobertura, 2)} veces los ${m(excel.riesgoRetenido)} M de riesgo que retiene Kuajo.</p></header>
+          <p class="block__lead">Nivel = probabilidad × impacto. La contingencia de {aprox(excel.contingencia, { tipo: 'cop' })} cubre {aprox(economics.cobertura, { dec: 1 })} veces los {aprox(excel.riesgoRetenido, { tipo: 'cop' })} de riesgo que retiene Kuajo.</p></header>
         <table class="heat" aria-label="Mapa de calor de riesgos: número de riesgos por probabilidad e impacto">
           <thead><tr><th scope="col"><span class="sr-only">Probabilidad</span></th>{[1, 2, 3, 4, 5].map((i) => <th scope="col" class="micro">I={i}</th>)}</tr></thead>
           <tbody>

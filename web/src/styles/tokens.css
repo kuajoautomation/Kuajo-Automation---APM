@@ -113,3 +113,10 @@
   --st-alarm: oklch(70% 0.17 27); --st-stop: oklch(70% 0.015 230);
   --y1: #f08a7e; --y2: #b393f0; --y3: #52c3d2;
 }
+
+/* Estimaciones preliminares: ámbar oscuro (#8A5300) sobre crema (#EFE6CF), contraste 5,1:1 */
+:root { --pre-ink: oklch(49.4% 0.109 67); --pre-bg: oklch(92.6% 0.032 89); }
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme='light']) { --pre-ink: oklch(85% 0.12 80); --pre-bg: oklch(27% 0.045 70); }
+}
+:root[data-theme='dark'] { --pre-ink: oklch(85% 0.12 80); --pre-bg: oklch(27% 0.045 70); }

@@ -18,7 +18,7 @@ import { site, sections, PENDING } from '../data/site';
         <p class="micro">Proyecto</p>
         <ul>
           <li>{site.repo === PENDING ? <span>GitHub <span class="pending">{PENDING}</span></span> : <a href={site.repo} rel="noopener">GitHub <span aria-hidden="true">↗</span></a>}</li>
-          <li>{site.video === PENDING ? <span>YouTube <span class="pending">{PENDING}</span></span> : <a href={site.video} rel="noopener">YouTube <span aria-hidden="true">↗</span></a>}</li>
+          <li>{site.video === PENDING ? <span>YouTube <span class="pending">En edición</span></span> : <a href={site.video} rel="noopener">YouTube <span aria-hidden="true">↗</span></a>}</li>
           <li><a href="#descargas">Informe y anexos</a></li>
         </ul>
       </div>

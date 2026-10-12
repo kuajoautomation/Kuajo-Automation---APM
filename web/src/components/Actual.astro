@@ -1,7 +1,7 @@
 ---
 import SectionHead from './SectionHead.astro';
 import Figura from './Figura.astro';
-import { mix, today, oee, bottleneck } from '../data/site';
+import { mix, today, oee, bottleneck, alcanzable } from '../data/site';
 import { pct } from '../lib/fmt';
 const occ = [
   { k: 'Llenadora de vasos U-232', hoy: bottleneck.llenadoraHoy, prop: bottleneck.llenadoraProp },
@@ -10,7 +10,7 @@ const occ = [
 ---
 <section class="sec" id="actual" aria-labelledby="actual-t">
   <div class="wrap">
-    <SectionHead id="actual" title="Hoy la llenadora de vasos limita la línea al 83 % de la demanda." note="Supuestos del caso · hoja VSM_Actual">
+    <SectionHead id="actual" title="Hoy la llenadora de vasos limita la línea al 83 % de la demanda." note="Supuestos del caso · hoja VSM_Actual" pre="Estimación preliminar">
       <p class="sec__intro lead">La línea produce 43.700 kg/día frente a 52.400 que piden los clientes. Todos los equipos de proceso ya existen: la propuesta no compra tanques ni llenadoras, solo automatiza, integra y robotiza.</p>
     </SectionHead>
 
@@ -21,12 +21,12 @@ const occ = [
         <div class="tbl-wrap" style="--tbl-min: 400px" tabindex="0" role="region" aria-label="Mix de producción">
           <table class="table">
             <caption class="micro">Tabla 6.2 · mix de producción (kg/día)</caption>
-            <thead><tr><th scope="col">Receta</th><th scope="col" class="num">Hoy</th><th scope="col" class="num">Propuesta</th><th scope="col" class="num">Crece</th><th scope="col" class="num">Lotes/día hoy</th></tr></thead>
+            <thead><tr><th scope="col">Receta</th><th scope="col" class="num">Hoy</th><th scope="col" class="num">Meta estimada</th><th scope="col" class="num">Crece</th><th scope="col" class="num">Lotes/día hoy</th></tr></thead>
             <tbody>
               {mix.map((r) => (
-                <tr><th scope="row" class={`c-${r.r.toLowerCase()}`}><span class="dot" aria-hidden="true" />{r.r} {r.name}</th><td class="num">{r.hoy}</td><td class="num">{r.prop}</td><td class="num">{r.crec}</td><td class="num">{r.lotes}</td></tr>
+                <tr><th scope="row" class={`c-${r.r.toLowerCase()}`}><span class="dot" aria-hidden="true" />{r.r} {r.name}</th><td class="num">{r.hoy}</td><td class="num">≈ {r.prop}</td><td class="num">{r.crec}</td><td class="num">{r.lotes}</td></tr>
               ))}
-              <tr class="is-total"><th scope="row">Total</th><td class="num">43.700</td><td class="num">52.400</td><td class="num">20 %</td><td class="num">5,4</td></tr>
+              <tr class="is-total"><th scope="row">Total</th><td class="num">43.700</td><td class="num">≈ 52.400</td><td class="num">20 %</td><td class="num">5,4</td></tr>
             </tbody>
           </table>
         </div>
@@ -41,13 +41,13 @@ const occ = [
 
     <div class="block cols cols--2">
       <div>
-        <header class="block__head"><h3 class="block__t">De 55,4 % a 78,0 % de OEE.</h3>
-          <p class="block__lead">Tabla 6.5: descomposición del OEE de la llenadora de vasos, hoy y con la propuesta.</p></header>
-        <p class="legend"><span><i></i>Hoy</span><span class="is-new"><i></i>Con la propuesta</span></p>
+        <header class="block__head"><h3 class="block__t">De 55,4 % a ≈ 78 % de OEE.</h3>
+          <p class="block__lead">Tabla 6.5: descomposición del OEE de la llenadora de vasos, hoy y la meta estimada. Con la meta, la línea pasaría de 43.700 a ≈ 52.400 kg/día y cumpliría ≈ 100 % de la demanda.</p></header>
+        <p class="legend"><span><i></i>Hoy</span><span class="is-new"><i></i>Meta estimada</span></p>
         <ul class="hbars" data-bars>
           {oee.map((o) => (
             <li class="hbar">
-              <p class="hbar__head"><b>{o.k}</b><span class="mono">{pct(o.hoy)} → {pct(o.prop)}</span></p>
+              <p class="hbar__head"><b>{o.k}</b><span class="mono">{pct(o.hoy)} → ≈&nbsp;{pct(o.prop, 0)}</span></p>
               <span class="hbar__track" aria-hidden="true"><i style={`--w:${o.hoy * 100}%`} data-bar /></span>
               <span class="hbar__track is-new" aria-hidden="true"><i style={`--w:${o.prop * 100}%`} data-bar /></span>
               <p class="note" style="margin-top:2px">{o.por}</p>
@@ -58,11 +58,11 @@ const occ = [
       <div>
         <header class="block__head"><h3 class="block__t">El cuello de botella se desplaza.</h3>
           <p class="block__lead">{bottleneck.texto}</p></header>
-        <p class="legend"><span><i></i>Hoy</span><span class="is-new"><i></i>Con la propuesta</span></p>
+        <p class="legend"><span><i></i>Hoy</span><span class="is-new"><i></i>Meta estimada</span></p>
         <ul class="hbars" data-bars>
           {occ.map((o) => (
             <li class="hbar">
-              <p class="hbar__head"><b>{o.k}</b><span class="mono">{pct(o.hoy, 0)} → {pct(o.prop, o.prop === 0.888 ? 1 : 0)}</span></p>
+              <p class="hbar__head"><b>{o.k}</b><span class="mono">{pct(o.hoy, 0)} → ≈&nbsp;{pct(o.prop, 0)}</span></p>
               <span class="hbar__track" aria-hidden="true"><i style={`--w:${o.hoy * 100}%`} data-bar /></span>
               <span class="hbar__track is-new" aria-hidden="true"><i style={`--w:${o.prop * 100}%`} data-bar /></span>
             </li>
@@ -72,9 +72,24 @@ const occ = [
       </div>
     </div>
 
+    <div class="block">
+      <header class="block__head"><h3 class="block__t">¿Cómo sabemos que la meta es alcanzable?</h3></header>
+      <ol class="reasons">
+        {alcanzable.map((a, i) => <li><span class="mono reasons__n">{String(i + 1).padStart(2, '0')}</span><div><p class="reasons__k">{a.k}</p><p class="note" style="margin-top:2px">{a.v}</p></div></li>)}
+      </ol>
+    </div>
+
     <div class="block cols cols--2">
       <Figura id="f52a" sizes="(min-width: 1080px) 660px, 100vw" />
       <Figura id="f55" sizes="(min-width: 1080px) 660px, 100vw" />
     </div>
   </div>
 </section>
+
+<style>
+  .reasons { display: grid; border-top: 1px solid var(--ink); column-gap: var(--gap); }
+  @media (min-width: 1080px) { .reasons { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+  .reasons li { display: grid; grid-template-columns: 2.5rem 1fr; gap: var(--s-3); padding-block: var(--s-4) var(--s-5); border-bottom: 1px solid var(--rule); }
+  .reasons__n { color: var(--accent); }
+  .reasons__k { font-weight: 600; }
+</style>

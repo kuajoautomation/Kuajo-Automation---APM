@@ -8,7 +8,7 @@ const cop = (v: number) => `$${num(v)}`;
 ---
 <section class="sec" id="oferta" aria-labelledby="oferta-t">
   <div class="wrap">
-    <SectionHead id="oferta" title="$8.526 millones por la Fase 1, el 10 % contra el acta de cierre." note={`Oferta ${offer.code} · caso académico`}>
+    <SectionHead id="oferta" title="≈ $8.500 millones por la Fase 1, el 10 % contra el acta de cierre." note={`Oferta ${offer.code} · caso académico`} pre="Cifras preliminares">
       <p class="sec__intro lead">{offer.objeto}</p>
     </SectionHead>
 
@@ -32,14 +32,15 @@ const cop = (v: number) => `$${num(v)}`;
 
     <div class="block cols cols--2">
       <div>
-        <header class="block__head"><h3 class="block__t">Precio de la Fase 1.</h3></header>
+        <header class="block__head"><h3 class="block__t">Precio estimado de la Fase 1.</h3>
+          <p class="block__lead">Con 73 % de los suministros todavía estimados, el precio se confirmará con cotizaciones dentro de la validez de la oferta (90 días).</p></header>
         <div class="tbl-wrap" style="--tbl-min: 300px"><table class="table">
           <caption class="micro">Tabla 14.2 · COP</caption>
           <tbody>
             <tr><th scope="row">Suministros: equipos, software, obras y montaje</th><td class="num">{cop(p.suministrosPrecio)}</td><td class="num">{pct(p.suministrosPrecio / p.precio)}</td></tr>
             <tr><th scope="row">Ingeniería, gestión, comisionamiento y capacitación (10.160 h × $150.000)</th><td class="num">{cop(p.ingenieriaPrecio)}</td><td class="num">{pct(p.ingenieriaPrecio / p.precio)}</td></tr>
             <tr><th scope="row">Contingencia y póliza</th><td class="num">{cop(p.contingenciaPrecio + p.poliza)}</td><td class="num">{pct((p.contingenciaPrecio + p.poliza) / p.precio)}</td></tr>
-            <tr class="is-total"><th scope="row">Precio total sin IVA</th><td class="num">{cop(p.precio)}</td><td class="num">≈ US${num(excel.resumen.precioUSD)}</td></tr>
+            <tr class="is-total"><th scope="row">Precio total estimado sin IVA</th><td class="num">{cop(p.precio)}</td><td class="num">≈ US${num(excel.resumen.precioUSD)}</td></tr>
             <tr><th scope="row">IVA 19 % (descontable para Pomar)</th><td class="num">{cop(p.iva)}</td><td></td></tr>
             <tr><th scope="row">Total con IVA</th><td class="num">{cop(p.conIva)}</td><td></td></tr>
           </tbody>

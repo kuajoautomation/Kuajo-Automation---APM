@@ -6,17 +6,17 @@ import { num } from '../lib/fmt';
 ---
 <section class="sec" id="vsm" aria-labelledby="vsm-t">
   <div class="wrap">
-    <SectionHead id="vsm" title="El lote de fresa pasa de 4,2 a 3,0 días entre el silo y el despacho." note="Rother y Shook · Learning to See" />
+    <SectionHead id="vsm" title="Se estima que el lote de fresa pase de 4,2 a ≈ 3 días entre el silo y el despacho." note="Rother y Shook · Learning to See" pre="Metas preliminares" />
 
-    <ul class="counters" style="--n:5" aria-label="Cambios del VSM actual al futuro">
+    <ul class="counters" style="--n:5" aria-label="Cambios estimados del VSM actual al futuro">
       {vsmCounters.map((c) => (
         <li class="counter">
           <p class="counter__l">{c.label}</p>
           <p class="counter__v">
-            <span class="sr-only">{num(c.from, c.d)} → {num(c.to, c.d)} {c.unit}</span>
-            <span aria-hidden="true" data-count-from={c.from} data-count-to={c.to} data-count-decimals={c.d}>{num(c.to, c.d)}</span><span class="counter__u" aria-hidden="true"> {c.unit}</span>
+            <span class="sr-only">{num(c.from, c.dFrom)} → aproximadamente {num(c.to, c.d)} {c.unit}</span>
+            <span aria-hidden="true" class="counter__pre">≈&nbsp;</span><span aria-hidden="true" data-count-from={c.from} data-count-to={c.to} data-count-decimals={c.d}>{num(c.to, c.d)}</span><span class="counter__u" aria-hidden="true"> {c.unit}</span>
           </p>
-          <p class="counter__was" aria-hidden="true">Hoy <s>{num(c.from, c.d)} {c.unit}</s></p>
+          <p class="counter__was" aria-hidden="true">Hoy <s>{num(c.from, c.dFrom)} {c.unit}</s></p>
         </li>
       ))}
     </ul>
@@ -44,11 +44,12 @@ import { num } from '../lib/fmt';
 
     <div class="block cols cols--75">
       <div>
-        <header class="block__head"><h3 class="block__t">Ocho mejoras kaizen, una por problema.</h3></header>
+        <header class="block__head"><h3 class="block__t">Ocho mejoras kaizen, una por problema.</h3>
+          <p class="block__lead">Se estima el efecto de cada una con los supuestos del caso; se confirmará midiendo la línea base.</p></header>
         <div class="tbl-wrap" style="--tbl-min: 520px" tabindex="0" role="region" aria-label="Mejoras kaizen K1 a K8">
           <table class="table">
             <caption class="micro">Tabla 6.10 · mejoras del VSM futuro</caption>
-            <thead><tr><th scope="col">#</th><th scope="col">Mejora</th><th scope="col">Efecto</th><th scope="col">Resuelve</th></tr></thead>
+            <thead><tr><th scope="col">#</th><th scope="col">Mejora</th><th scope="col">Efecto estimado</th><th scope="col">Resuelve</th></tr></thead>
             <tbody>{kaizen.map((k) => <tr><td class="mono">{k.k}</td><th scope="row">{k.t}</th><td>{k.ef}</td><td class="mono">{k.p}</td></tr>)}</tbody>
           </table>
         </div>
@@ -57,8 +58,8 @@ import { num } from '../lib/fmt';
         <header class="block__head"><h3 class="block__t">MLT por receta.</h3>
           <p class="block__lead">El kéfir tiene el MLT más largo por su fermentación de 20 h, la maduración y la liberación de 48 h, pero también el mayor valor agregado.</p></header>
         <table class="table">
-          <caption class="micro">Tabla 6.7 · hoy → con la propuesta</caption>
-          <thead><tr><th scope="col">Receta</th><th scope="col">Hoy</th><th scope="col">Propuesta</th></tr></thead>
+          <caption class="micro">Tabla 6.7 · hoy → meta estimada</caption>
+          <thead><tr><th scope="col">Receta</th><th scope="col">Hoy</th><th scope="col">Meta estimada</th></tr></thead>
           <tbody>{mltByRecipe.map((m) => <tr><th scope="row" class={`c-${m.r.toLowerCase()}`}><span class="dot" aria-hidden="true" />{m.r}</th><td class="mono">{m.hoy}</td><td class="mono">{m.prop}<span class="micro" style="display:block">VA {m.va}</span></td></tr>)}</tbody>
         </table>
       </div>

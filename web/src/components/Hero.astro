@@ -1,8 +1,8 @@
 ---
 import PlantDiagram from './PlantDiagram.astro';
+import Preliminar from './Preliminar.astro';
 import { site, kpis } from '../data/site';
 import { num } from '../lib/fmt';
-const fmt = (k: (typeof kpis)[number]) => `${k.prefix}${num(k.to, k.decimals)}`;
 ---
 <section class="hero" id="inicio" aria-labelledby="hero-t">
   <div class="wrap">
@@ -20,7 +20,7 @@ const fmt = (k: (typeof kpis)[number]) => `${k.prefix}${num(k.to, k.decimals)}`;
         <li>ISA-95</li><li>ISA-88</li><li>ISA-101</li><li>Gemelo digital</li>
       </ul>
       <div class="hero__copy">
-        <p class="lead">Integramos proceso, PLC, SCADA, MES y SAP en la línea de yogures de Cajicá para llevarla de 43.700 a 52.400 kg/día sin comprar equipos de proceso. Antes de la parada, las tres recetas corren en el gemelo digital.</p>
+        <p class="lead">Integramos proceso, PLC, SCADA, MES y SAP en la línea de yogures de Cajicá para llevarla de 43.700 a ≈ 52.400 kg/día sin comprar equipos de proceso. Antes de la parada, las tres recetas corren en el gemelo digital.</p>
         <p class="hero__links">
           <a class="link" href="#arquitectura">Ver la arquitectura <span class="arrow" aria-hidden="true">→</span></a>
           <a class="link" href="#descargas">Informe y descargas <span class="arrow" aria-hidden="true">↓</span></a>
@@ -30,11 +30,12 @@ const fmt = (k: (typeof kpis)[number]) => `${k.prefix}${num(k.to, k.decimals)}`;
 
     <div class="hero__fig"><PlantDiagram /></div>
 
-    <dl class="grid hero__kpis" aria-label="Metas del proyecto">
+    <p class="hero__pre"><Preliminar texto="Metas estimadas" /><span class="note">Estimaciones con cálculos preliminares y datos supuestos del caso; se confirmarán midiendo la línea base.</span></p>
+    <dl class="grid hero__kpis" aria-label="Metas estimadas del proyecto">
       {kpis.map((k) => (
         <div class="hk">
           <dt class="micro">{k.label}</dt>
-          <dd class="hk__val mono">{fmt(k)}<span class="hk__unit">{k.unit === '%' ? ' %' : ` ${k.unit}`}</span></dd>
+          <dd class="hk__val mono">{k.prefix && <span class="hk__pre">{k.prefix.trim()}&nbsp;</span>}{num(k.to, k.decimals)}<span class="hk__unit">{k.unit === '%' ? ' %' : ` ${k.unit}`}</span></dd>
           <dd class="hk__was micro">Hoy <s>{k.before}</s></dd>
         </div>
       ))}
@@ -70,7 +71,8 @@ const fmt = (k: (typeof kpis)[number]) => `${k.prefix}${num(k.to, k.decimals)}`;
   .hero__links { display: flex; flex-wrap: wrap; gap: var(--s-5); margin-top: var(--s-5); }
   .hero__fig { margin-top: var(--s-8); @media (min-width: 1080px) { margin-top: var(--s-9); } }
 
-  .hero__kpis { margin-top: var(--s-8); row-gap: var(--s-5); }
+  .hero__pre { margin-top: var(--s-8); display: flex; flex-wrap: wrap; align-items: center; gap: var(--s-2) var(--s-4); & .note { margin: 0; max-width: 60ch; } }
+  .hero__kpis { margin-top: var(--s-5); row-gap: var(--s-5); }
   .hk {
     grid-column: 1 / -1;
     container-type: inline-size;
@@ -87,6 +89,7 @@ const fmt = (k: (typeof kpis)[number]) => `${k.prefix}${num(k.to, k.decimals)}`;
     font-size: clamp(3rem, 22cqi, 6.5rem); font-weight: 500; line-height: 0.95;
     letter-spacing: -0.06em; font-variant-numeric: tabular-nums;
   }
+  .hk__pre { font-size: 0.6em; letter-spacing: 0; color: var(--ink-2); }
   .hk__unit { font-size: 0.4em; letter-spacing: 0; color: var(--ink-2); }
   .hk__was s { text-decoration-thickness: 1px; }
 </style>

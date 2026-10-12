@@ -21,7 +21,13 @@ export const site = {
   coords: '04°55′N 74°02′W',
   rev: 'REV.D',
   informe: 'Informe versión B · 11 oct. 2026',
+  preliminar:
+    'Las metas de proceso y las cifras financieras son estimaciones basadas en cálculos preliminares, con datos supuestos del caso académico. Se confirmarán con la medición de la línea base y con cotizaciones. El cálculo completo está en el informe y en el libro de planeación (anexo A).',
+  videoNota: 'Video en edición (25 a 30 min)',
 };
+
+/** Textos de la etiqueta de estimación preliminar (componente Preliminar). */
+export type TextoPreliminar = 'Estimación preliminar' | 'Cifras preliminares' | 'Metas preliminares' | 'Metas estimadas' | 'Cálculos preliminares' | 'Referencia preliminar ±30 %';
 
 export const sections = [
   { id: 'inicio', n: '00', code: 'KA-INI', label: 'Inicio', short: 'Inicio' },
@@ -52,9 +58,9 @@ export const navQuick: SectionId[] = ['actual', 'vsm', 'arquitectura', 'simulaci
 /* KPIs principales y tabla de indicadores (Tablas 1.1 y 6.9)          */
 /* ------------------------------------------------------------------ */
 export const kpis = [
-  { id: 'oee', label: 'OEE de la llenadora de vasos', from: 55.4, to: 78.0, decimals: 1, unit: '%', before: '55,4 %', prefix: '', note: '86 % × 91 % × 99 % (disponibilidad × rendimiento × calidad)' },
+  { id: 'oee', label: 'OEE de la llenadora de vasos', from: 55.4, to: 78.0, decimals: 0, unit: '%', before: '55,4 %', prefix: '≈ ', note: '≈ 86 % × 91 % × 99 % (disponibilidad × rendimiento × calidad)' },
   { id: 'traza', label: 'Trazar un lote en un recall', from: 360, to: 30, decimals: 0, unit: 'min', before: '6 h', prefix: '< ', note: 'Genealogía en el MES, del silo al pallet' },
-  { id: 'cambio', label: 'Cambio de receta Y2 → Y1', from: 90, to: 35, decimals: 0, unit: 'min', before: '90 min', prefix: '', note: 'Recetas ISA-88, CIP automático y formato con RFID' },
+  { id: 'cambio', label: 'Cambio de receta Y2 → Y1', from: 90, to: 35, decimals: 0, unit: 'min', before: '90 min', prefix: '≈ ', note: 'Recetas ISA-88, CIP automático y formato con RFID' },
 ];
 
 export const kpiTable: [string, string, string][] = [
@@ -185,18 +191,25 @@ export const oee = [
 ];
 export const bottleneck = {
   llenadoraHoy: 1.0, llenadoraProp: 0.89, fermHoy: 0.76, fermProp: 0.888, fermSim: 0.98,
-  texto: 'Hoy la llenadora de vasos limita la línea: necesita 14,0 de las 14 h disponibles, aunque a velocidad nominal bastarían 7,8 h. Con la propuesta produce 20 % más en 12,5 h (89 %) y la restricción pasa a la fermentación, que depende de la biología del cultivo y no se puede acelerar.',
+  texto: 'Hoy la llenadora de vasos limita la línea: necesita 14,0 de las 14 h disponibles, aunque a velocidad nominal bastarían 7,8 h. Se estima que con la propuesta produciría 20 % más en ≈ 12,5 h (≈ 89 %) y la restricción pasaría a la fermentación, que depende de la biología del cultivo y no se puede acelerar.',
 };
+/** «¿Cómo sabemos que la meta es alcanzable?» (presentación y hoja Proceso del resumen de estimaciones). */
+export const alcanzable = [
+  { k: 'Pérdida por pérdida', v: 'El OEE se descompone en disponibilidad ≈ 86 %, rendimiento ≈ 91 % y calidad ≈ 99 %, y cada una está ligada a una mejora concreta: cambios más cortos, control de peso e inspección automática.' },
+  { k: 'Hay margen', v: 'Para cumplir el +20 % basta un OEE de ≈ 70 % (9,72 de las 14 h disponibles). La meta de ≈ 78 % deja margen.' },
+  { k: 'Lo respalda la simulación', v: 'La simulación preliminar da un resultado parecido. El primer paso del proyecto es medir la línea base para confirmarlo.' },
+];
 
 /* ------------------------------------------------------------------ */
 /* VSM (secciones 6.2, 6.4 y 6.7)                                      */
 /* ------------------------------------------------------------------ */
+/** `d`: decimales de la meta (con «≈»); `dFrom`: decimales del valor de hoy, que se deja exacto. */
 export const vsmCounters = [
-  { label: 'MLT de un lote de Y1', from: 4.2, to: 3.0, d: 1, unit: 'días' },
-  { label: 'Inventario de producto terminado', from: 48, to: 24, d: 0, unit: 'h' },
-  { label: 'Espera en el pulmón U-226 (Y1)', from: 4, to: 1.5, d: 1, unit: 'h' },
-  { label: 'OEE de la llenadora', from: 55.4, to: 78.0, d: 1, unit: '%' },
-  { label: 'Tiempo que agrega valor (Y1)', from: 11.4, to: 15.1, d: 1, unit: '%' },
+  { label: 'MLT de un lote de Y1', from: 4.2, to: 3, d: 0, dFrom: 1, unit: 'días' },
+  { label: 'Inventario de producto terminado', from: 48, to: 24, d: 0, dFrom: 0, unit: 'h' },
+  { label: 'Espera en el pulmón U-226 (Y1)', from: 4, to: 1.5, d: 1, dFrom: 0, unit: 'h' },
+  { label: 'OEE de la llenadora', from: 55.4, to: 78, d: 0, dFrom: 1, unit: '%' },
+  { label: 'Tiempo que agrega valor (Y1)', from: 11.4, to: 15, d: 0, dFrom: 1, unit: '%' },
 ];
 export const vsmRead = [
   'Flujo empujado y sin sincronizar: cada etapa sigue la orden impresa del turno y el producto fermentado espera ≈ 4 h a la llenadora.',
@@ -207,19 +220,19 @@ export const vsmRead = [
 export const vsmFuture =
   'En el VSM futuro la programación del MES (heijunka) llega solo al proceso marcapasos, los fermentadores. Aguas abajo el producto fluye en FIFO: del fermentador al enfriador y del pulmón a la llenadora, con máximo 1 lote. Preparación y tratamiento térmico forman un flujo continuo con el lote que entra al fermentador, y un supermercado de producto liberado se despacha por fecha de vencimiento.';
 export const kaizen = [
-  { k: 'K1', t: 'Recetas ISA-88 y CIP automático', ef: 'Cambio de 90 a 35 min', p: 'P2' },
-  { k: 'K2', t: 'pH en línea y fin de fase automático', ef: '−1,25 h por lote; fermentación ±10 %', p: 'P4' },
-  { k: 'K3', t: 'Pesadora, detector de metales y visión', ef: 'Rechazo 3 → 1 %; sobrellenado 3 → 1,3 %', p: 'P4' },
-  { k: 'K4', t: 'Carril FIFO secuenciado por el MES', ef: 'Espera en el pulmón 4 → 1,5 h (Y1)', p: 'P1' },
+  { k: 'K1', t: 'Recetas ISA-88 y CIP automático', ef: 'Cambio de 90 a ≈ 35 min', p: 'P2' },
+  { k: 'K2', t: 'pH en línea y fin de fase automático', ef: '≈ −1,25 h por lote; fermentación ±10 %', p: 'P4' },
+  { k: 'K3', t: 'Pesadora, detector de metales y visión', ef: 'Rechazo 3 → ≈ 1 %; sobrellenado 3 → ≈ 1,3 %', p: 'P4' },
+  { k: 'K4', t: 'Carril FIFO secuenciado por el MES', ef: 'Espera en el pulmón 4 → ≈ 1,5 h (Y1)', p: 'P1' },
   { k: 'K5', t: 'Celda robotizada', ef: 'De 4 a 1 operario por turno', p: 'P6' },
-  { k: 'K6', t: 'Plan diario de SAP al MES', ef: 'Inventario 48 → 24 h', p: 'P5' },
+  { k: 'K6', t: 'Plan diario de SAP al MES', ef: 'Inventario 48 → ≈ 24 h', p: 'P5' },
   { k: 'K7', t: 'Genealogía del lote (Track & Trace)', ef: 'Trazabilidad 6 h → < 30 min', p: 'P3' },
-  { k: 'K8', t: 'Submedición de energía, vapor y agua', ef: 'Consumos por lote; ahorro de 3 %', p: 'P7' },
+  { k: 'K8', t: 'Submedición de energía, vapor y agua', ef: 'Consumos por lote; ahorro de ≈ 3 %', p: 'P7' },
 ];
 export const mltByRecipe = [
-  { r: 'Y1', hoy: '100,2 h (4,2 d)', prop: '72,5 h (3,0 d)', va: '11,4 % → 15,1 %' },
-  { r: 'Y2', hoy: '99,9 h (4,2 d)', prop: '73,9 h (3,1 d)', va: '11,2 % → 14,8 %' },
-  { r: 'Y3', hoy: '147,9 h (6,2 d)', prop: '121,3 h (5,1 d)', va: '25,1 % → 30,3 %' },
+  { r: 'Y1', hoy: '100,2 h (4,2 d)', prop: '≈ 72,5 h (≈ 3,0 d)', va: '11,4 % → ≈ 15,1 %' },
+  { r: 'Y2', hoy: '99,9 h (4,2 d)', prop: '≈ 73,9 h (≈ 3,1 d)', va: '11,2 % → ≈ 14,8 %' },
+  { r: 'Y3', hoy: '147,9 h (6,2 d)', prop: '≈ 121,3 h (≈ 5,1 d)', va: '25,1 % → ≈ 30,3 %' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -377,12 +390,17 @@ export const fermenters = [
 /* ------------------------------------------------------------------ */
 /* Resultados por módulo (estado según el informe)                     */
 /* ------------------------------------------------------------------ */
-export const modules = [
-  { n: 'M01', t: 'Gestión de la producción', owner: 'Juan Vargas · David Felipe Garcia', tools: ['VSM', 'Simulación', 'Tecnomatix'], fig: '+24 % vendible', d: 'VSM actual y futuro, línea base de KPIs, OEE, MLT y simulación de eventos discretos con 3 escenarios. El modelo en Tecnomatix Plant Simulation está en curso (19/10/2026).', status: 'Hecho', },
-  { n: 'M02', t: 'Planeación PM4R', owner: 'Duvan Pacheco', tools: ['EDT', 'CPM', 'Curva S', 'VPN'], fig: '48 semanas', d: 'EDT de 38 paquetes, cronograma nivelado con ruta crítica, curva S, presupuesto de 66 partidas, flujos de Pomar y Kuajo, sensibilidad y matrices de riesgos, adquisiciones, comunicaciones y RACI.', status: 'Hecho' },
-  { n: 'M03', t: 'Celda robotizada', owner: 'Jose Luis Pulido', tools: ['ISO 10218', 'PL d', 'RobotStudio'], fig: '1.200 cajas/h', d: 'Configuración por receta, herramientas, patrones P1–P3 y señales con el PLC definidos. La celda en RobotStudio es de la entrega final (07/12/2026).', status: 'En curso' },
-  { n: 'M04', t: 'Digital Factory', owner: 'Ian Rodriguez', tools: ['Gemelo digital', 'Logix Emulate'], fig: '3 recetas', d: 'Arquitectura del comisionamiento virtual definida (gemelo ↔ Logix Emulate ↔ Ignition). El gemelo es de la entrega final.', status: 'Pendiente' },
-  { n: 'M05', t: 'PLC y SCADA', owner: 'Jose Luis Pulido · Ian Rodriguez', tools: ['ISA-5.1', 'ISA-101', 'Ignition'], fig: '86 tags', d: 'P&ID preliminar, lista única de 86 tags, lazos de control y modelo procedimental ISA-88 hechos. La programación del PLC y las pantallas son de la entrega final.', status: 'En curso' },
+/** Módulos de la presentación: cada uno con dos responsables que se revisan entre sí. */
+export type ModuleStatus = 'Entregado' | 'En curso' | 'Entrega final';
+export const modules: { n: string; t: string; owner: string; tools: string[]; d: string; status: ModuleStatus }[] = [
+  { n: 'M01', t: 'Transformación Digital Industrial', owner: 'Paula · Jose Luis', tools: ['ISA-95', 'Red OT/IT', 'ISA-88', 'P&ID'], d: 'Arquitectura ISA-95 y red OT/IT, modelos físico y procedimental ISA-88 y P&ID preliminar con 86 tags.', status: 'Entregado' },
+  { n: 'M02', t: 'Gestión de la producción', owner: 'Juan · David', tools: ['VSM', 'KPIs', 'Python'], d: 'VSM actual y futuro, línea base de KPIs y simulación de eventos discretos en Python con 3 escenarios.', status: 'Entregado' },
+  { n: 'M03', t: 'Planeación de proyectos', owner: 'Duvan · Ian', tools: ['EDT', 'Cronograma', 'Presupuesto', 'Oferta'], d: 'EDT, cronograma nivelado, presupuesto, flujos de Pomar y Kuajo y oferta comercial.', status: 'Entregado' },
+  { n: 'M04', t: 'Simulación en Tecnomatix', owner: 'Juan · David', tools: ['Plant Simulation'], d: 'Modelo en Tecnomatix con los mismos objetos y datos del modelo en Python.', status: 'En curso' },
+  { n: 'M05', t: 'Controladores industriales', owner: 'Jose Luis · David', tools: ['Grafcet', 'Ladder', 'Logix Emulate'], d: 'Grafcet y Ladder en Logix Emulate, con las recetas de la línea 1.', status: 'Entrega final' },
+  { n: 'M06', t: 'SCADA', owner: 'Ian · Paula', tools: ['Ignition', 'ISA-101', 'OPC'], d: 'SCADA en Ignition con HMI según ISA-101 y comunicación OPC.', status: 'Entrega final' },
+  { n: 'M07', t: 'Digital Factory', owner: 'Ian · Juan', tools: ['Gemelo digital', 'Logix Emulate'], d: 'Gemelo digital de la línea 1 conectado a Logix Emulate.', status: 'Entrega final' },
+  { n: 'M08', t: 'Celda robotizada', owner: 'Jose Luis · Duvan', tools: ['RobotStudio', 'Riesgos'], d: 'Diseño de la celda, simulación en RobotStudio y análisis de riesgos.', status: 'Entrega final' },
 ];
 
 /* ------------------------------------------------------------------ */
@@ -410,19 +428,23 @@ export const economics = {
   semanas: 48,
   tio: 0.137,
 };
+/** Texto mostrado, redondeado como estimación preliminar. Los valores exactos están en `economics`. */
 export const economicsRows = [
-  { k: 'Precio del contrato (Fase 1, sin IVA)', v: '$8.526 M', n: '≈ US$2,60 M · validez de 90 días · cláusula de TRM sobre los ítems en US$' },
-  { k: 'Inversión de Pomar en el año 0', v: '$9.605 M', n: 'Precio + parada de 12 días + costo interno' },
-  { k: 'OPEX del año 1', v: '$588 M', n: 'Soporte, mantenimiento, repuestos, energía y administrador SCADA/MES' },
-  { k: 'VPN a la TIO de 13,7 %', v: '$15.014 M', n: 'Horizonte de 7 años sin valor residual' },
-  { k: 'TIR', v: '49,0 %', n: '≈ 3,6 veces la TIO' },
-  { k: 'Recuperación', v: '2,23 años', n: '2,71 años descontada' },
-  { k: 'Relación beneficio/costo', v: '2,63', n: 'VP de los años 1 a 7 / inversión neta de impuestos' },
-  { k: 'Punto de equilibrio', v: '39 %', n: 'de los beneficios estimados mantiene el VPN ≥ 0' },
-  { k: 'Utilidad neta de Kuajo', v: '$935 M', n: '11,0 % del contrato' },
-  { k: 'Crédito rotativo máximo de Kuajo', v: '$1.316 M', n: 'Mes 8, por el cobro a 30 días; cupo de $1.500 M' },
-  { k: 'Cobertura de la contingencia', v: '1,23', n: 'Contingencia de $444 M sobre $362 M de riesgo retenido' },
+  { k: 'Precio del contrato (Fase 1, sin IVA)', v: '≈ $8.500 M', n: '≈ US$2,6 M · validez de 90 días · cláusula de TRM sobre los ítems en US$' },
+  { k: 'Inversión de Pomar en el año 0', v: '≈ $9.600 M', n: 'Precio + parada de 12 días + costo interno' },
+  { k: 'Beneficios anuales en régimen', v: '≈ $8.500 M', n: 'Margen del volumen adicional, menos rechazo, mano de obra y energía' },
+  { k: 'OPEX del año 1', v: '≈ $590 M', n: 'Soporte, mantenimiento, repuestos, energía y administrador SCADA/MES' },
+  { k: 'VPN a la TIO de 13,7 %', v: '≈ $15.000 M', n: 'Horizonte de 7 años sin valor residual' },
+  { k: 'TIR', v: '≈ 49 %', n: '≈ 3,6 veces la TIO' },
+  { k: 'Recuperación', v: '≈ 2,2 años', n: '≈ 2,7 años descontada' },
+  { k: 'Relación beneficio/costo', v: '≈ 2,6', n: 'VP de los años 1 a 7 / inversión neta de impuestos' },
+  { k: 'Punto de equilibrio', v: '≈ 40 %', n: 'de los beneficios estimados mantiene el VPN ≥ 0' },
+  { k: 'Utilidad neta de Kuajo', v: '≈ $935 M', n: '≈ 11 % del contrato' },
+  { k: 'Crédito rotativo máximo de Kuajo', v: '≈ $1.300 M', n: 'Mes 8, por el cobro a 30 días; cupo de $1.500 M' },
+  { k: 'Cobertura de la contingencia', v: '≈ 1,2', n: 'La contingencia cubre ≈ 1,2 veces el riesgo que retiene Kuajo' },
 ];
+export const creditoRotativo =
+  'El proyecto es rentable, pero cada hito se cobra a 30 días y los robots, los tableros y el montaje se pagan antes, sobre todo en el mes 8. Por eso Kuajo usa un cupo rotativo: saca solo lo que falta, por el tiempo que falta, y paga intereses solo sobre lo usado (≈ $20 M, ya descontados de la utilidad). Un crédito normal desembolsaría todo desde el primer día.';
 
 /* ------------------------------------------------------------------ */
 /* Cronograma: fases e hitos (Tabla 13.4 y hoja Cronograma)            */
@@ -482,31 +504,31 @@ export const offer = {
 export const futurePhases = [
   { k: 'Fase 1: plataforma de planta', precio: '$1.526 M', sem: 'Incluida', n: 'SCADA, MES, red, servidores e interfaz con SAP: se paga una vez' },
   { k: 'Fase 1: automatización de yogures', precio: '$7.000 M', sem: '48', n: 'Calculada en detalle' },
-  { k: 'Fase 2: línea UHT', precio: '$3.150 M', sem: '26', n: 'Factor 0,45 sobre la automatización de la línea 1' },
-  { k: 'Fase 3: línea de quesos', precio: '$3.850 M', sem: '32', n: 'Factor 0,55: robot sanitario de moldes' },
-  { k: 'Planta completa', precio: '$15.526 M', sem: '106', n: '≈ 2 años con el mismo equipo de 6 personas' },
+  { k: 'Fase 2: línea UHT', precio: '≈ $3.150 M', sem: '26', n: 'Referencia preliminar ±30 %: factor 0,45 sobre la automatización de la línea 1' },
+  { k: 'Fase 3: línea de quesos', precio: '≈ $3.850 M', sem: '32', n: 'Referencia preliminar ±30 %: factor 0,55, robot sanitario de moldes' },
+  { k: 'Planta completa', precio: '≈ $15.500 M', sem: '106', n: '≈ 2 años con el mismo equipo de 6 personas' },
 ];
 
 /* ------------------------------------------------------------------ */
 /* Líneas 2 y 3 (sección 8 y anexo C)                                  */
 /* ------------------------------------------------------------------ */
 export const linesFinance = [
-  { k: 'Producción hoy → con la propuesta (kg/día)', l1: '43.700 → 52.400', l2: '7.470 → 7.470', l3: '82.207 → 91.250' },
+  { k: 'Producción hoy → meta estimada (kg/día)', l1: '43.700 → ≈ 52.400', l2: '7.470 → 7.470', l3: '82.207 → ≈ 91.250' },
   { k: 'Equipo crítico', l1: 'Llenadora de vasos U-232', l2: 'Empacadora Q-332', l3: 'Llenadoras asépticas L-431/L-432' },
-  { k: 'OEE del equipo crítico', l1: '55,4 → 78,0 %', l2: '58 → 75 %', l3: '68 → 80 %' },
+  { k: 'OEE del equipo crítico', l1: '55,4 → ≈ 78 %', l2: '58 → ≈ 75 %', l3: '68 → ≈ 80 %' },
   { k: 'Restricción con la propuesta', l1: 'Fermentadores (89 %)', l2: 'Tinas y prensado', l3: 'Tren UHT (≈ 9,3 h/día)' },
-  { k: 'Beneficios anuales', l1: '$8.481 M', l2: '$1.489 M', l3: '$3.332 M' },
-  { k: 'Precio de Kuajo', l1: '$8.526 M', l2: '$3.850 M', l3: '$3.150 M' },
-  { k: 'VPN a la TIO', l1: '$15.014 M', l2: '$172 M', l3: '$6.408 M' },
-  { k: 'TIR', l1: '49,0 %', l2: '15,0 %', l3: '57,3 %' },
-  { k: 'Lectura', l1: 'Conviene (calculada en detalle)', l2: 'Conviene por poco', l3: 'Conviene' },
+  { k: 'Beneficios anuales', l1: '≈ $8.500 M', l2: '≈ $1.500 M', l3: '≈ $3.300 M' },
+  { k: 'Precio de Kuajo', l1: '≈ $8.500 M', l2: '≈ $3.850 M', l3: '≈ $3.150 M' },
+  { k: 'VPN a la TIO', l1: '≈ $15.000 M', l2: '≈ $170 M', l3: '≈ $6.400 M' },
+  { k: 'TIR', l1: '≈ 49 %', l2: '≈ 15 %', l3: '≈ 57 %' },
+  { k: 'Lectura', l1: 'Conviene (cálculo preliminar más detallado)', l2: 'Conviene por poco', l3: 'Conviene: se recomienda primero' },
 ];
 export const lines23 = { l2: { precio: 3_850e6, vpn: 172e6, tir: 0.150 }, l3: { precio: 3_150e6, vpn: 6_408e6, tir: 0.573 }, vpnCombinado: 20_781e6 };
 export const plant = [
-  { k: 'Precio total de Kuajo (3 fases)', v: '$15.526 M' },
-  { k: 'Inversión total de Pomar', v: '$17.155 M' },
-  { k: 'Beneficios anuales en régimen', v: '$13.303 M' },
-  { k: 'VPN combinado (fases escalonadas)', v: '$20.781 M' },
+  { k: 'Precio total de Kuajo (3 fases)', v: '≈ $15.500 M' },
+  { k: 'Inversión total de Pomar', v: '≈ $17.200 M' },
+  { k: 'Beneficios anuales en régimen', v: '≈ $13.300 M' },
+  { k: 'VPN combinado (fases escalonadas)', v: '≈ $20.800 M' },
   { k: 'Producción de la planta', v: '133.377 → 151.120 kg/día (+13 %)' },
   { k: 'Leche requerida', v: '229.086 → 254.515 L/día (holgura de 2 %)' },
 ];
@@ -515,13 +537,13 @@ export const plant = [
 /* Conclusiones (sección 16)                                           */
 /* ------------------------------------------------------------------ */
 export const conclusions = [
-  'La línea 1 puede producir 20 % más sin comprar equipos de proceso: el OEE de la llenadora pasa de 55 % a 78 % y la línea va de 43.700 a 52.400 kg/día. La restricción pasa a la fermentación.',
-  'La simulación confirma el aumento (+24 % vendible, a menos de 1 % del cálculo), pero los fermentadores trabajan casi saturados: el plan solo se cumple con pausas escalonadas y la secuencia del MES.',
-  'Un solo procedimiento ISA-88 parametrizado produce las 3 recetas, el MES integrado con SAP baja la trazabilidad de 6 h a menos de 30 min y la plataforma queda lista para las líneas 2 y 3.',
-  'Para Pomar, VPN de $15.014 M, TIR de 49,0 % y recuperación en 2,2 años; el VPN sigue positivo si los beneficios caen al 39 % o si la TIO sube a 20 %.',
-  'Para Kuajo, utilidad neta de $935 M (11,0 %) con un crédito rotativo de hasta $1.316 M; la contingencia cubre 1,23 veces los riesgos retenidos.',
+  'Estimamos que la línea de yogures puede producir 20 % más sin comprar equipos de proceso, subiendo el OEE de 55 % a cerca de 78 %.',
+  'La simulación preliminar lo respalda y dice qué cuidar en la operación: escalonar las pausas y secuenciar con el MES, porque la fermentación pasa a ser la restricción.',
+  'Un solo procedimiento ISA-88 produce las tres recetas, y el MES integrado con SAP bajaría la trazabilidad de 6 h a menos de 30 min.',
+  'Con cálculos preliminares, el proyecto valdría para Pomar unos $15.000 M en valor presente (inversión ≈ $9.600 M) y resiste escenarios adversos.',
+  'Para Kuajo es un buen contrato (≈ 11 % neto), con un riesgo de caja que se financia con un crédito rotativo, y deja la planta lista para seguir con UHT y quesos.',
 ];
-export const nextSteps = 'Terminar el modelo en Tecnomatix, validar los datos en la visita industrial, reemplazar las estimaciones por cotizaciones, evaluar el segundo pulmón y preparar la Fase 2 (UHT), la de mejor retorno de las dos líneas restantes.';
+export const nextSteps = 'Medir la línea base para confirmar estas estimaciones, terminar el modelo en Tecnomatix, reemplazar estimaciones por cotizaciones y preparar la Fase 2.';
 
 /* ------------------------------------------------------------------ */
 /* Equipo y trabajo en equipo (secciones 2 y 15)                       */
@@ -539,20 +561,22 @@ export const team = [
   { r: 'R6', slug: 'ian', name: 'Ian Saonni Rodriguez Pulido', role: 'Ingeniero de supervisión y comunicaciones', scope: 'SCADA Ignition, gemelo digital, GitHub, web y video', email: 'irodriguezpu@unal.edu.co', linkedin: '' },
 ];
 export const teamRules = [
-  { k: 'Respaldo', v: 'Cada integrante responde por un módulo y tiene una pareja que revisa su trabajo: R1–R2, R3–R4 y R5–R6.' },
-  { k: 'Reuniones', v: 'Dos por semana de 30 min, con acta: fecha, asistentes, decisiones y compromisos. Consenso; si no lo hay, desempata R1.' },
-  { k: 'Evidencias', v: 'Tareas en GitHub Projects y commits propios por carpeta de módulo (01_proceso, 02_isa88, 03_isa95, 04_produccion, 05_pm4r y web).' },
+  { k: 'Reuniones', v: 'Una reunión semanal por Google Meet. No llevamos actas: en cada reunión quedan tareas para la semana, con fecha de entrega.' },
+  { k: 'Documento compartido', v: 'Durante la preparación trabajamos en un Google Docs compartido, al que todos teníamos acceso y que editábamos al mismo tiempo.' },
+  { k: 'Repositorio', v: 'Al terminar esta etapa creamos el repositorio en GitHub para reunir los documentos finales.' },
+  { k: 'Siguiente etapa', v: 'Usaremos GitHub para organizar y compartir los desarrollos de simulación, control, SCADA y gemelo digital.' },
+  { k: 'Responsables', v: 'Cada módulo tiene dos responsables que revisan el trabajo del otro (sección 11).' },
 ];
 export const logbook = [
-  { f: '28/09/2026', r: 'Reunión 1: arranque', d: 'Empresa y eslogan; roles R1 a R6; las 9 referencias; línea a detalle: yogur; cliente: Lácteos Pomar; reglas de trabajo.' },
-  { f: '10/10/2026', r: 'Revisión interna de la entrega intermedia', d: 'Informe, Excel y figuras frente al PDF del curso: 61 hallazgos (2 críticos, 7 altos) y plan de corrección con responsable.' },
-  { f: '11/10/2026', r: 'Corrección de los hallazgos', d: 'Presupuesto con 66 partidas, cobro a 30 días y crédito, cronograma nivelado, simulación, figuras corregidas y versión B del informe.' },
+  { f: '28/09/2026', r: 'Arranque del proyecto', d: 'Empresa, roles, las 9 referencias, línea a detalle (yogures) y cliente (Lácteos Pomar).' },
+  { f: 'Semanas siguientes', r: 'Trabajo semanal', d: 'Reuniones semanales por Google Meet y documento compartido en Google Docs.' },
+  { f: '12/10/2026', r: 'Entrega intermedia', d: 'Repositorio en GitHub, página web, presentación y video.' },
 ];
-/** Tabla 15.2 — el informe los presenta como propuesta por confirmar. */
-export const commitments = [
-  { c: 'Repositorio por módulos y archivo con los 3 enlaces', r: 'R6 (R1 sube el archivo)', f: '12/10/2026' },
-  { c: 'Página web con las cifras del informe y el proceso de aprendizaje', r: 'R6, con textos de cada integrante', f: '12/10/2026' },
-  { c: 'Video de 30 a 45 min con los 6 integrantes', r: 'R6 edita; todos graban', f: '12/10/2026' },
+/** Tabla 15.2. `hecho`: compromisos ya cumplidos en la entrega intermedia. */
+export const commitments: { c: string; r: string; f: string; hecho?: boolean; nota?: string }[] = [
+  { c: 'Repositorio por módulos y archivo con los 3 enlaces', r: 'R6 (R1 sube el archivo)', f: '12/10/2026', hecho: true },
+  { c: 'Página web con las cifras del informe y el proceso de aprendizaje', r: 'R6, con textos de cada integrante', f: '12/10/2026', hecho: true },
+  { c: 'Video con los 6 integrantes', r: 'R6 edita; todos graban', f: '12/10/2026', hecho: true, nota: 'En edición: 25 a 30 min con los 6 integrantes; intro y outro de Kuajo listos.' },
   { c: 'Modelo en Tecnomatix con los 3 escenarios', r: 'R4 (apoyo de R3)', f: '19/10/2026' },
   { c: 'Segundo pulmón y programación de fermentadores en el modelo', r: 'R3 y R4', f: '26/10/2026' },
   { c: 'Cotizaciones de válvulas, inspección, celda y robots', r: 'R5 y R1', f: '26/10/2026' },
@@ -564,6 +588,7 @@ export const commitments = [
 /* ------------------------------------------------------------------ */
 export const downloads = [
   { k: 'Informe de avance (PDF)', f: 'descargas/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf', n: '112 páginas · versión B' },
+  { k: 'Resumen de estimaciones (Excel)', f: 'descargas/Resumen_Estimaciones_Kuajo.xlsx', n: 'Resumen de 5 hojas: cifras clave, supuestos y la referencia a la hoja y celda del libro completo de donde sale cada una' },
   { k: 'Anexo A · Planeación PM4R (Excel)', f: 'descargas/Planeacion_PM4R_Kuajo_Pomar.xlsx', n: '23 hojas con fórmulas vivas' },
   { k: 'Anexo B · Figuras en A3 (PDF)', f: 'descargas/Anexo_B_Figuras_A3.pdf', n: '12 figuras técnicas vectoriales' },
   { k: 'Anexo C · Líneas 2 y 3 (Word)', f: 'descargas/Anexo_C_Lineas_2_y_3.docx', n: 'Quesos y UHT: recetas, parámetros y KPIs' },

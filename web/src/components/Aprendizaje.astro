@@ -8,17 +8,17 @@ const individual: Record<string, string> = {};
 ---
 <section class="sec" id="aprendizaje" aria-labelledby="aprendizaje-t">
   <div class="wrap">
-    <SectionHead id="aprendizaje" title="61 hallazgos en la revisión interna, corregidos en un día." note="Sección 15 · proceso de aprendizaje">
-      <p class="sec__intro lead">Cómo se organiza el equipo de Kuajo para el proyecto del curso: reglas, decisiones y compromisos. Lo del proyecto con Pomar está en las matrices de comunicaciones y RACI (sección 12).</p>
+    <SectionHead id="aprendizaje" title="Una reunión semanal, un documento compartido y GitHub para lo que sigue." note="Sección 15 · proceso de aprendizaje">
+      <p class="sec__intro lead">Cómo se organiza el equipo de Kuajo para el proyecto del curso. Lo del proyecto con Pomar está en las matrices de comunicaciones y RACI (sección 12).</p>
     </SectionHead>
 
     <div class="block block--first cols cols--57">
       <div>
-        <header class="block__head"><h3 class="block__t">Reglas de trabajo.</h3></header>
+        <header class="block__head"><h3 class="block__t">Forma de trabajo.</h3></header>
         <dl class="kv">{teamRules.map((r) => <div><dt>{r.k}</dt><dd>{r.v}</dd></div>)}</dl>
       </div>
       <div>
-        <header class="block__head"><h3 class="block__t">Bitácora de decisiones.</h3></header>
+        <header class="block__head"><h3 class="block__t">Hitos del trabajo.</h3></header>
         <ol class="log">
           {logbook.map((l) => <li><span class="mono log__f">{l.f}</span><div><p class="log__r">{l.r}</p><p class="note" style="margin-top:2px">{l.d}</p></div></li>)}
         </ol>
@@ -26,12 +26,12 @@ const individual: Record<string, string> = {};
     </div>
 
     <div class="block">
-      <header class="block__head"><h3 class="block__t">Compromisos para la entrega final.</h3>
-        <p class="block__lead">Propuesta por confirmar en la próxima reunión, tal como la presenta el informe (Tabla 15.2).</p></header>
-      <div class="tbl-wrap" style="--tbl-min: 560px" tabindex="0" role="region" aria-label="Compromisos propuestos">
+      <header class="block__head"><h3 class="block__t">Compromisos.</h3>
+        <p class="block__lead">Los tres del 12/10 ya están cumplidos; los demás son para la entrega final (Tabla 15.2 del informe).</p></header>
+      <div class="tbl-wrap" style="--tbl-min: 620px" tabindex="0" role="region" aria-label="Compromisos del equipo">
         <table class="table">
-          <thead><tr><th scope="col">Compromiso</th><th scope="col">Responsable</th><th scope="col">Fecha</th></tr></thead>
-          <tbody>{commitments.map((c) => <tr><th scope="row">{c.c}</th><td>{c.r}</td><td class="mono">{c.f}</td></tr>)}</tbody>
+          <thead><tr><th scope="col">Compromiso</th><th scope="col">Responsable</th><th scope="col">Fecha</th><th scope="col">Estado</th></tr></thead>
+          <tbody>{commitments.map((c) => <tr><th scope="row">{c.c}{c.nota && <span class="note" style="display:block;margin-top:2px;font-weight:400">{c.nota}</span>}</th><td>{c.r}</td><td class="mono">{c.f}</td><td>{c.hecho ? <span class="is-done"><span aria-hidden="true">✓ </span>Hecho</span> : <span class="micro">Pendiente</span>}</td></tr>)}</tbody>
         </table>
       </div>
     </div>

@@ -1,10 +1,14 @@
 ---
 import SectionHead from './SectionHead.astro';
 import { modules } from '../data/site';
+const stClass = { 'Entregado': 'is-done', 'En curso': 'is-run', 'Entrega final': 'is-next' } as const;
+const count = (s: keyof typeof stClass) => modules.filter((m) => m.status === s).length;
 ---
 <section class="sec" id="resultados" aria-labelledby="resultados-t">
   <div class="wrap">
-    <SectionHead id="resultados" title="Gestión y PM4R, hechos. Celda, gemelo y PLC, para la entrega final." note="Entrega intermedia · 12 oct. 2026" />
+    <SectionHead id="resultados" title="Todo el equipo trabajó en esta entrega." note="Entrega intermedia · 12 oct. 2026">
+      <p class="sec__intro lead">Ocho módulos, cada uno con dos responsables que se revisan entre sí: {count('Entregado')} entregados, {count('En curso')} en curso y {count('Entrega final')} para la entrega final.</p>
+    </SectionHead>
 
     <ol class="mods">
       {modules.map((m) => (
@@ -14,13 +18,12 @@ import { modules } from '../data/site';
               <span class="mono mod__n">{m.n}</span>
               <span class="mod__t">{m.t}</span>
               <span class="mod__tools">{m.tools.map((t) => <span class="tag">{t}</span>)}</span>
-              <span class="mono mod__fig">{m.fig}</span>
-              <span class:list={['micro mod__st', { 'is-pending': m.status === 'Pendiente' }]}>{m.status}</span>
+              <span class="mod__own">{m.owner}</span>
+              <span class:list={['micro mod__st', stClass[m.status]]}><i aria-hidden="true"></i>{m.status}</span>
               <span class="mod__plus" aria-hidden="true"></span>
             </summary>
             <div class="mod__body">
-              <p>{m.d}</p>
-              <p class="micro">Responsable · {m.owner}</p>
+              <p><span class="micro">Evidencia · </span>{m.d}</p>
             </div>
           </details>
         </li>
@@ -41,17 +44,22 @@ import { modules } from '../data/site';
     &:hover { padding-left: var(--s-3); }
     &:hover .mod__t { color: var(--accent); }
     @media (min-width: 1080px) {
-      grid-template-columns: 4rem minmax(0, 5fr) minmax(0, 3fr) minmax(0, 2fr) 6rem 1.5rem;
+      grid-template-columns: 4rem minmax(0, 5fr) minmax(0, 3fr) minmax(0, 2fr) 8.5rem 1.5rem;
       padding-block: var(--s-6);
     }
   }
   .mod__n { color: var(--ink-3); }
   .mod__t { font: 650 var(--t-3)/1.1 var(--f-display); letter-spacing: -0.03em; transition: color var(--d-1) var(--ease); }
-  .mod__tools, .mod__fig, .mod__st { grid-column: 2 / 3; }
+  .mod__tools, .mod__own, .mod__st { grid-column: 2 / 3; }
   .mod__tools { display: flex; flex-wrap: wrap; gap: var(--s-1) var(--s-3); }
-  .mod__fig { font-size: var(--t-lead); font-weight: 500; letter-spacing: -0.03em; }
-  .mod__st { color: var(--accent); }
-  .mod__st.is-pending { color: var(--st-warn-ink); }
+  .mod__own { font-size: var(--t-small); font-weight: 500; color: var(--ink-2); }
+  .mod__st { display: inline-flex; align-items: center; gap: 6px; white-space: nowrap; }
+  .mod__st i { width: 8px; height: 8px; border-radius: 50%; border: 1.5px solid currentColor; flex: none; }
+  .mod__st.is-done { color: var(--st-ok); }
+  .mod__st.is-done i { background: currentColor; }
+  .mod__st.is-run { color: var(--st-warn-ink); }
+  .mod__st.is-run i { background: linear-gradient(90deg, currentColor 50%, transparent 50%); }
+  .mod__st.is-next { color: var(--ink-3); }
   .mod__plus {
     grid-column: 3; grid-row: 1; justify-self: end; width: 14px; height: 14px; position: relative;
     &::before, &::after { content: ''; position: absolute; inset: 6px 0 auto; height: 1.5px; background: var(--ink); transition: transform var(--d-2) var(--ease); }
@@ -59,7 +67,7 @@ import { modules } from '../data/site';
   }
   .mod[open] .mod__plus::after { transform: rotate(0deg); }
   @media (min-width: 1080px) {
-    .mod__tools, .mod__fig, .mod__st { grid-column: auto; }
+    .mod__tools, .mod__own, .mod__st { grid-column: auto; }
     .mod__plus { grid-column: auto; grid-row: auto; }
   }
   .mod__body {

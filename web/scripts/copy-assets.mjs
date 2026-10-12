@@ -33,6 +33,7 @@ recorrer(repo);
 const descargas = [
   'Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf',
   'Planeacion_PM4R_Kuajo_Pomar.xlsx',
+  'Resumen_Estimaciones_Kuajo.xlsx',
   'Anexo_B_Figuras_A3.pdf',
   'Anexo_C_Lineas_2_y_3.docx',
   'sim.py',

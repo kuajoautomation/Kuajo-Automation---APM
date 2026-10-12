@@ -101,7 +101,7 @@ eq('excel.json · actividades', json.actividades.length, 38);
 
 // Textos obsoletos en src/
 const allow = { '[PENDIENTE]': ['src/data/site.ts'] }; // solo repositorio, video y reflexiones
-const banned = ['U-235', '86 de 96', '12 meses', '[PENDIENTE]', 'R-141', 'v2'];
+const banned = ['U-235', '86 de 96', '12 meses', '[PENDIENTE]', 'R-141', 'v2', 'con acta', 'Dos por semana', 'dos reuniones', 'GitHub Projects', '61 hallazgos', 'desempata'];
 const files = [];
 const walk = (d) => readdirSync(d).forEach((f) => { const p = path.join(d, f); statSync(p).isDirectory() ? walk(p) : /\.(astro|ts|css|mjs)$/.test(f) && files.push(p); });
 walk(path.join(root, 'src'));

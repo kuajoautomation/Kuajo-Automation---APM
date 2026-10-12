@@ -98,7 +98,7 @@ const kuajo = {
 
 // ---------- Sensibilidad ----------
 const se = rows('Sensibilidad');
-const sensibilidad = se.slice(3, 12).map((r) => ({ escenario: str(r[0]), fb: num(r[1]), fi: num(r[2]), fo: num(r[3]), vpn: num(r[12]), tir: num(r[13]), conclusion: str(r[14]) }));
+const sensibilidad = se.slice(4, 13).map((r) => ({ escenario: str(r[0]), fb: num(r[1]), fi: num(r[2]), fo: num(r[3]), vpn: num(r[12]), tir: num(r[13]), conclusion: str(r[14]) }));
 const sensTio = [16, 18, 20].map((t) => ({ tio: t / 100, vpn: num(find(se, `VPN con TIO de ${t}`)[12]) }));
 
 // ---------- Curva S ----------

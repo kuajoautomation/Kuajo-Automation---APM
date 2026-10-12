@@ -1,10 +1,12 @@
 ---
 // Encabezado de sección: filete, código de plano y título que se revela por líneas.
-import { sections, site } from '../data/site';
-interface Props { id: (typeof sections)[number]['id']; title: string; note?: string }
-const { id, note } = Astro.props;
-// Espacio no separable entre cifra y unidad ("20 h", "24 °C") para que no se partan.
-const title = Astro.props.title.replace(/(\d) (?=\S)/g, '$1\u00A0');
+// `pre`: etiqueta de estimación preliminar que se muestra bajo el título.
+import Preliminar from './Preliminar.astro';
+import { sections, site, type TextoPreliminar } from '../data/site';
+interface Props { id: (typeof sections)[number]['id']; title: string; note?: string; pre?: TextoPreliminar }
+const { id, note, pre } = Astro.props;
+// Espacio no separable entre cifra y unidad ("20 h", "24 °C") y tras «≈» para que no se partan.
+const title = Astro.props.title.replace(/(\d) (?=\S)/g, '$1\u00A0').replace(/([≈<]) /g, '$1\u00A0');
 const s = sections.find((x) => x.id === id)!;
 ---
 <hr class="sec__rule" />
@@ -15,5 +17,6 @@ const s = sections.find((x) => x.id === id)!;
     {note && <span>{note}</span>}
   </p>
   <h2 class="sec__title" id={`${id}-t`} data-lines>{title}</h2>
+  {pre && <p class="sec__pre"><Preliminar texto={pre} /></p>}
   <slot />
 </header>

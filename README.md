@@ -14,7 +14,7 @@ Proyecto integrador · Automatización de Procesos de Manufactura 2026-2 · Univ
 [![Página web](https://img.shields.io/badge/P%C3%A1gina_web-en_l%C3%ADnea-0E5A52?style=for-the-badge&logo=githubpages&logoColor=white)](https://kuajoautomation.github.io/Kuajo-Automation---APM/)
 [![Informe](https://img.shields.io/badge/Informe-PDF-C8D94A?style=for-the-badge&logo=adobeacrobatreader&logoColor=black)](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf)
 [![Excel PM4R](https://img.shields.io/badge/Planeaci%C3%B3n_PM4R-Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)](05_pm4r/Planeacion_PM4R_Kuajo_Pomar.xlsx)
-[![Video](https://img.shields.io/badge/Video-pendiente-4A5754?style=for-the-badge&logo=youtube&logoColor=white)](#entregables-y-enlaces)
+[![Video](https://img.shields.io/badge/Video-en_edici%C3%B3n-4A5754?style=for-the-badge&logo=youtube&logoColor=white)](#entregables-y-enlaces)
 
 [![Publicación](https://github.com/kuajoautomation/Kuajo-Automation---APM/actions/workflows/deploy-pagina.yml/badge.svg)](https://github.com/kuajoautomation/Kuajo-Automation---APM/actions/workflows/deploy-pagina.yml)
 ![ISA-95](https://img.shields.io/badge/ISA--95-integraci%C3%B3n_OT%2FIT-0E5A52)
@@ -25,6 +25,8 @@ Proyecto integrador · Automatización de Procesos de Manufactura 2026-2 · Univ
 
 > [!NOTE]
 > **Caso académico.** Lácteos Pomar es una empresa real usada como referencia de escala y portafolio. Los problemas, indicadores y datos operativos son supuestos del curso.
+>
+> **Estimaciones preliminares.** Las metas de proceso y las cifras financieras son estimaciones basadas en cálculos preliminares, con datos supuestos del caso académico. Se confirmarán con la medición de la línea base y con cotizaciones. El cálculo completo está en el [informe](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf) y en el [libro de planeación](05_pm4r/Planeacion_PM4R_Kuajo_Pomar.xlsx) (anexo A); el [resumen de estimaciones](05_pm4r/Resumen_Estimaciones_Kuajo.xlsx) indica de qué hoja y celda sale cada cifra.
 
 ---
 
@@ -63,24 +65,26 @@ Lácteos Pomar debe producir **20 % más** en su línea de yogures para cumplir 
 - una celda robotizada de fin de línea,
 - y comisionamiento virtual con gemelo digital.
 
-Con esto, la línea pasa de **43.700 a 52.400 kg/día** sin comprar equipos de proceso nuevos.
+Con esto, estimamos que la línea pasaría de **43.700 a ≈ 52.400 kg/día** sin comprar equipos de proceso nuevos.
 
 <div align="center">
 
-| | Hoy | Con la propuesta |
+| | Hoy | Meta estimada |
 |:--|:--:|:--:|
-| **OEE de la llenadora de vasos** | 55,4 % | **78,0 %** |
-| **Producción de la línea (kg/día)** | 43.700 | **52.400** |
-| **Cumplimiento de la demanda** | 83,4 % | **100 %** |
+| **OEE de la llenadora de vasos** | 55,4 % | **≈ 78 %** |
+| **Producción de la línea (kg/día)** | 43.700 | **≈ 52.400** |
+| **Cumplimiento de la demanda** | 83,4 % | **≈ 100 %** |
 | **Trazabilidad de un lote (recall)** | 6 h | **< 30 min** |
-| **Cambio de receta Y2 → Y1** | 90 min | **35 min** |
-| **Rechazo por peso o sellado** | 3 % | **1 %** |
+| **Cambio de receta Y2 → Y1** | 90 min | **≈ 35 min** |
+| **Rechazo por peso o sellado** | 3 % | **≈ 1 %** |
 | **Operarios de fin de línea por día** | 8 | **2** |
 | **Rezago de los KPIs** | 7 días | **En línea** |
 
 | Precio Fase 1 | VPN (TIO 13,7 %) | TIR | Recuperación | Beneficio/costo |
 |:--:|:--:|:--:|:--:|:--:|
-| **$8.526 M** · ≈ US$2,60 M | **$15.014 M** | **49,0 %** | **2,23 años** | **2,63** |
+| **≈ $8.500 M** · ≈ US$2,6 M | **≈ $15.000 M** | **≈ 49 %** | **≈ 2,2 años** | **≈ 2,6** |
+
+<sub>Cifras preliminares redondeadas. ¿De dónde sale cada una? → [Resumen de estimaciones (Excel)](05_pm4r/Resumen_Estimaciones_Kuajo.xlsx)</sub>
 
 </div>
 
@@ -88,7 +92,7 @@ Con esto, la línea pasa de **43.700 a 52.400 kg/día** sin comprar equipos de p
 
 ## Equipo
 
-Cada integrante responde por un módulo y tiene una pareja que revisa su trabajo (R1–R2, R3–R4 y R5–R6).
+Cada módulo tiene dos responsables que se revisan entre sí (ver [Estado por módulo](#estado-por-módulo)).
 
 <table align="center">
   <tr>
@@ -140,9 +144,10 @@ Cada integrante responde por un módulo y tiene una pareja que revisa su trabajo
 </table>
 
 **Forma de trabajo:**
-- Dos reuniones por semana, de 30 minutos, con acta.
-- Las decisiones se toman por consenso; si no lo hay, desempata R1.
-- Las tareas se llevan en GitHub Projects y cada integrante hace sus propios commits en la carpeta de su módulo.
+- **Reuniones:** una reunión semanal por Google Meet. No llevamos actas: en cada reunión quedan tareas para la semana, con fecha de entrega.
+- **Documento compartido:** durante la preparación trabajamos en un Google Docs compartido, al que todos teníamos acceso y que editábamos al mismo tiempo.
+- **Repositorio:** al terminar esta etapa creamos este repositorio en GitHub para reunir los documentos finales.
+- **Siguiente etapa:** usaremos GitHub para organizar y compartir los desarrollos de simulación, control, SCADA y gemelo digital.
 
 ---
 
@@ -197,28 +202,33 @@ Hoy la **llenadora de vasos es el cuello de botella**: necesita 14,0 de las 14 h
 
 ```mermaid
 xychart-beta
-    title "OEE de la llenadora de vasos: hoy vs. propuesta (%)"
-    x-axis ["Disp. hoy", "Disp. prop.", "Rend. hoy", "Rend. prop.", "Cal. hoy", "Cal. prop.", "OEE hoy", "OEE prop."]
+    title "OEE de la llenadora de vasos: hoy vs. meta estimada (%)"
+    x-axis ["Disp. hoy", "Disp. meta", "Rend. hoy", "Rend. meta", "Cal. hoy", "Cal. meta", "OEE hoy", "OEE meta"]
     y-axis "%" 0 --> 100
     bar [68.5, 86.3, 83.5, 91.3, 97.0, 99.0, 55.4, 78.0]
 ```
 
-<sub>OEE = disponibilidad × rendimiento × calidad.</sub>
+<sub>OEE = disponibilidad × rendimiento × calidad. Meta estimada: ≈ 86 % × 91 % × 99 % ≈ 78 %.</sub>
 
-Las ocho mejoras kaizen del VSM futuro:
+**¿Cómo sabemos que la meta es alcanzable?**
+- El OEE se descompone pérdida por pérdida: disponibilidad ≈ 86 %, rendimiento ≈ 91 % y calidad ≈ 99 %, cada una ligada a una mejora concreta.
+- Para cumplir el +20 % basta un OEE de **≈ 70 %** (9,72 de las 14 h disponibles), así que la meta de ≈ 78 % deja margen.
+- La simulación preliminar da un resultado parecido. El primer paso del proyecto es medir la línea base para confirmarlo.
 
-| | Mejora | Efecto |
+Las ocho mejoras kaizen del VSM futuro y su efecto estimado:
+
+| | Mejora | Efecto estimado |
 |:--:|:--|:--|
-| K1 | Recetas ISA-88 y CIP automático | Cambio de receta de 90 a 35 min |
-| K2 | pH en línea y fin de fase automático | −1,25 h por lote |
-| K3 | Pesadora, detector de metales y visión | Rechazo de 3 a 1 % |
-| K4 | Carril FIFO secuenciado por el MES | Espera en el pulmón de 4 a 1,5 h |
+| K1 | Recetas ISA-88 y CIP automático | Cambio de receta de 90 a ≈ 35 min |
+| K2 | pH en línea y fin de fase automático | ≈ −1,25 h por lote |
+| K3 | Pesadora, detector de metales y visión | Rechazo de 3 a ≈ 1 % |
+| K4 | Carril FIFO secuenciado por el MES | Espera en el pulmón de 4 a ≈ 1,5 h |
 | K5 | Celda robotizada | De 4 a 1 operario por turno |
-| K6 | Plan diario de SAP al MES | Inventario de 48 a 24 h |
+| K6 | Plan diario de SAP al MES | Inventario de 48 a ≈ 24 h |
 | K7 | Genealogía del lote (Track & Trace) | Trazabilidad de 6 h a < 30 min |
-| K8 | Submedición de energía, vapor y agua | Consumos por lote; ahorro de 3 % |
+| K8 | Submedición de energía, vapor y agua | Consumos por lote; ahorro de ≈ 3 % |
 
-**MLT de un lote de Y1:** de 4,2 a 3,0 días. **Tiempo que agrega valor:** de 11,4 % a 15,1 %.
+**MLT de un lote de Y1:** de 4,2 a ≈ 3 días. **Tiempo que agrega valor:** de 11,4 % a ≈ 15 %.
 
 <details>
 <summary><b>Ver VSM actual y futuro</b></summary>
@@ -359,7 +369,7 @@ El simulador es propio: modela eventos discretos en Python con paso de 1 min ([`
 
 ```mermaid
 xychart-beta
-    title "Producción vendible simulada (kg/día)"
+    title "Producción vendible simulada, meta estimada (kg/día)"
     x-axis ["Actual", "Propuesta · pausas escalonadas", "Propuesta · pausas fijas"]
     y-axis "kg/día" 0 --> 55000
     bar [41186, 50874, 48960]
@@ -368,10 +378,10 @@ xychart-beta
 | Escenario | Vendible (kg/día) | Lectura |
 |:--|:--:|:--|
 | Actual | 41.200 ± 202 | Calibra el modelo: 43.300 kg/día simulados frente a 43.700 del cálculo |
-| Propuesta con pausas escalonadas | **50.900 ± 39** | **+24 %** frente a hoy; el atraso no crece |
+| Propuesta con pausas escalonadas | **50.900 ± 39** | **≈ +24 %** frente a hoy; el atraso no crece |
 | Propuesta con pausas fijas | 49.000 ± 210 | El atraso crece hasta 21 lotes en 13 semanas |
 
-Los fermentadores quedan casi saturados (98 %). Por eso el plan solo se cumple con pausas escalonadas y con la secuencia que programa el MES. El modelo en Tecnomatix Plant Simulation está en curso con los mismos datos.
+La simulación preliminar, con datos supuestos, respalda el aumento. Los fermentadores quedan casi saturados (98 %): por eso el plan solo se cumple con pausas escalonadas y con la secuencia que programa el MES. El modelo en Tecnomatix Plant Simulation está en curso con los mismos datos.
 
 ---
 
@@ -383,7 +393,7 @@ El proyecto se planeó con la metodología **PM4R del BID**. La planeación comp
 - CPM con ruta crítica,
 - recursos nivelados,
 - curva S,
-- presupuesto de 66 partidas,
+- presupuesto de 66 partidas (el 73 % de los suministros todavía son estimaciones por cotizar),
 - riesgos, adquisiciones, comunicaciones y RACI.
 
 ```mermaid
@@ -414,7 +424,7 @@ gantt
 
 ```mermaid
 pie showData
-    title Precio Fase 1 · $8.526 M COP (millones)
+    title Precio estimado Fase 1 · ≈ $8.500 M COP (millones)
     "Suministros" : 5771
     "Ingeniería de Kuajo (10.160 h)" : 1524
     "Margen sobre suministros (10 %)" : 577
@@ -439,7 +449,7 @@ La evaluación toma el punto de vista de Pomar, con un horizonte de 7 años sin 
 
 ```mermaid
 xychart-beta
-    title "Flujo de caja libre de Pomar, años 1 a 7 ($ millones)"
+    title "Flujo de caja libre de Pomar, años 1 a 7 (cálculo preliminar, $ millones)"
     x-axis ["Año 1", "Año 2", "Año 3", "Año 4", "Año 5", "Año 6", "Año 7"]
     y-axis "$ M COP" 0 --> 10000
     bar [2541, 5273, 6057, 6285, 6523, 6679, 8718]
@@ -447,25 +457,31 @@ xychart-beta
 
 ```mermaid
 xychart-beta
-    title "Flujo descontado acumulado: la inversión se recupera en el año 3 ($ millones)"
+    title "Flujo descontado acumulado (cálculo preliminar, $ millones)"
     x-axis ["Año 0", "Año 1", "Año 2", "Año 3", "Año 4", "Año 5", "Año 6", "Año 7"]
     y-axis "$ M COP" -10000 --> 16000
     line [-9227, -6993, -2916, 1201, 4958, 8386, 11472, 15014]
 ```
 
-<sub>Año 0: inversión neta de −$9.227 M. El acumulado descontado cierra en el VPN de $15.014 M.</sub>
+<sub>Año 0: inversión neta de ≈ −$9.200 M. El acumulado descontado se vuelve positivo en el año 3 y cierra en un VPN de ≈ $15.000 M.</sub>
 
 | Indicador | Valor | Nota |
 |:--|:--:|:--|
-| Inversión de Pomar en el año 0 | $9.605 M | Precio + parada de 12 días + costo interno |
-| Beneficios anuales en régimen | $8.481 M | |
-| **VPN** | **$15.014 M** | |
-| **TIR** | **49,0 %** | ≈ 3,6 veces la TIO |
-| Recuperación simple · descontada | 2,23 · 2,71 años | |
-| Punto de equilibrio | 39 % | de los beneficios estimados mantiene el VPN ≥ 0 |
-| Utilidad neta de Kuajo | $935 M | 11,0 % del contrato |
-| Crédito rotativo máximo de Kuajo | $1.316 M | Mes 8, por el cobro a 30 días |
-| Cobertura de la contingencia | 1,23 | $444 M sobre $362 M de riesgo retenido |
+| Inversión de Pomar en el año 0 | ≈ $9.600 M | Precio + parada de 12 días + costo interno |
+| Beneficios anuales en régimen | ≈ $8.500 M | |
+| OPEX anual | ≈ $590 M | Soporte, mantenimiento, repuestos y energía |
+| **VPN** | **≈ $15.000 M** | |
+| **TIR** | **≈ 49 %** | ≈ 3,6 veces la TIO |
+| Recuperación simple · descontada | ≈ 2,2 · ≈ 2,7 años | |
+| Relación beneficio/costo | ≈ 2,6 | |
+| Punto de equilibrio | ≈ 40 % | de los beneficios estimados mantiene el VPN ≥ 0 |
+| Utilidad neta de Kuajo | ≈ $935 M | ≈ 11 % del contrato |
+| Crédito rotativo máximo de Kuajo | ≈ $1.300 M | Mes 8; cupo de $1.500 M |
+| Cobertura de la contingencia | ≈ 1,2 | La contingencia cubre ≈ 1,2 veces el riesgo retenido |
+
+**Por qué un crédito rotativo.** El proyecto es rentable, pero cada hito se cobra a 30 días y los robots, los tableros y el montaje se pagan antes, sobre todo en el mes 8. Por eso Kuajo usa un cupo rotativo: saca solo lo que falta, por el tiempo que falta, y paga intereses solo sobre lo usado (≈ $20 M, ya descontados). Un crédito normal desembolsaría todo desde el primer día.
+
+¿De dónde salen estas cifras? → [Resumen de estimaciones (Excel)](05_pm4r/Resumen_Estimaciones_Kuajo.xlsx)
 
 <p align="center"><img src="05_pm4r/flujo_pomar.png" width="80%" alt="Flujo de caja de Pomar"></p>
 
@@ -473,7 +489,7 @@ xychart-beta
 
 ## Oferta comercial y líneas 2 y 3
 
-**Oferta `KA-OF-2026-001`:** diseño, suministro, comisionamiento virtual, montaje y puesta en marcha de la línea de yogures, más la plataforma de planta (SCADA, MES e integración con SAP) sobre la que luego se conectan quesos y UHT. Las condiciones son:
+**Oferta `KA-OF-2026-001`** (precio estimado): diseño, suministro, comisionamiento virtual, montaje y puesta en marcha de la línea de yogures, más la plataforma de planta (SCADA, MES e integración con SAP) sobre la que luego se conectan quesos y UHT. Las condiciones son:
 
 - montaje en una parada máxima de 2 semanas,
 - 6 semanas de estabilización,
@@ -482,40 +498,45 @@ xychart-beta
 
 | Fase | Precio | Semanas | VPN | TIR |
 |:--|:--:|:--:|:--:|:--:|
-| **Fase 1:** plataforma + yogures | $8.526 M | 48 | $15.014 M | 49,0 % |
-| **Fase 2:** línea UHT | $3.150 M | 26 | $6.408 M | 57,3 % |
-| **Fase 3:** línea de quesos | $3.850 M | 32 | $172 M | 15,0 % |
-| **Planta completa** | **$15.526 M** | **106** | **$20.781 M** (combinado) | |
+| **Fase 1:** plataforma + yogures | ≈ $8.500 M | 48 | ≈ $15.000 M | ≈ 49 % |
+| **Fase 2:** línea UHT (referencia preliminar ±30 %) | ≈ $3.150 M | 26 | ≈ $6.400 M | ≈ 57 % |
+| **Fase 3:** línea de quesos (referencia preliminar ±30 %) | ≈ $3.850 M | 32 | ≈ $170 M | ≈ 15 % |
+| **Planta completa** (referencia preliminar ±30 %) | **≈ $15.500 M** | **106** | **≈ $20.800 M** (combinado) | |
 
-Con las tres fases, la planta pasa de 133.377 a 151.120 kg/día (+13 %). El detalle de las líneas 2 y 3 está en el [anexo C](informes/Anexo_C_Lineas_2_y_3.docx).
+Se recomienda empezar por UHT, la de mejor retorno. Con las tres fases, la planta pasaría de 133.377 a ≈ 151.120 kg/día (+13 %). El detalle de las líneas 2 y 3 está en el [anexo C](informes/Anexo_C_Lineas_2_y_3.docx).
 
 ---
 
 ## Estado por módulo
 
-| Módulo | Responsable | Estado | Avance |
-|:--|:--|:--:|:--|
-| M01 Gestión de la producción | Juan · David | Hecho | VSM, KPIs, OEE, MLT y simulación con 3 escenarios. Tecnomatix en curso (19/10/2026) |
-| M02 Planeación PM4R | Duvan | Hecho | EDT, CPM, curva S, presupuesto, flujos, sensibilidad, riesgos y RACI |
-| M03 Celda robotizada | Jose Luis | En curso | Recetas, herramientas y patrones definidos; RobotStudio en la entrega final (07/12/2026) |
-| M04 Digital Factory | Ian | Pendiente | Arquitectura del comisionamiento virtual definida; el gemelo va en la entrega final |
-| M05 PLC y SCADA | Jose Luis · Ian | En curso | P&ID, 86 tags, lazos e ISA-88 hechos; PLC y pantallas en la entrega final |
+Todo el equipo trabajó en esta entrega. Cada módulo tiene dos responsables que se revisan entre sí.
+
+| Módulo | Evidencia | Responsables | Estado |
+|:--|:--|:--|:--:|
+| Transformación Digital Industrial | ISA-95, red OT/IT, ISA-88 físico y procedimental, P&ID | Paula · Jose Luis | Entregado |
+| Gestión de la producción | VSM actual y futuro, KPIs, simulación en Python | Juan · David | Entregado |
+| Planeación de proyectos | EDT, cronograma, presupuesto, flujos, oferta | Duvan · Ian | Entregado |
+| Simulación en Tecnomatix | Mismos objetos y datos del modelo en Python | Juan · David | En curso |
+| Controladores industriales | Grafcet y Ladder en Logix Emulate con recetas | Jose Luis · David | Entrega final |
+| SCADA | Ignition con HMI ISA-101 y OPC | Ian · Paula | Entrega final |
+| Digital Factory | Gemelo digital de la línea 1 con Logix Emulate | Ian · Juan | Entrega final |
+| Celda robotizada | Diseño, simulación en RobotStudio y riesgos | Jose Luis · Duvan | Entrega final |
 
 ---
 
 ## Conclusiones
 
-1. **La línea 1 puede producir 20 % más sin comprar equipos de proceso.** El OEE de la llenadora pasa de 55 % a 78 % y la producción, de 43.700 a 52.400 kg/día.
-2. **La simulación confirma el aumento:** +24 % vendible, a menos de 1 % del cálculo. Sin embargo, los fermentadores quedan casi saturados.
-3. **Un solo procedimiento ISA-88 produce las 3 recetas.** Además, el MES integrado con SAP baja la trazabilidad de 6 h a menos de 30 min.
-4. **Para Pomar, la inversión es rentable:** VPN de $15.014 M, TIR de 49,0 % y recuperación en 2,2 años. El VPN sigue positivo aunque los beneficios caigan al 39 % o la TIO suba a 20 %.
-5. **Para Kuajo, el contrato es viable:** utilidad neta de $935 M (11,0 %) y una contingencia que cubre 1,23 veces los riesgos retenidos.
+1. Estimamos que la línea de yogures puede producir **20 % más sin comprar equipos de proceso**, subiendo el OEE de 55 % a cerca de 78 %.
+2. La simulación preliminar lo respalda y dice qué cuidar en la operación: escalonar las pausas y secuenciar con el MES, porque la fermentación pasa a ser la restricción.
+3. Un solo procedimiento ISA-88 produce las tres recetas, y el MES integrado con SAP bajaría la trazabilidad de 6 h a menos de 30 min.
+4. Con cálculos preliminares, el proyecto valdría para Pomar unos **$15.000 M** en valor presente (inversión ≈ $9.600 M) y resiste escenarios adversos.
+5. Para Kuajo es un buen contrato (≈ 11 % neto), con un riesgo de caja que se financia con un crédito rotativo, y deja la planta lista para seguir con UHT y quesos.
 
 **Próximos pasos:**
+- medir la línea base para confirmar estas estimaciones,
 - terminar el modelo en Tecnomatix,
-- validar los datos en la visita industrial,
-- reemplazar las estimaciones por cotizaciones,
-- preparar la Fase 2 (UHT).
+- reemplazar estimaciones por cotizaciones,
+- preparar la Fase 2.
 
 ---
 
@@ -525,11 +546,14 @@ Con las tres fases, la planta pasa de 133.377 a 151.120 kg/día (+13 %). El deta
 |:--|:--|:--|
 | **Página web** | [kuajoautomation.github.io/Kuajo-Automation---APM](https://kuajoautomation.github.io/Kuajo-Automation---APM/) | Todo el proyecto en una sola página, con las cifras del Excel |
 | **Informe de avance** | [PDF](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf) · [Word](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.docx) | 112 páginas · versión B (11/10/2026) |
+| **Resumen de estimaciones** | [Excel](05_pm4r/Resumen_Estimaciones_Kuajo.xlsx) | 5 hojas: cifras clave, supuestos y la hoja y celda del libro completo de donde sale cada una |
 | **Anexo A · Planeación PM4R** | [Excel](05_pm4r/Planeacion_PM4R_Kuajo_Pomar.xlsx) | 23 hojas con fórmulas vivas |
 | **Anexo B · Figuras en A3** | [PDF](informes/Anexo_B_Figuras_A3.pdf) | 12 figuras técnicas vectoriales |
 | **Anexo C · Líneas 2 y 3** | [Word](informes/Anexo_C_Lineas_2_y_3.docx) | Quesos y UHT: recetas, parámetros y KPIs |
 | **Anexo D · Simulador** | [`sim.py`](04_produccion/simulacion/sim.py) | Eventos discretos, sin librerías externas |
-| **Video** | *Pendiente* | Video de 30 a 45 min con los 6 integrantes |
+| **Presentación** | [`Presentacion/`](Presentacion) | Exportación HTML de la sustentación y [`guion.pdf`](Presentacion/guion.pdf) |
+| **Video** | *En edición* | 25 a 30 min con los 6 integrantes |
+| **Intro y outro del video** | [Intro](Presentacion/Kuajo_Intro.mp4) · [Outro](Presentacion/Kuajo_Outro.mp4) | Animaciones de Kuajo, con y sin audio |
 | **Enunciado del curso** | [Proyecto integrador](00_curso/3.%20APM%20Proyecto%20Integrador%202026-2.pdf) · [Programa](00_curso/1.APM%20Programa%202026-2.pdf) · [Guía PM4R](00_curso/Gu%C3%ADa%20Metodolog%C3%ADa%20PM4R.pdf) | |
 
 ---
@@ -547,7 +571,8 @@ Kuajo-Automation---APM/
 ├── 04_produccion/   VSM actual y futuro · simulacion/sim.py
 ├── 05_pm4r/         Libro PM4R (Excel) y gráficas de Gantt, histograma, curva S y flujo
 ├── informes/        Informe (Word y PDF) y anexos B y C
-├── gestion/         Auditoría interna, prompts de trabajo y fotos del equipo
+├── gestion/         Prompts de trabajo y fotos del equipo (equipo/fotos/)
+├── Presentacion/    Sustentación (HTML), guion, intro y outro del video
 └── web/             Página web del proyecto (Astro)
 ```
 
@@ -559,7 +584,8 @@ Kuajo-Automation---APM/
 | [`04_produccion/`](04_produccion) | R4 Juan |
 | [`05_pm4r/`](05_pm4r) | R1 Duvan |
 | [`informes/`](informes) | Todos |
-| [`gestion/`](gestion) | R1 Duvan |
+| [`gestion/`](gestion) · [`gestion/equipo/fotos/`](gestion/equipo/fotos) | R1 Duvan |
+| [`Presentacion/`](Presentacion) | R1 Duvan · R6 Ian (video) |
 | [`web/`](web) | R6 Ian |
 
 ---
@@ -576,7 +602,7 @@ git commit -m "Actualiza el Excel de planeación"
 git push
 ```
 
-Antes de publicar, el flujo verifica que las cifras de la página coincidan con el Excel (`npm run check`). Si cambia una cifra que la página muestra escrita (precio, VPN, TIR…), la publicación se detiene y el error indica qué valor hay que actualizar en `web/src/data/site.ts`.
+Las cifras escritas en la página se muestran redondeadas como estimaciones preliminares; `npm run check` sigue comparando los valores exactos de `site.ts` con el Excel. Antes de publicar, el flujo verifica que coincidan. Si cambia una cifra que la página muestra escrita (precio, VPN, TIR…), la publicación se detiene y el error indica qué valor hay que actualizar en `web/src/data/site.ts`.
 
 **Clonar con SSH.** Cada integrante registra su llave pública en GitHub (**Settings → SSH and GPG keys**) y luego clona el repositorio:
 

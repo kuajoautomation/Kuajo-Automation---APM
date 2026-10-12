@@ -1,8 +1,9 @@
 ---
 import SectionHead from './SectionHead.astro';
 import excel from '../data/excel.json';
-import { economics, economicsRows } from '../data/site';
-import { num, pct, m } from '../lib/fmt';
+import { economics, economicsRows, creditoRotativo } from '../data/site';
+import { num, pct, m, aprox } from '../lib/fmt';
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 
 const fp = excel.flujoPomar;
 const kj = excel.kuajo;
@@ -22,33 +23,44 @@ const kLine = kj.saldo.map((v, i) => `${i ? 'L' : 'M'} ${kx(i).toFixed(1)} ${ky(
 const minSaldo = Math.min(...kj.saldo);
 const minMes = kj.saldo.indexOf(minSaldo);
 
+// Indicadores grandes, redondeados como estimación preliminar (los exactos siguen en `economics`)
+const r = (v: number, paso: number) => Math.round(v / paso) * paso;
 const big = [
-  { l: 'VPN para Pomar', v: economics.vpn / 1e6, d: 0, pre: '$', u: 'M' },
-  { l: 'TIR', v: economics.tir * 100, d: 1, pre: '', u: '%' },
-  { l: 'Recuperación', v: economics.recSimple, d: 2, pre: '', u: 'años' },
-  { l: 'Beneficio/costo', v: economics.bc, d: 2, pre: '', u: '' },
+  { l: 'VPN para Pomar', v: r(economics.vpn / 1e6, 1000), d: 0, pre: '≈ $', u: 'M' },
+  { l: 'TIR', v: r(economics.tir * 100, 1), d: 0, pre: '≈ ', u: '%' },
+  { l: 'Recuperación', v: r(economics.recSimple, 0.1), d: 1, pre: '≈ ', u: 'años' },
+  { l: 'Beneficio/costo', v: r(economics.bc, 0.1), d: 1, pre: '≈ ', u: '' },
 ];
+
+// Sensibilidad: primero los 6 escenarios de la presentación, después el resto
+const nombre = (s: string) => (s.startsWith('Solo beneficios de eficiencia') ? 'Sin el volumen adicional (solo eficiencia)' : s.replace(/ \(.*\)$/, ''));
+const principales = ['Caso base', 'Beneficios −30 %', 'Inversión +20 %', 'Pesimista combinado', 'Beneficios −50 %', 'Solo beneficios de eficiencia'];
+const sens = excel.sensibilidad.filter((s) => s.tir != null);
+const sensMain = principales.map((p) => sens.find((s) => s.escenario.startsWith(p))).filter((s) => s !== undefined);
+const sensRest = sens.filter((s) => !sensMain.includes(s));
+const resumen = `${base}descargas/Resumen_Estimaciones_Kuajo.xlsx`;
 ---
 <section class="sec" id="evaluacion" aria-labelledby="evaluacion-t">
   <div class="wrap">
-    <SectionHead id="evaluacion" title="Pomar recupera la inversión en 2,2 años y gana aunque los beneficios caigan al 39 %." note="Flujo incremental · TIO 13,7 % · 7 años">
-      <p class="sec__intro lead">La inversión de $9.605 M equivale al 3,4&nbsp;% de los ingresos de 2022 de Pomar. El beneficio principal no es ahorrar costos, sino vender 8.700 kg/día más sin construir otra línea.</p>
+    <SectionHead id="evaluacion" title="Con cálculos preliminares, Pomar recuperaría la inversión en unos 2 años, aun si los beneficios cayeran a ≈ 40 %." note="Flujo incremental · TIO 13,7 % · 7 años" pre="Cifras preliminares">
+      <p class="sec__intro lead">La inversión estimada de ≈ $9.600 M equivale a ≈ 3,4&nbsp;% de los ingresos de 2022 de Pomar. El beneficio principal no es ahorrar costos, sino vender ≈ 8.700 kg/día más sin construir otra línea.</p>
+      <p class="sec__intro"><a class="link" href={resumen} download>¿De dónde salen estas cifras? → Resumen de estimaciones (Excel)</a></p>
     </SectionHead>
 
-    <ul class="counters" style="--n:4" aria-label="Indicadores de decisión para Pomar">
+    <ul class="counters" style="--n:4" aria-label="Indicadores de decisión para Pomar, estimados">
       {big.map((b) => (
         <li class="counter">
           <p class="counter__l">{b.l}</p>
-          <p class="counter__v"><span class="sr-only">{b.pre}{num(b.v, b.d)} {b.u}</span><span aria-hidden="true">{b.pre}</span><span aria-hidden="true" data-count-from="0" data-count-to={b.v} data-count-decimals={b.d}>{num(b.v, b.d)}</span><span class="counter__u" aria-hidden="true"> {b.u}</span></p>
+          <p class="counter__v"><span class="sr-only">Aproximadamente {b.pre.replace('≈ ', '')}{num(b.v, b.d)} {b.u}</span><span aria-hidden="true" class="counter__pre">{b.pre.replace(' ', ' ')}</span><span aria-hidden="true" data-count-from="0" data-count-to={b.v} data-count-decimals={b.d}>{num(b.v, b.d)}</span><span class="counter__u" aria-hidden="true"> {b.u}</span></p>
         </li>
       ))}
     </ul>
 
     <div class="block cols cols--75">
       <figure class="fig">
-        <header class="block__head"><h3 class="block__t">Flujo de caja libre de Pomar.</h3>
-          <p class="block__lead">Barras: flujo de cada año. Línea: flujo descontado acumulado, que cruza a positivo en el año 3 y llega al VPN en el año 7.</p></header>
-        <svg class="chart" viewBox={`0 0 ${F.w} ${F.h}`} role="img" aria-label={`Flujo de caja libre de Pomar en miles de millones: año 0 ${bn(fp.fcl[0])}, año 7 ${bn(fp.fcl[7])}; el descontado acumulado llega a ${bn(fp.descontadoAcum[7])}.`} data-bars>
+        <header class="block__head"><h3 class="block__t">Flujo de caja libre de Pomar (cálculo preliminar).</h3>
+          <p class="block__lead">Barras: flujo de cada año. Línea: flujo descontado acumulado. Cruza a positivo en el año 3: ahí Pomar ya recuperó la inversión, con el valor del dinero en el tiempo.</p></header>
+        <svg class="chart" viewBox={`0 0 ${F.w} ${F.h}`} role="img" aria-label={`Flujo de caja libre de Pomar en miles de millones: año 0 ${bn(fp.fcl[0])}, año 7 ${bn(fp.fcl[7])}; el descontado acumulado llega a unos ${num(fp.descontadoAcum[7] / 1e9, 0)}.`} data-bars>
           {[-10e9, -5e9, 0, 5e9, 10e9, 15e9].map((v) => <g><path class={v === 0 ? 'zero' : 'gridl'} d={`M ${F.x0} ${fy(v)} H ${F.x1}`} /><text x={F.x0 - 8} y={fy(v) + 4} font-size="11" text-anchor="end">{num(v / 1e9)}</text></g>)}
           {fp.fcl.map((v, i) => (
             <rect class:list={['bar', v < 0 ? 'bar-neg is-down' : 'bar-pos']} x={fx(i) - 22} y={v < 0 ? fy(0) : fy(v)} width="44" height={Math.abs(fy(v) - fy(0))} data-bar="y" />
@@ -56,98 +68,123 @@ const big = [
           <path class="line" d={fLine} data-draw />
           {fp.descontadoAcum.map((v, i) => <circle class="dot" cx={fx(i)} cy={fy(v)} r="3.5" />)}
           {fp.anios.map((a, i) => <text x={fx(i)} y={F.y1 + 24} font-size="11" text-anchor="middle">Año {a}</text>)}
-          <text x={fx(7)} y={fy(fp.descontadoAcum[7]) - 10} font-size="12" text-anchor="end" class="lbl">VPN {bn(fp.descontadoAcum[7])}</text>
+          <text x={fx(7)} y={fy(fp.descontadoAcum[7]) - 10} font-size="12" text-anchor="end" class="lbl">VPN ≈ {num(fp.descontadoAcum[7] / 1e9, 0)}</text>
           <text x={F.x0} y={F.y0 - 10} font-size="11">miles de millones COP</text>
         </svg>
-        <figcaption class="fig__cap"><b>Fig. 13.4 — Flujo de Pomar (hoja Flujo_Pomar), redibujado</b><span>La tabla siguiente tiene los mismos valores.</span></figcaption>
+        <figcaption class="fig__cap"><b>Fig. 13.4 — Flujo de Pomar (hoja Flujo_Pomar), redibujado</b><span>Los valores exactos están en el detalle del cálculo, más abajo.</span></figcaption>
       </figure>
       <div>
         <header class="block__head"><h3 class="block__t">Cifras clave del contrato.</h3></header>
         <table class="table">
-          <tbody>{economicsRows.map((r) => <tr><th scope="row">{r.k}<span class="micro" style="display:block;text-transform:none;letter-spacing:0;font-weight:400">{r.n}</span></th><td class="num">{r.v}</td></tr>)}</tbody>
+          <tbody>{economicsRows.map((row) => <tr><th scope="row">{row.k}<span class="micro" style="display:block;text-transform:none;letter-spacing:0;font-weight:400">{row.n}</span></th><td class="num">{row.v}</td></tr>)}</tbody>
         </table>
-      </div>
-    </div>
-
-    <div class="block">
-      <div class="tbl-wrap" style="--tbl-min: 720px" tabindex="0" role="region" aria-label="Flujo de caja de Pomar">
-        <table class="table">
-          <caption class="micro">Tabla 13.15 · flujo incremental de Pomar (miles de millones COP)</caption>
-          <thead><tr><th scope="col">Concepto</th>{fp.anios.map((a) => <th scope="col" class="num">Año {a}</th>)}</tr></thead>
-          <tbody>
-            <tr><th scope="row">Beneficios</th>{fp.beneficios.map((v) => <td class="num">{bn(v)}</td>)}</tr>
-            <tr><th scope="row">OPEX</th>{fp.opex.map((v) => <td class="num">{bn(v)}</td>)}</tr>
-            <tr><th scope="row">EBITDA</th>{fp.ebitda.map((v) => <td class="num">{bn(v)}</td>)}</tr>
-            <tr class="is-total"><th scope="row">Flujo de caja libre</th>{fp.fcl.map((v) => <td class="num">{bn(v)}</td>)}</tr>
-            <tr><th scope="row">Descontado acumulado</th>{fp.descontadoAcum.map((v) => <td class="num">{bn(v)}</td>)}</tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
-
-    <div class="block cols cols--75">
-      <div>
-        <header class="block__head"><h3 class="block__t">Sensibilidad: solo pierde si la automatización no aporta volumen.</h3>
-          <p class="block__lead">Cada escenario multiplica beneficios, inversión y OPEX del caso base. El aumento de la TRM sube la inversión porque 59 % del precio está en dólares.</p></header>
-        <div class="tbl-wrap" style="--tbl-min: 640px" tabindex="0" role="region" aria-label="Análisis de sensibilidad">
-          <table class="table">
-            <caption class="micro">Tabla 13.17 (hoja Sensibilidad)</caption>
-            <thead><tr><th scope="col">Escenario</th><th scope="col" class="num">Benef.</th><th scope="col" class="num">Inv.</th><th scope="col" class="num">OPEX</th><th scope="col" class="num">VPN (M)</th><th scope="col" class="num">TIR</th></tr></thead>
-            <tbody>{excel.sensibilidad.map((s) => <tr><th scope="row">{s.escenario.replace(/ \(.*\)$/, '')}</th><td class="num">×{num(s.fb, 2)}</td><td class="num">×{num(s.fi, 2)}</td><td class="num">×{num(s.fo, 2)}</td><td class:list={['num', { 'is-crit': (s.vpn ?? 0) < 0 }]}>{m(s.vpn)}</td><td class="num">{pct(s.tir)}</td></tr>)}</tbody>
-          </table>
-        </div>
-      </div>
-      <div>
-        <header class="block__head"><h3 class="block__t">Con TIO más altas.</h3>
-          <p class="block__lead">El costo del patrimonio con la beta de Damodaran queda bajo el de la deuda; la prima de 3,5 % lo compensa. Aun así:</p></header>
-        <ul class="hbars" data-bars>
-          {[{ tio: economics.tio, vpn: economics.vpn }, ...excel.sensTio].map((t) => (
-            <li class="hbar">
-              <p class="hbar__head"><b>TIO {pct(t.tio, t.tio < 0.15 ? 1 : 0)}</b><span class="mono">${m(t.vpn)} M</span></p>
-              <span class="hbar__track is-new" aria-hidden="true"><i style={`--w:${(t.vpn / economics.vpn) * 100}%`} data-bar /></span>
-            </li>
-          ))}
-        </ul>
-        <p class="note">Punto de equilibrio: el VPN sigue ≥ 0 con el {pct(excel.resumen.equilibrio, 0)} de los beneficios estimados.</p>
       </div>
     </div>
 
     <div class="block cols cols--57">
       <div>
-        <header class="block__head"><h3 class="block__t">Kuajo gana 11,0 % neto.</h3>
-          <p class="block__lead">Estado de resultados del proyecto. La contingencia se carga al 50 % más las horas extra; lo que no se consuma aumenta la utilidad.</p></header>
-        <table class="table">
-          <caption class="micro">Tabla 13.18 (M COP)</caption>
-          <tbody>{kj.pyg.map((r) => <tr class:list={{ 'is-total': /^Utilidad/.test(r.concepto) }}><th scope="row">{r.concepto.replace(/ \(−\)$/, '')}</th><td class="num">{m(r.valor)}</td><td class="num">{pct(r.valor / excel.precio.precio)}</td></tr>)}</tbody>
-        </table>
+        <header class="block__head"><h3 class="block__t">Por qué Kuajo necesita un crédito rotativo.</h3></header>
+        <p class="note" style="margin-top:0">{creditoRotativo}</p>
       </div>
-      <figure class="fig">
-        <header class="block__head"><h3 class="block__t">El cobro a 30 días exige un crédito de ${m(-minSaldo)} M en el mes {minMes}.</h3>
-          <p class="block__lead">Robots, tableros y montaje se pagan antes de cobrar los hitos de llegada y FAT. Kuajo tramita un crédito rotativo con cupo de $1.500 M; sus intereses (≈ $20 M) ya están en la utilidad.</p></header>
-        <svg class="chart" viewBox={`0 0 ${K.w} ${K.h}`} role="img" aria-label={`Flujo mensual de Kuajo: el saldo acumulado baja a ${m(minSaldo)} millones en el mes ${minMes} y cierra en ${m(kj.saldo[13])} millones en el mes 13.`} data-bars>
-          {[-2e9, -1e9, 0, 1e9, 2e9, 3e9].map((v) => <g><path class={v === 0 ? 'zero' : 'gridl'} d={`M ${K.x0} ${ky(v)} H ${K.x1}`} /><text x={K.x0 - 8} y={ky(v) + 4} font-size="11" text-anchor="end">{num(v / 1e9)}</text></g>)}
-          {kj.neto.map((v, i) => <rect class:list={['bar', v < 0 ? 'bar-neg is-down' : 'bar-pos']} x={kx(i) - 15} y={v < 0 ? ky(0) : ky(v)} width="30" height={Math.abs(ky(v) - ky(0))} data-bar="y" />)}
-          <path class="line" d={kLine} data-draw />
-          {kj.saldo.map((v, i) => <circle class="dot" cx={kx(i)} cy={ky(v)} r="3" />)}
-          <text x={kx(minMes)} y={ky(minSaldo) + 22} font-size="12" text-anchor="middle" class="lbl">{m(minSaldo)}</text>
-          {kj.meses.map((mm, i) => <text x={kx(i)} y={K.y1 + 24} font-size="11" text-anchor="middle">{mm}</text>)}
-          <text x={K.x0} y={K.y0 - 8} font-size="11">miles de millones COP · meses desde la firma</text>
-        </svg>
-        <details class="fold">
-          <summary>Ver la tabla del flujo mensual</summary>
-          <div class="fold__body tbl-wrap" style="--tbl-min: 820px" tabindex="0" role="region" aria-label="Flujo mensual de Kuajo">
+      <dl class="kv">
+        <div><dt>Necesidad máxima de caja</dt><dd>{aprox(-minSaldo, { tipo: 'cop' })} en el mes {minMes}</dd></div>
+        <div><dt>Cupo rotativo</dt><dd>$1.500 M</dd></div>
+        <div><dt>Intereses</dt><dd>≈ $20 M, ya descontados de la utilidad</dd></div>
+        <div><dt>Utilidad neta de Kuajo</dt><dd>{aprox(economics.utilidadKuajo, { tipo: 'cop', cifras: 3 })} (≈ {num(economics.margenKuajo * 100, 0)} % del contrato)</dd></div>
+      </dl>
+    </div>
+
+    <details class="fold block eva-fold">
+      <summary>Ver el detalle del cálculo preliminar</summary>
+      <div class="fold__body">
+
+        <div class="tbl-wrap" style="--tbl-min: 720px" tabindex="0" role="region" aria-label="Flujo de caja de Pomar">
+          <table class="table">
+            <caption class="micro">Tabla 13.15 · flujo incremental de Pomar (miles de millones COP)</caption>
+            <thead><tr><th scope="col">Concepto</th>{fp.anios.map((a) => <th scope="col" class="num">Año {a}</th>)}</tr></thead>
+            <tbody>
+              <tr><th scope="row">Beneficios</th>{fp.beneficios.map((v) => <td class="num">{bn(v)}</td>)}</tr>
+              <tr><th scope="row">OPEX</th>{fp.opex.map((v) => <td class="num">{bn(v)}</td>)}</tr>
+              <tr><th scope="row">EBITDA</th>{fp.ebitda.map((v) => <td class="num">{bn(v)}</td>)}</tr>
+              <tr class="is-total"><th scope="row">Flujo de caja libre</th>{fp.fcl.map((v) => <td class="num">{bn(v)}</td>)}</tr>
+              <tr><th scope="row">Descontado acumulado</th>{fp.descontadoAcum.map((v) => <td class="num">{bn(v)}</td>)}</tr>
+            </tbody>
+          </table>
+        </div>
+        <p class="note">Valores exactos del libro: VPN de ${m(economics.vpn)} M, TIR de {pct(economics.tir)}, recuperación de {num(economics.recSimple, 2)} años ({num(economics.recDescontada, 2)} descontada) y B/C de {num(economics.bc, 2)}.</p>
+
+        <div class="block cols cols--75">
+          <div>
+            <header class="block__head"><h3 class="block__t">Sensibilidad: solo pierde si la automatización no aporta volumen.</h3>
+              <p class="block__lead">Cada escenario multiplica beneficios, inversión y OPEX del caso base. Primero, los 6 escenarios de la presentación; debajo, los demás. El aumento de la TRM sube la inversión porque 59 % del precio está en dólares.</p></header>
+            <div class="tbl-wrap" style="--tbl-min: 640px" tabindex="0" role="region" aria-label="Análisis de sensibilidad">
+              <table class="table">
+                <caption class="micro">Tabla 13.17 (hoja Sensibilidad)</caption>
+                <thead><tr><th scope="col">Escenario</th><th scope="col" class="num">Benef.</th><th scope="col" class="num">Inv.</th><th scope="col" class="num">OPEX</th><th scope="col" class="num">VPN (M)</th><th scope="col" class="num">TIR</th></tr></thead>
+                <tbody>
+                  {sensMain.map((s) => <tr><th scope="row">{nombre(s.escenario)}</th><td class="num">×{num(s.fb, 2)}</td><td class="num">×{num(s.fi, 2)}</td><td class="num">×{num(s.fo, 2)}</td><td class:list={['num', { 'is-crit': (s.vpn ?? 0) < 0 }]}>{m(s.vpn)}</td><td class="num">{pct(s.tir)}</td></tr>)}
+                  <tr><th scope="rowgroup" colspan="6" class="micro sens__sep">Otros escenarios</th></tr>
+                  {sensRest.map((s) => <tr><th scope="row">{nombre(s.escenario)}</th><td class="num">×{num(s.fb, 2)}</td><td class="num">×{num(s.fi, 2)}</td><td class="num">×{num(s.fo, 2)}</td><td class:list={['num', { 'is-crit': (s.vpn ?? 0) < 0 }]}>{m(s.vpn)}</td><td class="num">{pct(s.tir)}</td></tr>)}
+                </tbody>
+              </table>
+            </div>
+          </div>
+          <div>
+            <header class="block__head"><h3 class="block__t">Con TIO más altas.</h3>
+              <p class="block__lead">El costo del patrimonio con la beta de Damodaran queda bajo el de la deuda; la prima de 3,5 % lo compensa. Aun así:</p></header>
+            <ul class="hbars" data-bars>
+              {[{ tio: economics.tio, vpn: economics.vpn }, ...excel.sensTio].map((t) => (
+                <li class="hbar">
+                  <p class="hbar__head"><b>TIO {pct(t.tio, t.tio < 0.15 ? 1 : 0)}</b><span class="mono">${m(t.vpn)} M</span></p>
+                  <span class="hbar__track is-new" aria-hidden="true"><i style={`--w:${(t.vpn / economics.vpn) * 100}%`} data-bar /></span>
+                </li>
+              ))}
+            </ul>
+            <p class="note">Punto de equilibrio: el VPN sigue ≥ 0 con el {pct(excel.resumen.equilibrio, 0)} de los beneficios estimados.</p>
+          </div>
+        </div>
+
+        <div class="block cols cols--57">
+          <div>
+            <header class="block__head"><h3 class="block__t">Kuajo gana {pct(economics.margenKuajo)} neto.</h3>
+              <p class="block__lead">Estado de resultados del proyecto. La contingencia se carga al 50 % más las horas extra; lo que no se consuma aumenta la utilidad.</p></header>
             <table class="table">
-              <thead><tr><th scope="col">M COP</th>{kj.meses.map((mm) => <th scope="col" class="num">{mm}</th>)}</tr></thead>
-              <tbody>
-                <tr><th scope="row">Cobros</th>{kj.cobros.map((v) => <td class="num">{m(v)}</td>)}</tr>
-                <tr><th scope="row">Pagos a proveedores</th>{kj.pagos.map((v) => <td class="num">{m(v)}</td>)}</tr>
-                <tr><th scope="row">Flujo neto</th>{kj.neto.map((v) => <td class="num">{m(v)}</td>)}</tr>
-                <tr class="is-total"><th scope="row">Saldo acumulado</th>{kj.saldo.map((v) => <td class="num">{m(v)}</td>)}</tr>
-              </tbody>
+              <caption class="micro">Tabla 13.18 (M COP)</caption>
+              <tbody>{kj.pyg.map((row) => <tr class:list={{ 'is-total': /^Utilidad/.test(row.concepto) }}><th scope="row">{row.concepto.replace(/ \(−\)$/, '')}</th><td class="num">{m(row.valor)}</td><td class="num">{pct(row.valor / excel.precio.precio)}</td></tr>)}</tbody>
             </table>
           </div>
-        </details>
-      </figure>
-    </div>
+          <figure class="fig">
+            <header class="block__head"><h3 class="block__t">El cobro a 30 días exige un crédito de ${m(-minSaldo)} M en el mes {minMes}.</h3>
+              <p class="block__lead">Robots, tableros y montaje se pagan antes de cobrar los hitos de llegada y FAT. Kuajo tramita un crédito rotativo con cupo de $1.500 M; sus intereses (≈ $20 M) ya están en la utilidad.</p></header>
+            <svg class="chart" viewBox={`0 0 ${K.w} ${K.h}`} role="img" aria-label={`Flujo mensual de Kuajo: el saldo acumulado baja a ${m(minSaldo)} millones en el mes ${minMes} y cierra en ${m(kj.saldo[13])} millones en el mes 13.`} data-bars>
+              {[-2e9, -1e9, 0, 1e9, 2e9, 3e9].map((v) => <g><path class={v === 0 ? 'zero' : 'gridl'} d={`M ${K.x0} ${ky(v)} H ${K.x1}`} /><text x={K.x0 - 8} y={ky(v) + 4} font-size="11" text-anchor="end">{num(v / 1e9)}</text></g>)}
+              {kj.neto.map((v, i) => <rect class:list={['bar', v < 0 ? 'bar-neg is-down' : 'bar-pos']} x={kx(i) - 15} y={v < 0 ? ky(0) : ky(v)} width="30" height={Math.abs(ky(v) - ky(0))} data-bar="y" />)}
+              <path class="line" d={kLine} data-draw />
+              {kj.saldo.map((v, i) => <circle class="dot" cx={kx(i)} cy={ky(v)} r="3" />)}
+              <text x={kx(minMes)} y={ky(minSaldo) + 22} font-size="12" text-anchor="middle" class="lbl">{m(minSaldo)}</text>
+              {kj.meses.map((mm, i) => <text x={kx(i)} y={K.y1 + 24} font-size="11" text-anchor="middle">{mm}</text>)}
+              <text x={K.x0} y={K.y0 - 8} font-size="11">miles de millones COP · meses desde la firma</text>
+            </svg>
+            <div class="tbl-wrap" style="--tbl-min: 820px; margin-top: var(--s-4)" tabindex="0" role="region" aria-label="Flujo mensual de Kuajo">
+              <table class="table">
+                <caption class="micro">Flujo mensual de Kuajo (M COP)</caption>
+                <thead><tr><th scope="col">M COP</th>{kj.meses.map((mm) => <th scope="col" class="num">{mm}</th>)}</tr></thead>
+                <tbody>
+                  <tr><th scope="row">Cobros</th>{kj.cobros.map((v) => <td class="num">{m(v)}</td>)}</tr>
+                  <tr><th scope="row">Pagos a proveedores</th>{kj.pagos.map((v) => <td class="num">{m(v)}</td>)}</tr>
+                  <tr><th scope="row">Flujo neto</th>{kj.neto.map((v) => <td class="num">{m(v)}</td>)}</tr>
+                  <tr class="is-total"><th scope="row">Saldo acumulado</th>{kj.saldo.map((v) => <td class="num">{m(v)}</td>)}</tr>
+                </tbody>
+              </table>
+            </div>
+          </figure>
+        </div>
+      </div>
+    </details>
   </div>
 </section>
+
+<style>
+  .eva-fold > summary { font: 650 var(--t-3)/1.2 var(--f-display); letter-spacing: -0.02em; }
+  .sens__sep { padding-top: var(--s-5); }
+</style>

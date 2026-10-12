@@ -3,12 +3,14 @@ import SectionHead from './SectionHead.astro';
 import { simScenarios, simKpis, simModel, fermenters } from '../data/site';
 import { num, pct } from '../lib/fmt';
 const demanda = 52400;
+const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const stLabel: Record<string, string> = { run: 'En marcha', stop: 'Detenido', warn: 'Advertencia' };
 ---
 <section class="sec" id="simulacion" aria-labelledby="simulacion-t">
   <div class="wrap">
-    <SectionHead id="simulacion" title="+24 % vendible, si las pausas de la llenadora se escalonan." note="sim.py · 10 réplicas de 13 semanas">
-      <p class="sec__intro lead">La simulación de eventos discretos confirma el aumento de capacidad y marca la siguiente restricción: con 4 fermentadores no queda margen para crecer más allá de 52.400 kg/día.</p>
+    <SectionHead id="simulacion" title="≈ +24 % vendible, si las pausas de la llenadora se escalonan." note="sim.py · 10 réplicas de 13 semanas" pre="Estimación preliminar">
+      <p class="sec__intro lead">La simulación preliminar de eventos discretos, con datos supuestos, respalda el aumento (≈ +24 % vendible) y marca la siguiente restricción: solo se cumple con pausas escalonadas y la secuencia del MES, y con 4 fermentadores no queda margen para crecer más allá de 52.400 kg/día.</p>
+      <p class="sec__intro"><a class="link" href={`${base}descargas/Resumen_Estimaciones_Kuajo.xlsx`} download>¿De dónde salen estas cifras? → Resumen de estimaciones (Excel)</a></p>
     </SectionHead>
 
     <ul class="counters" style="--n:3" aria-label="Producción vendible por escenario">

@@ -1,0 +1,10 @@
+---
+// Etiqueta «estimación preliminar». Al pulsarla abre la nota de site.preliminar (popover nativo,
+// sin JavaScript; funciona con toque en móvil). La nota vive una sola vez en Base.astro.
+import type { TextoPreliminar } from '../data/site';
+interface Props { texto?: TextoPreliminar }
+const { texto = 'Estimación preliminar' } = Astro.props;
+---
+<button type="button" class="pre-tag" popovertarget="nota-preliminar" aria-label={`${texto}: ver qué significa`}>
+  <span aria-hidden="true">≈</span>{texto}
+</button>

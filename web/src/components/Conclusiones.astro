@@ -1,11 +1,13 @@
 ---
+import Preliminar from './Preliminar.astro';
 import { conclusions, nextSteps, sections, site } from '../data/site';
 const s = sections.find((x) => x.id === 'conclusiones')!;
 ---
 <section class="sec conc" id="conclusiones" aria-labelledby="conclusiones-t">
   <div class="wrap">
-    <p class="conc__meta micro"><span>{s.n} — {s.label}</span><span>{s.code} / {site.rev}</span><span>Propuesta de valor</span></p>
+    <p class="conc__meta micro"><span>{s.n} — {s.label}</span><span>{s.code} / {site.rev}</span><span>Propuesta de valor · presenta Ian</span></p>
     <h2 class="conc__t" id="conclusiones-t" data-lines>Ver la planta funcionando antes de comprar un solo equipo.</h2>
+    <p class="conc__pre"><Preliminar texto="Cálculos preliminares" /></p>
     <ol class="conc__list">
       {conclusions.map((c, i) => (
         <li><span class="mono conc__n">C{i + 1}</span><p>{c}</p></li>
@@ -33,6 +35,9 @@ const s = sections.find((x) => x.id === 'conclusiones')!;
     letter-spacing: -0.045em; max-width: 14ch;
     margin-top: var(--s-8);
   }
+  .conc__pre { margin-top: var(--s-5); }
+  /* Sobre la banda oscura, la etiqueta usa siempre la versión para fondo oscuro */
+  .conc :global(.pre-tag) { --pre-ink: oklch(85% 0.12 80); --pre-bg: oklch(27% 0.045 70); }
   .conc__list {
     display: grid; gap: 0 var(--gap); margin-top: var(--s-9);
     @media (min-width: 1080px) { grid-template-columns: repeat(3, 1fr); }

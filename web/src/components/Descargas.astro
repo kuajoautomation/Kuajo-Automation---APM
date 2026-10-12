@@ -4,7 +4,7 @@ import { site, downloads, sources, PENDING } from '../data/site';
 const base = import.meta.env.BASE_URL.replace(/\/?$/, '/');
 const links = [
   { k: 'Repositorio', d: 'Código, modelos, documentos y este sitio', url: site.repo },
-  { k: 'Video', d: 'Sustentación del proyecto', url: site.video },
+  { k: 'Video', d: site.video === PENDING ? site.videoNota : 'Sustentación del proyecto', url: site.video },
 ];
 ---
 <section class="sec" id="descargas" aria-labelledby="descargas-t">

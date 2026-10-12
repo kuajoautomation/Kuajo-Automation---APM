@@ -52,6 +52,11 @@ const title = `${site.name} — ${site.slogan}`;
       <slot />
     </main>
     <Footer />
+    <div id="nota-preliminar" popover class="pre-pop" role="note" aria-labelledby="nota-preliminar-t">
+      <p class="micro" id="nota-preliminar-t">Estimaciones preliminares</p>
+      <p>{site.preliminar}</p>
+      <button type="button" class="pre-pop__x" popovertarget="nota-preliminar" popovertargetaction="hide">Cerrar <span aria-hidden="true">×</span></button>
+    </div>
     <dialog class="visor" id="visor" aria-labelledby="visor-t">
       <div class="visor__bar">
         <p class="visor__title" id="visor-t" data-visor-title>Figura</p>
