@@ -498,7 +498,7 @@ Con las tres fases, la planta pasa de 133.377 a 151.120 kg/día (+13 %). El deta
 | M01 Gestión de la producción | Juan · David | Hecho | VSM, KPIs, OEE, MLT y simulación con 3 escenarios. Tecnomatix en curso (19/10/2026) |
 | M02 Planeación PM4R | Duvan | Hecho | EDT, CPM, curva S, presupuesto, flujos, sensibilidad, riesgos y RACI |
 | M03 Celda robotizada | Jose Luis | En curso | Recetas, herramientas y patrones definidos; RobotStudio en la entrega final (07/12/2026) |
-| M04 Digital Factory | Ian | ⏳ Pendiente | Arquitectura del comisionamiento virtual definida; el gemelo va en la entrega final |
+| M04 Digital Factory | Ian | Pendiente | Arquitectura del comisionamiento virtual definida; el gemelo va en la entrega final |
 | M05 PLC y SCADA | Jose Luis · Ian | En curso | P&ID, 86 tags, lazos e ISA-88 hechos; PLC y pantallas en la entrega final |
 
 ---
