@@ -14,7 +14,7 @@ Proyecto integrador · Automatización de Procesos de Manufactura 2026-2 · Univ
 [![Página web](https://img.shields.io/badge/P%C3%A1gina_web-en_l%C3%ADnea-0E5A52?style=for-the-badge&logo=githubpages&logoColor=white)](https://kuajoautomation.github.io/Kuajo-Automation---APM/)
 [![Informe](https://img.shields.io/badge/Informe-PDF-C8D94A?style=for-the-badge&logo=adobeacrobatreader&logoColor=black)](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf)
 [![Excel PM4R](https://img.shields.io/badge/Planeaci%C3%B3n_PM4R-Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)](05_pm4r/Planeacion_PM4R_Kuajo_Pomar.xlsx)
-[![Video](https://img.shields.io/badge/Video-pendiente-4A5754?style=for-the-badge&logo=youtube&logoColor=white)](#-entregables-y-enlaces)
+[![Video](https://img.shields.io/badge/Video-pendiente-4A5754?style=for-the-badge&logo=youtube&logoColor=white)](#entregables-y-enlaces)
 
 [![Publicación](https://github.com/kuajoautomation/Kuajo-Automation---APM/actions/workflows/deploy-pagina.yml/badge.svg)](https://github.com/kuajoautomation/Kuajo-Automation---APM/actions/workflows/deploy-pagina.yml)
 ![ISA-95](https://img.shields.io/badge/ISA--95-integraci%C3%B3n_OT%2FIT-0E5A52)
@@ -30,28 +30,28 @@ Proyecto integrador · Automatización de Procesos de Manufactura 2026-2 · Univ
 
 ## Contenido
 
-1. [Resumen ejecutivo](#-resumen-ejecutivo)
-2. [Equipo](#-equipo)
-3. [Cliente y problema](#-cliente-y-problema)
-4. [Planta y líneas de producción](#-planta-y-líneas-de-producción)
-5. [Situación actual y VSM](#-situación-actual-y-vsm)
-6. [Solución propuesta](#-solución-propuesta)
-7. [Recetas e ISA-88](#-recetas-e-isa-88)
-8. [Arquitectura ISA-95 y red OT/IT](#-arquitectura-isa-95-y-red-otit)
-9. [Instrumentación y P&ID](#-instrumentación-y-pid)
-10. [Simulación](#-simulación)
-11. [Planeación PM4R](#-planeación-pm4r)
-12. [Evaluación financiera](#-evaluación-financiera)
-13. [Oferta comercial y líneas 2 y 3](#-oferta-comercial-y-líneas-2-y-3)
-14. [Estado por módulo](#-estado-por-módulo)
-15. [Conclusiones](#-conclusiones)
-16. [Entregables y enlaces](#-entregables-y-enlaces)
-17. [Organización del repositorio](#-organización-del-repositorio)
-18. [Página web: publicación y desarrollo](#-página-web-publicación-y-desarrollo)
+1. [Resumen ejecutivo](#resumen-ejecutivo)
+2. [Equipo](#equipo)
+3. [Cliente y problema](#cliente-y-problema)
+4. [Planta y líneas de producción](#planta-y-líneas-de-producción)
+5. [Situación actual y VSM](#situación-actual-y-vsm)
+6. [Solución propuesta](#solución-propuesta)
+7. [Recetas e ISA-88](#recetas-e-isa-88)
+8. [Arquitectura ISA-95 y red OT/IT](#arquitectura-isa-95-y-red-otit)
+9. [Instrumentación y P&ID](#instrumentación-y-pid)
+10. [Simulación](#simulación)
+11. [Planeación PM4R](#planeación-pm4r)
+12. [Evaluación financiera](#evaluación-financiera)
+13. [Oferta comercial y líneas 2 y 3](#oferta-comercial-y-líneas-2-y-3)
+14. [Estado por módulo](#estado-por-módulo)
+15. [Conclusiones](#conclusiones)
+16. [Entregables y enlaces](#entregables-y-enlaces)
+17. [Organización del repositorio](#organización-del-repositorio)
+18. [Página web: publicación y desarrollo](#página-web-publicación-y-desarrollo)
 
 ---
 
-## 📌 Resumen ejecutivo
+## Resumen ejecutivo
 
 **Kuajo Automation S.A.S.** es un integrador B2B de automatización para la industria láctea. Integramos proceso, PLC, SCADA, MES y ERP bajo **ISA-95** e **ISA-88**.
 
@@ -86,7 +86,7 @@ Con esto, la línea pasa de **43.700 a 52.400 kg/día** sin comprar equipos de p
 
 ---
 
-## 👥 Equipo
+## Equipo
 
 Cada integrante responde por un módulo y tiene una pareja que revisa su trabajo (R1–R2, R3–R4 y R5–R6).
 
@@ -146,7 +146,7 @@ Cada integrante responde por un módulo y tiene una pareja que revisa su trabajo
 
 ---
 
-## 🏭 Cliente y problema
+## Cliente y problema
 
 **Lácteos Pomar**, planta Cajicá (Cundinamarca). Acopia ≈ 260.000 L de leche al día y trabaja 2 turnos de 8 h, 6 días por semana.
 
@@ -168,13 +168,13 @@ Lácteos Pomar necesita aumentar su producción un 20 % y lanzar nuevas referenc
 
 ---
 
-## 🧪 Planta y líneas de producción
+## Planta y líneas de producción
 
 La planta tiene tres líneas con tres referencias cada una (9 recetas). Este proyecto estudia en detalle la **línea 1 (yogures)**; las líneas 2 y 3 se dimensionan en el anexo C.
 
 | Línea | Referencias | Leche asignada | Lote |
 |:--|:--|:--:|:--|
-| **L1 Yogures** ⭐ | Y1 batido de fresa (vaso 150 g) · Y2 griego alto en proteína (vaso 500 g) · Y3 kéfir (botella 1 L) | 70.000 L/día | Fermentador de 10.000 L |
+| **L1 Yogures** | Y1 batido de fresa (vaso 150 g) · Y2 griego alto en proteína (vaso 500 g) · Y3 kéfir (botella 1 L) | 70.000 L/día | Fermentador de 10.000 L |
 | L2 Quesos | Q1 campesino · Q2 doble crema · Q3 cuajada | 60.000 L/día | Tina de 10.000 L |
 | L3 UHT y bebidas | U1 entera · U2 deslactosada · U3 achocolatada | 90.000 L/día | Tanque de 15.000 L |
 
@@ -191,7 +191,7 @@ La planta tiene tres líneas con tres referencias cada una (9 recetas). Este pro
 
 ---
 
-## 📉 Situación actual y VSM
+## Situación actual y VSM
 
 Hoy la **llenadora de vasos es el cuello de botella**: necesita 14,0 de las 14 h disponibles, aunque a velocidad nominal le bastarían 7,8 h. La línea trabaja a 1,15 s/kg cuando el takt time es de 0,96 s/kg, es decir, 20 % por debajo de lo que pide el cliente.
 
@@ -233,7 +233,7 @@ Las ocho mejoras kaizen del VSM futuro:
 
 ---
 
-## 🔧 Solución propuesta
+## Solución propuesta
 
 ```mermaid
 flowchart LR
@@ -276,7 +276,7 @@ Con la propuesta, la restricción pasa de la llenadora a la **fermentación**, q
 
 ---
 
-## 📋 Recetas e ISA-88
+## Recetas e ISA-88
 
 Un solo procedimiento ISA-88, con sus parámetros, produce las tres recetas. El PLC cambia consignas, rutas y formato automáticamente.
 
@@ -300,7 +300,7 @@ Un solo procedimiento ISA-88, con sus parámetros, produce las tres recetas. El 
 
 ---
 
-## 🛰️ Arquitectura ISA-95 y red OT/IT
+## Arquitectura ISA-95 y red OT/IT
 
 ```mermaid
 flowchart TB
@@ -333,7 +333,7 @@ La DMZ industrial es el único paso entre OT e IT, según la norma ISA/IEC 62443
 
 ---
 
-## 🎛️ Instrumentación y P&ID
+## Instrumentación y P&ID
 
 La lista única tiene **86 tags**, según ISA-5.1. Los lazos de control principales son:
 
@@ -353,7 +353,7 @@ El desvío por temperatura del **PCC 1** no es una fase de la receta. Es un encl
 
 ---
 
-## 🧮 Simulación
+## Simulación
 
 El simulador es propio: modela eventos discretos en Python con paso de 1 min ([`sim.py`](04_produccion/simulacion/sim.py), anexo D). Corre 10 réplicas de 13 semanas y genera fallas exponenciales con el MTBF y el MTTR de cada equipo.
 
@@ -375,7 +375,7 @@ Los fermentadores quedan casi saturados (98 %). Por eso el plan solo se cumple c
 
 ---
 
-## 🗓️ Planeación PM4R
+## Planeación PM4R
 
 El proyecto se planeó con la metodología **PM4R del BID**. La planeación completa está en el [libro de Excel](05_pm4r/Planeacion_PM4R_Kuajo_Pomar.xlsx) (anexo A), que tiene 23 hojas con fórmulas vivas. Incluye:
 
@@ -433,7 +433,7 @@ pie showData
 
 ---
 
-## 💰 Evaluación financiera
+## Evaluación financiera
 
 La evaluación toma el punto de vista de Pomar, con un horizonte de 7 años sin valor residual y una TIO de 13,7 %.
 
@@ -471,7 +471,7 @@ xychart-beta
 
 ---
 
-## 🤝 Oferta comercial y líneas 2 y 3
+## Oferta comercial y líneas 2 y 3
 
 **Oferta `KA-OF-2026-001`:** diseño, suministro, comisionamiento virtual, montaje y puesta en marcha de la línea de yogures, más la plataforma de planta (SCADA, MES e integración con SAP) sobre la que luego se conectan quesos y UHT. Las condiciones son:
 
@@ -491,19 +491,19 @@ Con las tres fases, la planta pasa de 133.377 a 151.120 kg/día (+13 %). El deta
 
 ---
 
-## 🧩 Estado por módulo
+## Estado por módulo
 
 | Módulo | Responsable | Estado | Avance |
 |:--|:--|:--:|:--|
-| M01 Gestión de la producción | Juan · David | ✅ Hecho | VSM, KPIs, OEE, MLT y simulación con 3 escenarios. Tecnomatix en curso (19/10/2026) |
-| M02 Planeación PM4R | Duvan | ✅ Hecho | EDT, CPM, curva S, presupuesto, flujos, sensibilidad, riesgos y RACI |
-| M03 Celda robotizada | Jose Luis | 🔄 En curso | Recetas, herramientas y patrones definidos; RobotStudio en la entrega final (07/12/2026) |
+| M01 Gestión de la producción | Juan · David | Hecho | VSM, KPIs, OEE, MLT y simulación con 3 escenarios. Tecnomatix en curso (19/10/2026) |
+| M02 Planeación PM4R | Duvan | Hecho | EDT, CPM, curva S, presupuesto, flujos, sensibilidad, riesgos y RACI |
+| M03 Celda robotizada | Jose Luis | En curso | Recetas, herramientas y patrones definidos; RobotStudio en la entrega final (07/12/2026) |
 | M04 Digital Factory | Ian | ⏳ Pendiente | Arquitectura del comisionamiento virtual definida; el gemelo va en la entrega final |
-| M05 PLC y SCADA | Jose Luis · Ian | 🔄 En curso | P&ID, 86 tags, lazos e ISA-88 hechos; PLC y pantallas en la entrega final |
+| M05 PLC y SCADA | Jose Luis · Ian | En curso | P&ID, 86 tags, lazos e ISA-88 hechos; PLC y pantallas en la entrega final |
 
 ---
 
-## ✅ Conclusiones
+## Conclusiones
 
 1. **La línea 1 puede producir 20 % más sin comprar equipos de proceso.** El OEE de la llenadora pasa de 55 % a 78 % y la producción, de 43.700 a 52.400 kg/día.
 2. **La simulación confirma el aumento:** +24 % vendible, a menos de 1 % del cálculo. Sin embargo, los fermentadores quedan casi saturados.
@@ -519,22 +519,22 @@ Con las tres fases, la planta pasa de 133.377 a 151.120 kg/día (+13 %). El deta
 
 ---
 
-## 📦 Entregables y enlaces
+## Entregables y enlaces
 
 | Entregable | Archivo | Descripción |
 |:--|:--|:--|
-| 🌐 **Página web** | [kuajoautomation.github.io/Kuajo-Automation---APM](https://kuajoautomation.github.io/Kuajo-Automation---APM/) | Todo el proyecto en una sola página, con las cifras del Excel |
-| 📄 **Informe de avance** | [PDF](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf) · [Word](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.docx) | 112 páginas · versión B (11/10/2026) |
-| 📊 **Anexo A · Planeación PM4R** | [Excel](05_pm4r/Planeacion_PM4R_Kuajo_Pomar.xlsx) | 23 hojas con fórmulas vivas |
-| 🗺️ **Anexo B · Figuras en A3** | [PDF](informes/Anexo_B_Figuras_A3.pdf) | 12 figuras técnicas vectoriales |
-| 🧀 **Anexo C · Líneas 2 y 3** | [Word](informes/Anexo_C_Lineas_2_y_3.docx) | Quesos y UHT: recetas, parámetros y KPIs |
-| 🐍 **Anexo D · Simulador** | [`sim.py`](04_produccion/simulacion/sim.py) | Eventos discretos, sin librerías externas |
-| 🎬 **Video** | *Pendiente* | Video de 30 a 45 min con los 6 integrantes |
-| 📚 **Enunciado del curso** | [Proyecto integrador](00_curso/3.%20APM%20Proyecto%20Integrador%202026-2.pdf) · [Programa](00_curso/1.APM%20Programa%202026-2.pdf) · [Guía PM4R](00_curso/Gu%C3%ADa%20Metodolog%C3%ADa%20PM4R.pdf) | |
+| **Página web** | [kuajoautomation.github.io/Kuajo-Automation---APM](https://kuajoautomation.github.io/Kuajo-Automation---APM/) | Todo el proyecto en una sola página, con las cifras del Excel |
+| **Informe de avance** | [PDF](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf) · [Word](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.docx) | 112 páginas · versión B (11/10/2026) |
+| **Anexo A · Planeación PM4R** | [Excel](05_pm4r/Planeacion_PM4R_Kuajo_Pomar.xlsx) | 23 hojas con fórmulas vivas |
+| **Anexo B · Figuras en A3** | [PDF](informes/Anexo_B_Figuras_A3.pdf) | 12 figuras técnicas vectoriales |
+| **Anexo C · Líneas 2 y 3** | [Word](informes/Anexo_C_Lineas_2_y_3.docx) | Quesos y UHT: recetas, parámetros y KPIs |
+| **Anexo D · Simulador** | [`sim.py`](04_produccion/simulacion/sim.py) | Eventos discretos, sin librerías externas |
+| **Video** | *Pendiente* | Video de 30 a 45 min con los 6 integrantes |
+| **Enunciado del curso** | [Proyecto integrador](00_curso/3.%20APM%20Proyecto%20Integrador%202026-2.pdf) · [Programa](00_curso/1.APM%20Programa%202026-2.pdf) · [Guía PM4R](00_curso/Gu%C3%ADa%20Metodolog%C3%ADa%20PM4R.pdf) | |
 
 ---
 
-## 🗂️ Organización del repositorio
+## Organización del repositorio
 
 Hay una carpeta por módulo, como indica el informe (sección 15.1). Cada integrante sube su trabajo con commits propios en la carpeta de su módulo.
 
@@ -564,7 +564,7 @@ Kuajo-Automation---APM/
 
 ---
 
-## 🌐 Página web: publicación y desarrollo
+## Página web: publicación y desarrollo
 
 La página vive en [`web/`](web) y **no tiene copias propias** del informe, el Excel ni las figuras: al compilar, las toma de las carpetas de módulos. Así, basta con actualizar un archivo en su carpeta para que la página lo publique.
 
