@@ -439,14 +439,21 @@ La evaluación toma el punto de vista de Pomar, con un horizonte de 7 años sin 
 
 ```mermaid
 xychart-beta
-    title "Flujo de caja libre de Pomar y VPN acumulado ($ millones)"
+    title "Flujo de caja libre de Pomar, años 1 a 7 ($ millones)"
+    x-axis ["Año 1", "Año 2", "Año 3", "Año 4", "Año 5", "Año 6", "Año 7"]
+    y-axis "$ M COP" 0 --> 10000
+    bar [2541, 5273, 6057, 6285, 6523, 6679, 8718]
+```
+
+```mermaid
+xychart-beta
+    title "Flujo descontado acumulado: la inversión se recupera en el año 3 ($ millones)"
     x-axis ["Año 0", "Año 1", "Año 2", "Año 3", "Año 4", "Año 5", "Año 6", "Año 7"]
     y-axis "$ M COP" -10000 --> 16000
-    bar [-9227, 2541, 5273, 6057, 6285, 6523, 6679, 8718]
     line [-9227, -6993, -2916, 1201, 4958, 8386, 11472, 15014]
 ```
 
-<sub>Barras: flujo de caja libre anual · línea: flujo descontado acumulado, que cierra en el VPN de $15.014 M.</sub>
+<sub>Año 0: inversión neta de −$9.227 M. El acumulado descontado cierra en el VPN de $15.014 M.</sub>
 
 | Indicador | Valor | Nota |
 |:--|:--:|:--|
