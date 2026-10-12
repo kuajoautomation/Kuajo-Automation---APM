@@ -123,7 +123,7 @@ Cada integrante responde por un módulo y tiene una pareja que revisa su trabajo
       <a href="mailto:juvargasro@unal.edu.co">juvargasro@unal.edu.co</a>
     </td>
     <td align="center">
-      <img src=".github/readme/jose-luis.svg" width="150" alt="Jose Luis Pulido Fonseca"><br>
+      <img src="web/src/assets/equipo/jose-luis.jpg" width="150" alt="Jose Luis Pulido Fonseca"><br>
       <b>Jose Luis Pulido Fonseca</b><br>
       <sub><code>R5</code> Ingeniero de control y robótica</sub><br>
       <sub>P&amp;ID, instrumentación, PLC y RobotStudio</sub><br>

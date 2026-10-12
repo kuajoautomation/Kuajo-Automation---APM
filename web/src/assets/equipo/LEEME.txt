@@ -10,4 +10,3 @@ Astro las convierte solas a AVIF y WebP en 3 tamanos, con carga diferida.
 Si falta una foto, la pagina muestra las iniciales y "Foto pendiente".
 
 Origen: gestion/equipo/fotos/ del repositorio (recortadas a 4:5 y reducidas).
-Falta: jose-luis.jpg
