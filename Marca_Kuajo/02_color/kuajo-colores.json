@@ -1,0 +1,587 @@
+{
+ "marca": "Kuajo Automation",
+ "version": "1.0 · oct. 2026",
+ "nota": "CMYK aproximado por conversión directa; validar con prueba de color en imprenta.",
+ "colores": [
+  {
+   "grupo": "Marca",
+   "token": "k-suero",
+   "nombre": "Verde Suero",
+   "hex": "#0E5A52",
+   "rol": "Color principal: símbolo, títulos, botones y enlaces",
+   "rgb": [
+    14,
+    90,
+    82
+   ],
+   "cmyk_aprox": [
+    84,
+    0,
+    9,
+    65
+   ],
+   "gris": "#424242",
+   "gris_pct_negro": 74
+  },
+  {
+   "grupo": "Marca",
+   "token": "k-cuajada",
+   "nombre": "Cuajada",
+   "hex": "#EFE6CF",
+   "rol": "Secundario cálido: fondos, etiquetas y bloques",
+   "rgb": [
+    239,
+    230,
+    207
+   ],
+   "cmyk_aprox": [
+    0,
+    4,
+    13,
+    6
+   ],
+   "gris": "#E6E6E6",
+   "gris_pct_negro": 10
+  },
+  {
+   "grupo": "Marca",
+   "token": "k-lima",
+   "nombre": "Lima Cuajo",
+   "hex": "#C8D94A",
+   "rol": "Acento: el dato que sube; nodo del símbolo; máx. 5 %",
+   "rgb": [
+    200,
+    217,
+    74
+   ],
+   "cmyk_aprox": [
+    8,
+    0,
+    66,
+    15
+   ],
+   "gris": "#C4C4C4",
+   "gris_pct_negro": 23
+  },
+  {
+   "grupo": "Marca",
+   "token": "k-pizarra",
+   "nombre": "Pizarra",
+   "hex": "#35566B",
+   "rol": "Secundario frío: capa TI en diagramas",
+   "rgb": [
+    53,
+    86,
+    107
+   ],
+   "cmyk_aprox": [
+    50,
+    20,
+    0,
+    58
+   ],
+   "gris": "#4F4F4F",
+   "gris_pct_negro": 69
+  },
+  {
+   "grupo": "Modo oscuro",
+   "token": "k-suero-claro",
+   "nombre": "Suero claro",
+   "hex": "#5FC7B3",
+   "rol": "Principal sobre fondo oscuro",
+   "rgb": [
+    95,
+    199,
+    179
+   ],
+   "cmyk_aprox": [
+    52,
+    0,
+    10,
+    22
+   ],
+   "gris": "#A6A6A6",
+   "gris_pct_negro": 35
+  },
+  {
+   "grupo": "Modo oscuro",
+   "token": "k-noche",
+   "nombre": "Noche",
+   "hex": "#121715",
+   "rol": "Fondo oscuro (video, portadas)",
+   "rgb": [
+    18,
+    23,
+    21
+   ],
+   "cmyk_aprox": [
+    22,
+    0,
+    9,
+    91
+   ],
+   "gris": "#151515",
+   "gris_pct_negro": 92
+  },
+  {
+   "grupo": "Modo oscuro",
+   "token": "k-tinta",
+   "nombre": "Tinta",
+   "hex": "#0B1210",
+   "rol": "K y nodo del símbolo en negativo",
+   "rgb": [
+    11,
+    18,
+    16
+   ],
+   "cmyk_aprox": [
+    39,
+    0,
+    11,
+    93
+   ],
+   "gris": "#101010",
+   "gris_pct_negro": 94
+  },
+  {
+   "grupo": "Superficies",
+   "token": "k-papel",
+   "nombre": "Papel",
+   "hex": "#FBF8F2",
+   "rol": "Fondo claro principal",
+   "rgb": [
+    251,
+    248,
+    242
+   ],
+   "cmyk_aprox": [
+    0,
+    1,
+    4,
+    2
+   ],
+   "gris": "#F8F8F8",
+   "gris_pct_negro": 3
+  },
+  {
+   "grupo": "Superficies",
+   "token": "k-texto",
+   "nombre": "Texto",
+   "hex": "#1B2422",
+   "rol": "Texto principal sobre claro",
+   "rgb": [
+    27,
+    36,
+    34
+   ],
+   "cmyk_aprox": [
+    25,
+    0,
+    6,
+    86
+   ],
+   "gris": "#212121",
+   "gris_pct_negro": 87
+  },
+  {
+   "grupo": "Superficies",
+   "token": "k-texto-2",
+   "nombre": "Texto secundario",
+   "hex": "#4A5754",
+   "rol": "Notas, pies y subtítulos",
+   "rgb": [
+    74,
+    87,
+    84
+   ],
+   "cmyk_aprox": [
+    15,
+    0,
+    3,
+    66
+   ],
+   "gris": "#535353",
+   "gris_pct_negro": 67
+  },
+  {
+   "grupo": "Superficies",
+   "token": "k-texto-oscuro",
+   "nombre": "Texto sobre oscuro",
+   "hex": "#EAEDE6",
+   "rol": "Texto principal sobre Noche",
+   "rgb": [
+    234,
+    237,
+    230
+   ],
+   "cmyk_aprox": [
+    1,
+    0,
+    3,
+    7
+   ],
+   "gris": "#EBEBEB",
+   "gris_pct_negro": 8
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-50",
+   "nombre": "Neutro 50",
+   "hex": "#F6F5F0",
+   "rol": "",
+   "rgb": [
+    246,
+    245,
+    240
+   ],
+   "cmyk_aprox": [
+    0,
+    0,
+    2,
+    4
+   ],
+   "gris": "#F5F5F5",
+   "gris_pct_negro": 4
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-100",
+   "nombre": "Neutro 100",
+   "hex": "#ECEAE2",
+   "rol": "",
+   "rgb": [
+    236,
+    234,
+    226
+   ],
+   "cmyk_aprox": [
+    0,
+    1,
+    4,
+    7
+   ],
+   "gris": "#EAEAEA",
+   "gris_pct_negro": 8
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-200",
+   "nombre": "Neutro 200",
+   "hex": "#D9D6CB",
+   "rol": "",
+   "rgb": [
+    217,
+    214,
+    203
+   ],
+   "cmyk_aprox": [
+    0,
+    1,
+    6,
+    15
+   ],
+   "gris": "#D6D6D6",
+   "gris_pct_negro": 16
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-300",
+   "nombre": "Neutro 300",
+   "hex": "#BDBAAD",
+   "rol": "",
+   "rgb": [
+    189,
+    186,
+    173
+   ],
+   "cmyk_aprox": [
+    0,
+    2,
+    8,
+    26
+   ],
+   "gris": "#B9B9B9",
+   "gris_pct_negro": 27
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-400",
+   "nombre": "Neutro 400",
+   "hex": "#96968A",
+   "rol": "",
+   "rgb": [
+    150,
+    150,
+    138
+   ],
+   "cmyk_aprox": [
+    0,
+    0,
+    8,
+    41
+   ],
+   "gris": "#959595",
+   "gris_pct_negro": 42
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-500",
+   "nombre": "Neutro 500",
+   "hex": "#6F7469",
+   "rol": "",
+   "rgb": [
+    111,
+    116,
+    105
+   ],
+   "cmyk_aprox": [
+    4,
+    0,
+    9,
+    55
+   ],
+   "gris": "#717171",
+   "gris_pct_negro": 56
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-600",
+   "nombre": "Neutro 600",
+   "hex": "#535A55",
+   "rol": "",
+   "rgb": [
+    83,
+    90,
+    85
+   ],
+   "cmyk_aprox": [
+    8,
+    0,
+    6,
+    65
+   ],
+   "gris": "#575757",
+   "gris_pct_negro": 66
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-700",
+   "nombre": "Neutro 700",
+   "hex": "#3A423F",
+   "rol": "",
+   "rgb": [
+    58,
+    66,
+    63
+   ],
+   "cmyk_aprox": [
+    12,
+    0,
+    5,
+    74
+   ],
+   "gris": "#3F3F3F",
+   "gris_pct_negro": 75
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-800",
+   "nombre": "Neutro 800",
+   "hex": "#252C2A",
+   "rol": "",
+   "rgb": [
+    37,
+    44,
+    42
+   ],
+   "cmyk_aprox": [
+    16,
+    0,
+    5,
+    83
+   ],
+   "gris": "#2A2A2A",
+   "gris_pct_negro": 84
+  },
+  {
+   "grupo": "Neutros",
+   "token": "k-neutro-900",
+   "nombre": "Neutro 900",
+   "hex": "#151A19",
+   "rol": "",
+   "rgb": [
+    21,
+    26,
+    25
+   ],
+   "cmyk_aprox": [
+    19,
+    0,
+    4,
+    90
+   ],
+   "gris": "#181818",
+   "gris_pct_negro": 91
+  },
+  {
+   "grupo": "Estados ISA-101",
+   "token": "st-ok",
+   "nombre": "Correcto",
+   "hex": "#2E7D32",
+   "rol": "Solo para estados de proceso, siempre con texto o forma",
+   "rgb": [
+    46,
+    125,
+    50
+   ],
+   "cmyk_aprox": [
+    63,
+    0,
+    60,
+    51
+   ],
+   "gris": "#5D5D5D",
+   "gris_pct_negro": 64
+  },
+  {
+   "grupo": "Estados ISA-101",
+   "token": "st-adv",
+   "nombre": "Advertencia",
+   "hex": "#F2A900",
+   "rol": "Solo para estados de proceso, siempre con texto o forma",
+   "rgb": [
+    242,
+    169,
+    0
+   ],
+   "cmyk_aprox": [
+    0,
+    30,
+    100,
+    5
+   ],
+   "gris": "#ACACAC",
+   "gris_pct_negro": 33
+  },
+  {
+   "grupo": "Estados ISA-101",
+   "token": "st-adv-texto",
+   "nombre": "Advertencia (texto)",
+   "hex": "#8A5300",
+   "rol": "Solo para estados de proceso, siempre con texto o forma",
+   "rgb": [
+    138,
+    83,
+    0
+   ],
+   "cmyk_aprox": [
+    0,
+    40,
+    100,
+    46
+   ],
+   "gris": "#5A5A5A",
+   "gris_pct_negro": 65
+  },
+  {
+   "grupo": "Estados ISA-101",
+   "token": "st-alarma",
+   "nombre": "Alarma",
+   "hex": "#C62828",
+   "rol": "Solo para estados de proceso, siempre con texto o forma",
+   "rgb": [
+    198,
+    40,
+    40
+   ],
+   "cmyk_aprox": [
+    0,
+    80,
+    80,
+    22
+   ],
+   "gris": "#575757",
+   "gris_pct_negro": 66
+  },
+  {
+   "grupo": "Estados ISA-101",
+   "token": "st-detenido",
+   "nombre": "Detenido",
+   "hex": "#5F6B73",
+   "rol": "Solo para estados de proceso, siempre con texto o forma",
+   "rgb": [
+    95,
+    107,
+    115
+   ],
+   "cmyk_aprox": [
+    17,
+    7,
+    0,
+    55
+   ],
+   "gris": "#686868",
+   "gris_pct_negro": 59
+  },
+  {
+   "grupo": "Recetas",
+   "token": "rc-y1",
+   "nombre": "Y1 Yogur de fresa",
+   "hex": "#C0392B",
+   "rol": "Siempre acompañado del código Y1/Y2/Y3",
+   "rgb": [
+    192,
+    57,
+    43
+   ],
+   "cmyk_aprox": [
+    0,
+    70,
+    78,
+    25
+   ],
+   "gris": "#606060",
+   "gris_pct_negro": 62
+  },
+  {
+   "grupo": "Recetas",
+   "token": "rc-y2",
+   "nombre": "Y2 Yogur griego",
+   "hex": "#6C3FB0",
+   "rol": "Siempre acompañado del código Y1/Y2/Y3",
+   "rgb": [
+    108,
+    63,
+    176
+   ],
+   "cmyk_aprox": [
+    39,
+    64,
+    0,
+    31
+   ],
+   "gris": "#595959",
+   "gris_pct_negro": 65
+  },
+  {
+   "grupo": "Recetas",
+   "token": "rc-y3",
+   "nombre": "Y3 Kéfir",
+   "hex": "#0F7C8C",
+   "rol": "Siempre acompañado del código Y1/Y2/Y3",
+   "rgb": [
+    15,
+    124,
+    140
+   ],
+   "cmyk_aprox": [
+    89,
+    11,
+    0,
+    45
+   ],
+   "gris": "#5D5D5D",
+   "gris_pct_negro": 64
+  }
+ ]
+}

@@ -1,0 +1,32 @@
+/* Kuajo Automation · tokens de color v1.0 */
+:root{
+  --k-suero: #0E5A52; /* Verde Suero */
+  --k-cuajada: #EFE6CF; /* Cuajada */
+  --k-lima: #C8D94A; /* Lima Cuajo */
+  --k-pizarra: #35566B; /* Pizarra */
+  --k-suero-claro: #5FC7B3; /* Suero claro */
+  --k-noche: #121715; /* Noche */
+  --k-tinta: #0B1210; /* Tinta */
+  --k-papel: #FBF8F2; /* Papel */
+  --k-texto: #1B2422; /* Texto */
+  --k-texto-2: #4A5754; /* Texto secundario */
+  --k-texto-oscuro: #EAEDE6; /* Texto sobre oscuro */
+  --k-neutro-50: #F6F5F0; /* Neutro 50 */
+  --k-neutro-100: #ECEAE2; /* Neutro 100 */
+  --k-neutro-200: #D9D6CB; /* Neutro 200 */
+  --k-neutro-300: #BDBAAD; /* Neutro 300 */
+  --k-neutro-400: #96968A; /* Neutro 400 */
+  --k-neutro-500: #6F7469; /* Neutro 500 */
+  --k-neutro-600: #535A55; /* Neutro 600 */
+  --k-neutro-700: #3A423F; /* Neutro 700 */
+  --k-neutro-800: #252C2A; /* Neutro 800 */
+  --k-neutro-900: #151A19; /* Neutro 900 */
+  --st-ok: #2E7D32; /* Correcto */
+  --st-adv: #F2A900; /* Advertencia */
+  --st-adv-texto: #8A5300; /* Advertencia (texto) */
+  --st-alarma: #C62828; /* Alarma */
+  --st-detenido: #5F6B73; /* Detenido */
+  --rc-y1: #C0392B; /* Y1 Yogur de fresa */
+  --rc-y2: #6C3FB0; /* Y2 Yogur griego */
+  --rc-y3: #0F7C8C; /* Y3 Kéfir */
+}

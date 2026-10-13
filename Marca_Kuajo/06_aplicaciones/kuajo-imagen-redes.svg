@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" role="img" aria-label="Kuajo Automation: Conectamos cada lote con cada decisión">
+  <rect width="1200" height="630" fill="#121715"/>
+  <g opacity=".18" fill="none" stroke="#5FC7B3" stroke-width="2"><path d="M700 40c60 18 120-18 180 0s120 18 180 0"/><path d="M700 100c60 18 120-18 180 0s120 18 180 0"/><path d="M700 160c60 18 120-18 180 0s120 18 180 0"/></g>
+  <g transform="translate(80 80) scale(1.6)"><rect x="2" y="2" width="60" height="60" rx="15" fill="#5FC7B3"/><path d="M21 16v32M21 32l19-14M21 32l19 14" fill="none" stroke="#0B1210" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/><circle cx="44" cy="15" r="5.5" fill="#C8D94A"/><circle cx="44" cy="49" r="5.5" fill="#0B1210"/></g>
+  <text x="200" y="150" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="56" font-weight="700" fill="#EAEDE6">Kuajo</text>
+  <text x="202" y="182" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="18" font-weight="600" letter-spacing="7" fill="#A7B1AC">AUTOMATION</text>
+  <text x="80" y="360" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="-2" fill="#EAEDE6">Conectamos cada lote</text>
+  <text x="80" y="450" font-family="Bricolage Grotesque, Arial, sans-serif" font-size="76" font-weight="700" letter-spacing="-2" fill="#5FC7B3">con cada decisión</text>
+  <text x="80" y="550" font-family="IBM Plex Mono, Consolas, monospace" font-size="24" fill="#A7B1AC">ISA-95 · ISA-88 · Gemelo digital · Trazabilidad lote a lote</text>
+</svg>

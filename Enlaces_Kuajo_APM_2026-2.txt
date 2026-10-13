@@ -1,0 +1,11 @@
+Kuajo Automation S.A.S. - Proyecto Integrador APM 2026-2 - Equipo 2
+Universidad Nacional de Colombia
+
+1. Video de sustentacion en YouTube:
+https://www.youtube.com/watch?v=E6pVgTWkzJ8
+
+2. Pagina web del proyecto:
+https://kuajoautomation.github.io/Kuajo-Automation---APM/
+
+3. Repositorio de GitHub:
+https://github.com/kuajoautomation/Kuajo-Automation---APM

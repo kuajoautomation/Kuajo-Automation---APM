@@ -551,9 +551,11 @@ Todo el equipo trabajó en esta entrega. Cada módulo tiene dos responsables que
 | **Anexo B · Figuras en A3** | [PDF](informes/Anexo_B_Figuras_A3.pdf) | 12 figuras técnicas vectoriales |
 | **Anexo C · Líneas 2 y 3** | [Word](informes/Anexo_C_Lineas_2_y_3.docx) | Quesos y UHT: recetas, parámetros y KPIs |
 | **Anexo D · Simulador** | [`sim.py`](04_produccion/simulacion/sim.py) | Eventos discretos, sin librerías externas |
-| **Presentación** | [`Presentacion/`](Presentacion) | Exportación HTML de la sustentación y [`guion.pdf`](Presentacion/guion.pdf) |
 | **Video** | [YouTube](https://www.youtube.com/watch?v=E6pVgTWkzJ8) | Sustentación con los 6 integrantes |
+| **Presentación** | [HTML](Presentacion/Sustentacion_Kuajo_APM_2026-2.html) · [Guion (PDF)](Presentacion/Guion_Sustentacion_Kuajo_APM_2026-2.pdf) | Diapositivas de la sustentación (descárgalas y ábrelas en el navegador) y guion del video |
 | **Intro y outro del video** | [Intro](Presentacion/Kuajo_Intro.mp4) · [Outro](Presentacion/Kuajo_Outro.mp4) | Animaciones de Kuajo, con y sin audio |
+| **Enlaces de la entrega** | [`Enlaces_Kuajo_APM_2026-2.txt`](Enlaces_Kuajo_APM_2026-2.txt) | Video, página web y repositorio |
+| **Marca Kuajo** | [Manual (PDF)](Marca_Kuajo/00_Manual_de_marca_Kuajo.pdf) · [`Marca_Kuajo/`](Marca_Kuajo) | Logos (SVG, PNG, PDF), colores, tipografías, patrón, íconos y aplicaciones |
 | **Enunciado del curso** | [Proyecto integrador](00_curso/3.%20APM%20Proyecto%20Integrador%202026-2.pdf) · [Programa](00_curso/1.APM%20Programa%202026-2.pdf) · [Guía PM4R](00_curso/Gu%C3%ADa%20Metodolog%C3%ADa%20PM4R.pdf) | |
 
 ---
@@ -571,9 +573,12 @@ Kuajo-Automation---APM/
 ├── 04_produccion/   VSM actual y futuro · simulacion/sim.py
 ├── 05_pm4r/         Libro PM4R (Excel) y gráficas de Gantt, histograma, curva S y flujo
 ├── informes/        Informe (Word y PDF) y anexos B y C
-├── gestion/         Prompts de trabajo y fotos del equipo (equipo/fotos/)
+├── gestion/         Auditoría interna, prompts de trabajo y fotos originales del equipo
 ├── Presentacion/    Sustentación (HTML), guion, intro y outro del video
-└── web/             Página web del proyecto (Astro)
+├── Marca_Kuajo/     Manual de marca, logos, colores, tipografías, patrón, íconos y aplicaciones
+├── web/             Página web del proyecto (Astro)
+├── Enlaces_Kuajo_APM_2026-2.txt   Enlaces de la entrega: video, página y repositorio
+└── README.md        Este documento
 ```
 
 | Carpeta | Responsable |
@@ -586,6 +591,7 @@ Kuajo-Automation---APM/
 | [`informes/`](informes) | Todos |
 | [`gestion/`](gestion) · [`gestion/equipo/fotos/`](gestion/equipo/fotos) | R1 Duvan |
 | [`Presentacion/`](Presentacion) | R1 Duvan · R6 Ian (video) |
+| [`Marca_Kuajo/`](Marca_Kuajo) | R1 Duvan |
 | [`web/`](web) | R6 Ian |
 
 ---

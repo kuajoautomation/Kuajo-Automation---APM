@@ -1,0 +1,25 @@
+KUAJO AUTOMATION S.A.S. - CARPETA DE MARCA (v1.0, octubre de 2026)
+Conectamos cada lote con cada decision
+
+Empieza por 00_Manual_de_marca_Kuajo.pdf: explica el nombre, el eslogan, lo que representa
+la marca, el logo, los colores (tambien en blanco y negro), la tipografia, el patron de
+lotes, los iconos, las aplicaciones y la investigacion del nombre (RUES, SIC, web).
+
+01_logo
+  svg/            Logos en curvas (no necesitan la fuente). Usar estos por defecto.
+  svg_editable/   Los mismos con texto editable (requieren Bricolage Grotesque).
+  png/            PNG transparentes en alta resolucion y favicons (16 a 512 px).
+  pdf/            Vectores para imprenta.
+  Versiones: horizontal, apilado y simbolo x color, negativo, grises, negro y blanco.
+
+02_color        kuajo-colores.css / .json, kuajo-paleta.ase (Adobe) y .gpl (GIMP, Inkscape).
+03_tipografia   Bricolage Grotesque, IBM Plex Sans e IBM Plex Mono (woff2 para web) y licencias OFL.
+                Para instalarlas en Windows, descargalas en fonts.google.com.
+04_patron       Fondo de lotes claro y oscuro (SVG y PNG 1920x1080) y teselas repetibles.
+05_iconos       12 iconos SVG (24x24, trazo 1,75) y hoja de muestra.
+06_aplicaciones Miniatura de YouTube, imagen para redes, plantilla de diapositivas y cuadros del video.
+                Los videos de intro y outro estan en la carpeta Presentacion del proyecto.
+fuente          HTML con el que se genera el manual.
+
+Caso academico: Kuajo Automation es la empresa del equipo para el curso APM 2026-2 (UNAL)
+y no esta constituida legalmente.

@@ -16,8 +16,9 @@ const destinos = {
 };
 Object.values(destinos).forEach((d) => mkdirSync(d, { recursive: true }));
 
-// Índice de todos los archivos del repositorio (sin la página, git ni dependencias)
-const omitir = new Set(['web', '.git', '.github', 'node_modules', 'capturas', '.claude']);
+// Índice de todos los archivos del repositorio (sin la página, git, dependencias ni la carpeta de marca,
+// que repite nombres a propósito: svg/ y svg_editable/ tienen los mismos logos)
+const omitir = new Set(['web', '.git', '.github', 'node_modules', 'capturas', '.claude', 'Marca_Kuajo']);
 const indice = new Map();
 const recorrer = (dir) => {
   for (const f of readdirSync(dir, { withFileTypes: true })) {

@@ -1,0 +1,33 @@
+GIMP Palette
+Name: Kuajo Automation
+Columns: 4
+#
+ 14  90  82	Verde Suero
+239 230 207	Cuajada
+200 217  74	Lima Cuajo
+ 53  86 107	Pizarra
+ 95 199 179	Suero claro
+ 18  23  21	Noche
+ 11  18  16	Tinta
+251 248 242	Papel
+ 27  36  34	Texto
+ 74  87  84	Texto secundario
+234 237 230	Texto sobre oscuro
+246 245 240	Neutro 50
+236 234 226	Neutro 100
+217 214 203	Neutro 200
+189 186 173	Neutro 300
+150 150 138	Neutro 400
+111 116 105	Neutro 500
+ 83  90  85	Neutro 600
+ 58  66  63	Neutro 700
+ 37  44  42	Neutro 800
+ 21  26  25	Neutro 900
+ 46 125  50	Correcto
+242 169   0	Advertencia
+138  83   0	Advertencia (texto)
+198  40  40	Alarma
+ 95 107 115	Detenido
+192  57  43	Y1 Yogur de fresa
+108  63 176	Y2 Yogur griego
+ 15 124 140	Y3 Kéfir
