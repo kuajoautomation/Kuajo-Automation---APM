@@ -75,9 +75,7 @@ La página no guarda copias propias del informe, el Excel ni las figuras: los to
 
 ## Pendientes
 
-Se muestran como `[PENDIENTE]` en el sitio:
-
-- Reflexión individual de Jose Luis (R5): `reflections` en `src/data/site.ts`. Las demás reflexiones y el video ya están.
+No queda ningún `[PENDIENTE]` en el sitio: el video, la reflexión grupal y las 6 reflexiones individuales ya están (`groupReflection` y `reflections` en `src/data/site.ts`). Si en el futuro falta un dato, se marca con la constante `PENDING`.
 
 ## En local
 
