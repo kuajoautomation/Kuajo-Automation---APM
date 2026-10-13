@@ -641,3 +641,30 @@ export const sources = [
   'El Tiempo (junio de 2022). Precios de leche en bolsa y en caja de 1 L.',
   'Farmatodo. Alpin de Alpina, bebida achocolatada de 200 mL.',
 ];
+
+/* ------------------------------------------------------------------ */
+/* Reflexiones del proceso de aprendizaje (texto de cada integrante)   */
+/* ------------------------------------------------------------------ */
+/** Reflexión grupal: null mientras el equipo no la escriba. */
+export const groupReflection: string[] | null = null;
+/** Reflexiones individuales por rol (R1…R6), en párrafos. Las que faltan se muestran como pendientes. */
+export const reflections: Record<string, string[]> = {
+  R2: [
+    'Durante esta primera etapa del proyecto, he comprendido mejor la importancia de integrar la información que circula entre los distintos niveles de operación. El desarrollo de la arquitectura ISA-95, los modelos ISA-88 y la integración entre PLC, SCADA, MES y ERP me permitieron ver el proyecto como un sistema completo, donde las decisiones de cada área están conectadas.',
+    'A partir de ello, aprendí que para el proyecto el trabajo de cada integrante no puede desarrollarse de manera aislada. Considero que hemos tenido una buena comunicación, participación y disposición para compartir ideas y llegar a acuerdos. Sin embargo, podríamos mejorar la organización inicial y definir con mayor claridad el alcance de cada entrega. Aunque también tuvo que ver con las constantes dudas de los parámetros y requerimientos mencionados en el documento del proyecto, que nos llevaron a ajustar parte del trabajo constantemente.',
+    'Por otro lado, dividir la parte del estado del arte entre las tres líneas de producción fue una estrategia útil, aunque también hizo que trabajáramos un poco separados en ciertos momentos y dejar de lado la parte de la simulación. Para la siguiente entrega, el enfoque será mejorar la integración entre los módulos y enfocarnos en la simulación formal en Tecnomatix y el desarrollo del gemelo digital.',
+  ],
+  R3: [
+    'Durante las seis semanas de trabajo, se ha evidenciado el compromiso, la disposición y la participación activa de todos los integrantes del equipo. Asimismo, se ha mantenido una comunicación asertiva, basada en la escucha activa y el respeto por las opiniones de cada compañero, lo que ha facilitado la construcción de acuerdos y la toma de decisiones conjuntas. Estos aspectos han contribuido al fortalecimiento del trabajo colaborativo y al desarrollo del proyecto de manera organizada y eficiente, buscando alcanzar los objetivos propuestos de la mejor manera posible.',
+    'En aspectos por mejorar, considero necesaria una consolidación de los temas tratados en las reuniones para facilitar el trabajo que debe realizar cada integrante para la siguiente reunión.',
+  ],
+  R4: [
+    'Durante estas semanas de trabajo, destaco mucho el compromiso y la buena disposición de todo el equipo. Tuvimos una comunicación muy fluida y respetuosa, lo que nos permitió tomar decisiones en conjunto y sacar adelante el proyecto de forma organizada.',
+    'En la parte personal, mi aporte estuvo centrado en el VSM y la definición de los KPIs para la línea de yogures. Fue un ejercicio clave porque nos permitió mapear el flujo actual, identificar los cuellos de botella en fermentación y envasado, y definir métricas como el OEE y los tiempos de ciclo. Con estos datos logramos justificar cómo alcanzar el 78 % objetivo y cumplir con la demanda adicional de volumen y el lanzamiento del yogur sin necesidad de montar una nueva línea.',
+    'Como aspecto a mejorar, creo que nos serviría hacer revisiones cruzadas de los temas con un poco más de anticipación antes de las entregas, para que la consolidación final del documento sea aún más ágil y fluida.',
+  ],
+  R6: [
+    'Durante estas seis semanas, aunque al comienzo hubo confusión sobre el alcance del proyecto, destaco la buena disposición del equipo y la distribución del trabajo para avanzar hacia los objetivos. Sin embargo, trabajamos de forma algo separada: cada integrante o pareja profundizaba en sus temas, pero parte de la información no llegaba al resto, lo que dificultaba mantener una visión compartida del proyecto.',
+    'En mi caso, todo el trabajo correspondiente a mi cargo ha sido investigativo, centrado en la supervisión y las comunicaciones, incluyendo redes OT/IT, ciberseguridad industrial, criterios de visualización del SCADA y gemelos digitales, además del apoyo a la planeación del proyecto. Como aspecto por mejorar, considero necesario compartir los avances y las decisiones con mayor frecuencia, para que el conocimiento no quede concentrado en quienes desarrollan cada módulo.',
+  ],
+};

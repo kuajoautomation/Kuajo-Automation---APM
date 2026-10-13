@@ -1,10 +1,7 @@
 ---
 import SectionHead from './SectionHead.astro';
-import { team, teamRules, logbook, commitments, PENDING } from '../data/site';
-// Reflexiones del proceso de aprendizaje: el informe no las incluye todavía.
-// Cada integrante escribe la suya; mientras tanto se muestran como pendientes.
-const group: string | null = null;
-const individual: Record<string, string> = {};
+import { team, teamRules, logbook, commitments, groupReflection, reflections, PENDING } from '../data/site';
+// Reflexiones: texto de cada integrante en site.ts; las que faltan se muestran como pendientes.
 ---
 <section class="sec" id="aprendizaje" aria-labelledby="aprendizaje-t">
   <div class="wrap">
@@ -39,7 +36,7 @@ const individual: Record<string, string> = {};
     <div class="block cols cols--57">
       <article>
         <header class="block__head"><h3 class="block__t">Reflexión grupal.</h3></header>
-        {group ? <p class="apr__text">{group}</p> : <p class="apr__text apr__text--pending"><span class="pending">{PENDING}</span> La escribe el equipo para la entrega final.</p>}
+        {groupReflection ? groupReflection.map((p) => <p class="apr__text">{p}</p>) : <p class="apr__text apr__text--pending"><span class="pending">{PENDING}</span> La escribe el equipo para la entrega final.</p>}
       </article>
       <div>
         <h3 class="micro">Reflexiones individuales</h3>
@@ -48,7 +45,7 @@ const individual: Record<string, string> = {};
             <li>
               <details class="fold">
                 <summary><span><span class="mono" style="color: var(--ink-3); margin-right: var(--s-3)">{m.r}</span>{m.name}</span></summary>
-                <div class="fold__body">{individual[m.r] ? <p>{individual[m.r]}</p> : <p><span class="pending">{PENDING}</span></p>}</div>
+                <div class="fold__body apr__ind">{reflections[m.r] ? reflections[m.r].map((p) => <p>{p}</p>) : <p><span class="pending">{PENDING}</span></p>}</div>
               </details>
             </li>
           ))}
@@ -64,5 +61,6 @@ const individual: Record<string, string> = {};
   .log__f { color: var(--accent); font-size: var(--t-small); }
   .log__r { font-weight: 600; }
   .apr__text { font: 500 var(--t-3)/1.35 var(--f-display); letter-spacing: -0.02em; max-width: 30ch; }
+  .apr__ind { display: grid; gap: var(--s-3); max-width: 68ch; color: var(--ink-2); }
   .apr__text--pending { color: var(--ink-2); display: grid; gap: var(--s-3); justify-items: start; }
 </style>
