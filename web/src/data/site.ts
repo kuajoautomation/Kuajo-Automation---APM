@@ -13,7 +13,7 @@ export const site = {
   description:
     'Kuajo Automation integra proceso, PLC, SCADA, MES y ERP bajo ISA-95 e ISA-88. Propuesta de transformación digital industrial para la línea de yogures de Lácteos Pomar, Cajicá (caso académico).',
   repo: 'https://github.com/kuajoautomation/Kuajo-Automation---APM',
-  video: PENDING, // URL del video en YouTube cuando exista
+  video: 'https://www.youtube.com/watch?v=E6pVgTWkzJ8', // video de la sustentación en YouTube
   course: 'Automatización de Procesos de Manufactura · 2026-2',
   university: 'Universidad Nacional de Colombia',
   disclaimer:
@@ -576,7 +576,7 @@ export const logbook = [
 export const commitments: { c: string; r: string; f: string; hecho?: boolean; nota?: string }[] = [
   { c: 'Repositorio por módulos y archivo con los 3 enlaces', r: 'R6 (R1 sube el archivo)', f: '12/10/2026', hecho: true },
   { c: 'Página web con las cifras del informe y el proceso de aprendizaje', r: 'R6, con textos de cada integrante', f: '12/10/2026', hecho: true },
-  { c: 'Video con los 6 integrantes', r: 'R6 edita; todos graban', f: '12/10/2026', hecho: true, nota: 'En edición: 25 a 30 min con los 6 integrantes; intro y outro de Kuajo listos.' },
+  { c: 'Video con los 6 integrantes', r: 'R6 edita; todos graban', f: '12/10/2026', hecho: true, nota: 'Publicado en YouTube, con los 6 integrantes e intro y outro de Kuajo.' },
   { c: 'Modelo en Tecnomatix con los 3 escenarios', r: 'R4 (apoyo de R3)', f: '19/10/2026' },
   { c: 'Segundo pulmón y programación de fermentadores en el modelo', r: 'R3 y R4', f: '26/10/2026' },
   { c: 'Cotizaciones de válvulas, inspección, celda y robots', r: 'R5 y R1', f: '26/10/2026' },
@@ -646,7 +646,10 @@ export const sources = [
 /* Reflexiones del proceso de aprendizaje (texto de cada integrante)   */
 /* ------------------------------------------------------------------ */
 /** Reflexión grupal: null mientras el equipo no la escriba. */
-export const groupReflection: string[] | null = null;
+export const groupReflection: string[] | null = [
+  'En estas seis semanas, el equipo mostró compromiso, disposición y una comunicación respetuosa, que nos permitió llegar a acuerdos y sacar adelante la entrega intermedia. Construir la propuesta para Lácteos Pomar nos enseñó a ver la planta como un sistema: el VSM, las recetas ISA-88, la arquitectura ISA-95 y la planeación PM4R dependen unos de otros, y las cifras solo son confiables si los supuestos de cada módulo son claros.',
+  'También aprendimos de lo que no salió tan bien. Al inicio nos costó definir el alcance, y repartir el trabajo por módulos y por líneas hizo que en algunos momentos trabajáramos separados y que parte de la información no llegara a todos. Para la entrega final nos proponemos consolidar en cada reunión los temas y las tareas, compartir los avances con más frecuencia en GitHub, hacer revisiones cruzadas con anticipación e integrar los módulos en la simulación en Tecnomatix y el gemelo digital.',
+];
 /** Reflexiones individuales por rol (R1…R6), en párrafos. Las que faltan se muestran como pendientes. */
 export const reflections: Record<string, string[]> = {
   R1: [

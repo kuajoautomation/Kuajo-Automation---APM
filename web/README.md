@@ -77,8 +77,7 @@ La página no guarda copias propias del informe, el Excel ni las figuras: los to
 
 Se muestran como `[PENDIENTE]` en el sitio:
 
-- `site.video` en `src/data/site.ts`: enlace de YouTube. Mientras tanto, la página dice «Video en edición (25 a 30 min)».
-- Reflexiones grupal e individuales: variables `group` e `individual` en `src/components/Aprendizaje.astro` (el informe no las incluye).
+- Reflexión individual de Jose Luis (R5): `reflections` en `src/data/site.ts`. Las demás reflexiones y el video ya están.
 
 ## En local
 

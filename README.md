@@ -14,7 +14,7 @@ Proyecto integrador · Automatización de Procesos de Manufactura 2026-2 · Univ
 [![Página web](https://img.shields.io/badge/P%C3%A1gina_web-en_l%C3%ADnea-0E5A52?style=for-the-badge&logo=githubpages&logoColor=white)](https://kuajoautomation.github.io/Kuajo-Automation---APM/)
 [![Informe](https://img.shields.io/badge/Informe-PDF-C8D94A?style=for-the-badge&logo=adobeacrobatreader&logoColor=black)](informes/Informe_Kuajo_APM_2026-2_Linea1_Yogures.pdf)
 [![Excel PM4R](https://img.shields.io/badge/Planeaci%C3%B3n_PM4R-Excel-217346?style=for-the-badge&logo=microsoftexcel&logoColor=white)](05_pm4r/Planeacion_PM4R_Kuajo_Pomar.xlsx)
-[![Video](https://img.shields.io/badge/Video-en_edici%C3%B3n-4A5754?style=for-the-badge&logo=youtube&logoColor=white)](#entregables-y-enlaces)
+[![Video](https://img.shields.io/badge/Video-YouTube-FF0000?style=for-the-badge&logo=youtube&logoColor=white)](https://www.youtube.com/watch?v=E6pVgTWkzJ8)
 
 [![Publicación](https://github.com/kuajoautomation/Kuajo-Automation---APM/actions/workflows/deploy-pagina.yml/badge.svg)](https://github.com/kuajoautomation/Kuajo-Automation---APM/actions/workflows/deploy-pagina.yml)
 ![ISA-95](https://img.shields.io/badge/ISA--95-integraci%C3%B3n_OT%2FIT-0E5A52)
@@ -552,7 +552,7 @@ Todo el equipo trabajó en esta entrega. Cada módulo tiene dos responsables que
 | **Anexo C · Líneas 2 y 3** | [Word](informes/Anexo_C_Lineas_2_y_3.docx) | Quesos y UHT: recetas, parámetros y KPIs |
 | **Anexo D · Simulador** | [`sim.py`](04_produccion/simulacion/sim.py) | Eventos discretos, sin librerías externas |
 | **Presentación** | [`Presentacion/`](Presentacion) | Exportación HTML de la sustentación y [`guion.pdf`](Presentacion/guion.pdf) |
-| **Video** | *En edición* | 25 a 30 min con los 6 integrantes |
+| **Video** | [YouTube](https://www.youtube.com/watch?v=E6pVgTWkzJ8) | Sustentación con los 6 integrantes |
 | **Intro y outro del video** | [Intro](Presentacion/Kuajo_Intro.mp4) · [Outro](Presentacion/Kuajo_Outro.mp4) | Animaciones de Kuajo, con y sin audio |
 | **Enunciado del curso** | [Proyecto integrador](00_curso/3.%20APM%20Proyecto%20Integrador%202026-2.pdf) · [Programa](00_curso/1.APM%20Programa%202026-2.pdf) · [Guía PM4R](00_curso/Gu%C3%ADa%20Metodolog%C3%ADa%20PM4R.pdf) | |
 
